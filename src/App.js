@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import {useState} from 'react'
+import "./App.css";
+import Navbar from './components/Navbar'
 function App() {
+  const [sidebaropen , setSidebarOpen] = useState(false)
+  
+  const handleSideBarOpen = ()=>{
+    setSidebarOpen(true);
+  }
+  const handleSideBarClosed = ()=>{
+    setSidebarOpen(false);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className="container">
+      <Navbar sidbaropen={handleSideBarOpen} sidebarclosed={handleSideBarClosed}/>
+      
+        <h1> Dashboard</h1>
+      
     </div>
   );
 }
