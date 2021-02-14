@@ -1,24 +1,20 @@
-import logo from "./logo.svg";
+import logo from "./pos.png";
 import {useState} from 'react'
-import "./App.css";
-import Navbar from './components/Navbar'
-function App() {
-  const [sidebaropen , setSidebarOpen] = useState(false)
-  
-  const handleSideBarOpen = ()=>{
-    setSidebarOpen(true);
-  }
-  const handleSideBarClosed = ()=>{
-    setSidebarOpen(false);
-  }
-  return (
+import * as s from './App.style'
+import Sidebar from "./components/Sidebar/Sidebar";
+import Main from "./components/Main/Main";
+import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/header/Header";
 
-    <div className="container">
-      <Navbar sidbaropen={handleSideBarOpen} sidebarclosed={handleSideBarClosed}/>
-      
-        <h1> Dashboard</h1>
-      
-    </div>
+function App() {
+  
+  return (
+    <s.Container>
+      <Header logo={logo}/>
+      <Sidebar/>
+      <Main/>
+    </s.Container>
+    
   );
 }
 
