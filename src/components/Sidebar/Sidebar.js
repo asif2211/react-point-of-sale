@@ -8,7 +8,7 @@ const Sidebar = () => {
     "https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&w=1000&q=80";
   const sidebarMenu = [
     { name: "Dashboard", to: "/", submenu: [], icon: "fa fa-tachometer"},
-    { name: "Customer", to: "/category", submenu: [], icon: "fa fa-user" },
+    { name: "Customer", to: "/customer", submenu: [], icon: "fa fa-user" },
     { name: "Items", to: "/", submenu: [], icon: "icon fa-list-alt" },
     { name: "Supplier", to: "/", submenu: [], icon: "fa fa-arrow-circle-down" },
     { name: "Reports", to: "/", submenu: [], icon: "fa fa-bar-chart" },
@@ -25,13 +25,12 @@ const Sidebar = () => {
      console.log(`${item.name} selected ? ${isSelected}`)
     return (
       <Link to={item.to}>
-      <s.MenuItem key={index++}>
+      <s.MenuItem key={index}>
         
         <s.Icon>
           <i className={item.icon}></i>
         </s.Icon>
         <s.Text isselected={isSelected}>{item.name}</s.Text>
-       
       </s.MenuItem>
       
       </Link>

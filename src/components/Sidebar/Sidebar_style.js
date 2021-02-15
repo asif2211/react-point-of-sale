@@ -36,7 +36,6 @@ export const MenuItem = styled.div`
   font-size: 12px;
   width:8rem;
   &:hover {
-  padding:5px 0px 0px 5px;
   background-color: rgb(21, 41, 132);
   transition: transform .2s; /* Animation */
     
