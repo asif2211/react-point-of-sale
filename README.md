@@ -1,5 +1,5 @@
 **POS (Point of sale)**
-Pos is the online saling system in which we sale our products online. like we add item info , user info , sales order , sales return , purchase order, purchase return, account management, reporting , payment on cash or payment on borrow.
+Pos is the online selling system in which we sale our products online. like we add item info , user info , sales order , sales return , purchase order, purchase return, account management, reporting , payment on cash or payment on borrow.
 
 
 **What's Being Used?**
