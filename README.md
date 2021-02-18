@@ -10,3 +10,4 @@ Pos is the online saling system in which we sale our products online. like we ad
 * [redux thunk](https://www.npmjs.com/package/redux-saga) :  for managing redux used as middleware to control async request .
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom) :  for handle routes in web apps.
 * [Animation](https://www.npmjs.com/package/animation) :  for managing css transition.
+* [react icons](https://www.npmjs.com/package/react-icons) :  react icons .

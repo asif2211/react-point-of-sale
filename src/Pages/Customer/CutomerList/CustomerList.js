@@ -18,11 +18,11 @@ class CustomerList extends Component {
             <div>
               <customer.Input />
             </div>
-            <div>
+            <customer.Searchbar>
             <Link to="/customer">
-            <ButtonText children="Add Customer"/>
+            <ButtonText style={{height: 30}}>Add Customer</ButtonText>
             </Link>
-            </div>
+            </customer.Searchbar>
           </customer.topBar>
         </div>
         <customer.wrapper>

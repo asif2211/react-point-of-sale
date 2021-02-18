@@ -1,11 +1,15 @@
 import * as s from "./Header.style";
-
+import { FaBars, FaWindowClose } from "react-icons/fa";
 import { useState } from "react";
-const Header = ({logo}) => {
+const Header = ({logo,handleToogle}) => {
     return ( 
         <s.Container>
+             <s.Link>
+            <FaBars onClick={handleToogle} />
+          </s.Link>
             <s.Logo>
-                <img src={logo} width="50px" height="50px"/>
+        
+               POS
             </s.Logo>
             <s.gap>
             </s.gap>

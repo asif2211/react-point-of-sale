@@ -1,7 +1,7 @@
 import * as button from './Button.Style'
 const ButtonText = ({children,onClick,style}) => {
     return (  
-        <button.Container padding={style} onClick={onClick}>
+        <button.Container  onClick={onClick} style={style}>
             {children}
         </button.Container>
     );

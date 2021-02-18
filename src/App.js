@@ -7,12 +7,13 @@ import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/header/Header";
 
 function App() {
-  
+  const [showsidebar, setShowsidebar] = useState(false);
+  const handleToogle = () => setShowsidebar(!showsidebar);
   return (
     <Fragment>
     <s.Container>
-      <Header logo={logo}/>
-      <Sidebar/>
+      <Header handleToogle={handleToogle} logo={logo}/>
+      <Sidebar handleToogle={handleToogle} sidebar={showsidebar}/>
       <Main/>
     </s.Container>
     </Fragment>

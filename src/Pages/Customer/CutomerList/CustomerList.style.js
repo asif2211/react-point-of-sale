@@ -2,6 +2,15 @@ import styled from "styled-components";
 export const wrapper = styled.div`
   margin-left: 1px;
   margin-top: 20px;
+  border-left:1px solid #d5dbd9;
+  border-right:1px solid #d5dbd9;
+  padding-right:10px;
+`;
+export const Searchbar = styled.div`
+  
+  border-left:1px solid #d5dbd9;
+  border-right:1px solid #d5dbd9;
+  padding-right:10px;
 `;
 export const Span = styled.span`
   background: #489ee7;
@@ -12,36 +21,37 @@ export const Span = styled.span`
 `;
 export const Heading = styled.div`
   background-color: #f9f9f9;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 0.1px solid #d5dbd9;;
   padding: 4px;
+  
   font-size: 14px;
   text-align: left;
   outline: none;
-  border-top: 0.1px solid #d5dbd9;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  
   transition: all 0.3s ease;
   color: #757575;
   height: 5vh;
-  border-radius: 5px;
   margin-top: 0;
 `;
 export const topBar = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+  
+  
+  margin-right:10px;
   flex-direction:row;
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+
   padding: 4px;
   font-size: 14px;
   text-align: left;
   outline: none;
-  border-top: 0.1px solid #d5dbd9;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  border-left: 0.1px solid #d5dbd9;
+  border-right: 0.1px solid #d5dbd9;
+  border-bottom: 0.1px solid #d5dbd9;
+ 
+  
   transition: all 0.3s ease;
   color: #757575;
   height: 10vh;
@@ -61,7 +71,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
   width: 100%;
-
+  border-right:1px solid #d5dbd9;
   @media (max-width: 800px) {
     grid-template-columns: auto;
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
