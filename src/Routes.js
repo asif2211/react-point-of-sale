@@ -6,8 +6,9 @@ import CustomerList from "./Pages/Customer/CutomerList/CustomerList";
 const Routes = () => {
     return ( 
         <Switch>    
-            <Route exact path="/" component={CustomerList}/>
-            <Route path="/customer" component={Customer}/>
+            <Route exact path="/" component={Home}/>
+            <Route path="/customer" component={CustomerList}/>
+            <Route path="/create" component={Customer}/>
             {/* <Route to="" componet={Home}/>
             <Route to="" componet={Home}/>
             <Route to="" componet={Home}/>

@@ -5,9 +5,16 @@ export const Container = styled.div`
   background: #489EE7;
   border-radius: 0px 0px 5px;
   width: 100%;
+  height:60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
   @media (max-width: 800px) {
     flex-direction: row;
     border-bottom: none;

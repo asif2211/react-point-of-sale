@@ -1,7 +1,7 @@
 import * as button from './Button.Style'
-const ButtonText = ({children,onClick,style}) => {
+const ButtonText = ({children,onClick,style,disabled}) => {
     return (  
-        <button.Container  onClick={onClick} style={style}>
+        <button.Container disabled={disabled}  onClick={onClick} style={style}>
             {children}
         </button.Container>
     );

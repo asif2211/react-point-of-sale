@@ -17,13 +17,14 @@ export const Navbar = styled.div`
 export const NavMenu = styled.div`
   background: #373942;
   width: 100%;
-  height: 100vh;
+  height: 900px;
   display: flex;
   justify-content: center;
   position: relative;
   left:${(p) => (p.sidebar ? '-100%' : "")}; ;
   transition: 850ms;
   border-radius:0px 5px;
+  transition:.2s ease-in all;
   @media (max-width: 800px) {
     font-size:10px;
     width: 100px;
@@ -44,7 +45,7 @@ export const MenuItem = styled.li`
 
   &:hover {
     
-    background: #000;
+    background-color: ${p => p.selected ? "rgb(72, 158, 231)" : "#000"};
     border-radius: 10px;
     color: #fff;
   }
@@ -83,7 +84,7 @@ export const TooglLink = styled(link)`
 
 export const menuContainer = styled.div``;
 export const iconText = styled.i`
-  color: ${(p) => (p.isselected ? "rgb(26, 118, 210)" : "#fff")};
+  color: ${(p) => (p.isselected ? "#fff" : "grey")};
   &:hover {
     color: #fff;
   }
@@ -101,7 +102,7 @@ export const Icon = styled.span`
 `;
 
 export const Text = styled.span`
-  color: ${(p) => (p.isselected ? "rgb(26, 118, 210)" : "#fff")};
+  color: ${(p) => (p.isselected ? "#fff" : "#757575")};
   text-decoration: none;
   font-size:1rem;
   box-sizing:border-box;

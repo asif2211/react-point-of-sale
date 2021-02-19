@@ -6,32 +6,58 @@ import { connect } from "react-redux";
 import { FaPen, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 class CustomerList extends Component {
+  state = {
+    input: "",
+  };
   componentDidMount() {
     this.props.getCustomer();
   }
+
+  handleInput = (e) => {
+    this.setState({
+      input: e.target.value,
+    });
+  };
+
+
   render() {
-    const { employees } = this.props;
+    const { customers, filterIt } = this.props;
+    const showingContacts =
+    this.state.input === ""  
+      ? customers
+      : customers.filter((c) =>{
+        return  c.fname.toLowerCase().includes(this.state.input.toLowerCase())||c.lname.toLowerCase().includes(this.state.input.toLowerCase())
+      }
+         
+        );
     return (
       <div>
         <div>
           <customer.topBar>
             <div>
-              <customer.Input />
+              <form>
+                <customer.Input
+                  value={this.state.input}
+                  onChange={this.handleInput}
+                  placeholder="Search records"
+                />
+              </form>
             </div>
             <customer.Searchbar>
-            <Link to="/customer">
-            <ButtonText style={{height: 30}}>Add Customer</ButtonText>
-            </Link>
+              <customer.AddButtonLink to="/create">
+                <ButtonText style={{ height: 30,width: 120 }}>Add Customer</ButtonText>
+              </customer.AddButtonLink>
             </customer.Searchbar>
           </customer.topBar>
         </div>
         <customer.wrapper>
           <div>
             <customer.Heading>
-              Customers <customer.Span>{employees.length}</customer.Span>
+              Customers <customer.Span>{showingContacts && showingContacts.length}</customer.Span>
             </customer.Heading>
           </div>
           <customer.Container>
+           
             <customer.Grid_item_heading>First Name</customer.Grid_item_heading>
             <customer.Grid_item_heading>Last Name</customer.Grid_item_heading>
             <customer.Grid_item_heading>Email</customer.Grid_item_heading>
@@ -39,8 +65,8 @@ class CustomerList extends Component {
             <customer.Grid_item_heading>Address</customer.Grid_item_heading>
             <customer.Grid_item_heading>Company</customer.Grid_item_heading>
             <customer.Grid_item_heading>Action</customer.Grid_item_heading>
-            {employees &&
-              employees.map((item, index) => (
+            {showingContacts &&
+              showingContacts.map((item, index) => (
                 <>
                   <customer.Grid_item key={item.id}>
                     {item.fname}
@@ -71,7 +97,7 @@ class CustomerList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    employees: state.employees,
+    customers: state.employees,
   };
 };
 export default connect(mapStateToProps, { getCustomer })(CustomerList);

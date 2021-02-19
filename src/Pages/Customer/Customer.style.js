@@ -21,7 +21,7 @@ export const Form = styled.form`
     width:80%;
 `
 export const Label = styled.label`
-    width:100px;
+    width:200px;
     color:#757575;
     margin-right:10px;
     font-size:14px;
@@ -34,10 +34,25 @@ export const Input = styled.input`
    width:80%;
     outline:none;
     border:1px solid #d5dbd9;
-    font-size:15px;
+    font-size:12px;
     padding:8px 10px;
+    font-family:sans-serif;
     border-radius:3px;
     transition:all 0.3s ease;
+    color:gray ;
+    background-color:transparent;
+    
+`
+export const comments = styled.textarea`
+    width:82%;
+    padding:10px;
+    outline:none;
+    border:1px solid #d5dbd9;
+    font-size:12px;
+    border-radius:3px;
+    transition:all 0.3s ease;
+    background-color:transparent;
+    color:gray ;
 `
 export const InputContainer = styled.div`
     display:flex;

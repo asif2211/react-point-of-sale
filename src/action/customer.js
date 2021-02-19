@@ -8,3 +8,12 @@ export function getCustomer() {
         });  
     }  
 }; 
+export function AddCustomer(customer) {  
+    
+    return dispatch => {  
+        return dispatch({  
+            type: ADD_CUSTOMER ,
+            payload:customer 
+        });  
+    }  
+}; 
