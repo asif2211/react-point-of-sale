@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 export const Container = styled.div`
   grid-area: header;
-  background: #489EE7;
+  background: rgb(59, 141, 188);
   border-radius: 0px 0px 5px;
   width: 100%;
   height:60px;
@@ -43,6 +43,8 @@ export const Logo = styled.h1`
   font-family: cursive;
   justify-content: start;
   color:white;
+  font-size:50px;
+  letter-spacing:4px;
   
  
 `;
@@ -55,4 +57,7 @@ export const Profile = styled.div`
   flex: 2;
   width: 80%;
   text-align: center;
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+  justify-content: start;
+  color:white;
 `;

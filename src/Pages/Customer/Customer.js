@@ -3,6 +3,7 @@ import * as customer from "./Customer.style";
 import { AddCustomer ,getCustomer} from "../../action/customer";
 import { connect } from "react-redux";
 import { generateId } from "../../utils/generateId";
+import {useParams} from 'react-router-dom'
 
 import ButtonText from "../../components/ButtonText/ButtonText";
 class Customer extends Component {
@@ -77,10 +78,17 @@ class Customer extends Component {
       credit:'',
     });
   };
+  updateData = ()=>{
+    const data = this.props.customers.filter(c=>c.id===this.props.match.params.id)
+    return data;
+  }
   render() {
+   console.log(this.props)    
     return (
+      
       <customer.Container>
-        <customer.Title>Customer Information</customer.Title>
+       
+    <customer.Title>Customer Information {JSON.stringify(this.updateData)}</customer.Title>
         <customer.Form>
           <customer.InputContainer>
             <customer.Label>First Name :</customer.Label>
@@ -226,4 +234,6 @@ const mapStateToProps = (state) => {
     customers: state.employees,
   };
 };
+
+
 export default connect(mapStateToProps, { AddCustomer, getCustomer})(Customer);

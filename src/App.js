@@ -16,6 +16,7 @@ function App() {
       <Sidebar handleToogle={handleToogle} sidebar={showsidebar}/>
       <Main/>
     </s.Container>
+    
     </Fragment>
     
   );

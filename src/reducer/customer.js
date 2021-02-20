@@ -1,5 +1,5 @@
 
-import {ADD_CUSTOMER,GET_CUSTOMER} from '../action/customer'
+import {ADD_CUSTOMER,GET_CUSTOMER,DELETE_CUSTOMER} from '../action/customer'
 const initialstate = {  
     employees: [  
         { id: 1, fname: "asif", 
@@ -40,10 +40,10 @@ const customer = (state = initialstate, action) => {
                 ...state,    
                 employees: state.employees.concat(action.payload)    
             };  
-        case 'DELETE_EMPLOYEE':    
+        case DELETE_CUSTOMER:    
             return {    
                 ...state,    
-                customers: state.customers.filter(item=>item.id!==action.payload)    
+                employees: state.employees.filter(item=>item.id!==action.payload)    
             };  
         case 'EDIT_EMPLOYEE':    
             return {    

@@ -6,6 +6,7 @@ export const wrapper = styled.div`
   border-left:1px solid #d5dbd9;
   border-right:1px solid #d5dbd9;
   padding-right:10px;
+ 
 `;
 export const Searchbar = styled.div`
   
@@ -24,9 +25,22 @@ export const Span = styled.span`
   font-size: 14px;
   margin:10px;
 `;
+export const Total = styled.div`
+  width: 98%;
+  margin:10px;
+  @media (max-width: 800px) {
+   font-size:10px;
+   display:flex;
+   justify-content:center;
+   
+   
+  }
+`;
 export const Heading = styled.h1`
-  background-color: #f9f9f9;
-  border: 0.1px solid #d5dbd9;;
+  background-color: #fff;
+  border-top: 3px solid rgb(59, 141, 188);
+  box-shadow:0 1px 1px rgb(0 0 0 / 10%);
+  border-radius:3px;
   padding: 10px;
   font-size: 20px;
   text-align: left;
@@ -37,49 +51,81 @@ export const Heading = styled.h1`
   transition: all 0.3s ease;
   color: #757575;
   height: 5vh;
-  margin-top: 0;
+  
+  width: 98%;
 `;
 export const topBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right:10px;
-  flex-direction:row;
+  margin-top:20px;
+  margin-left:10px;
+  margin-right:25px;
+  height:10vh;
+  width: 97%;
   background-color: #fff;
-  padding: 4px;
-  font-size: 14px;
-  text-align: left;
-  outline: none;
-  border-left: 0.1px solid #d5dbd9;
-  border-right: 0.1px solid #d5dbd9;
-  border-bottom: 0.1px solid #d5dbd9;
-  transition: all 0.3s ease;
-  color: #757575;
-  height: 10vh;
-  border-radius: 5px;
-  @media (max-width: 500px) {
+  border-top: 3px solid rgb(59, 141, 188);
+  box-shadow:0 1px 1px rgb(0 0 0 / 10%);
+  border-radius:3px;
+  @media (max-width: 800px) {
    font-size:10px;
    display:flex;
    justify-content:center;
-   flex-direction:row;
-   width:100%;
+   align-items:center;
+   margin-right:10px;
+   
   }
 `;
 export const Input = styled.input`
   width: 80%;
   outline: none;
-  border: 1px solid #d5dbd9;
+  
   font-size: 15px;
-  padding: 4px 10px;
-  border-radius: 3px;
+  padding: 10px 20px;
+  background: #374850;
+  border: 1px solid transparent;
   transition: all 0.3s ease;
-  background: #f9f9f9;
+  background: rgb(93, 111, 119);
+  color:#fff;
+  border-top-left-radius:2px;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:2px;
+  ::placeholder {
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+`;
+export const Form = styled.form`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+`;
+export const SearchIcon = styled.span`
+  
+  margin:0px;
+  width:50px;
+  height:37px;
+  background-color:rgb(93, 111, 119);
+  position:relative;
+  text-align:center;
+  white-space:nowrap;
+  vertical-align:middle;
+  display:table-cell;
+  line-height:42px;
+  border: 1px solid transparent;
+  border-top-right-radius:3px;
+  border-bottom-right-radius:3px;
+  margin-right:10px;
 `;
 export const Container = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
-  width: 100%;
-  border-right:1px solid #d5dbd9;
+  width: 98%;
+  margin:10px;
+  border-top: 3px solid rgb(59, 141, 188);
+  border-radius:5px;
   @media (max-width: 800px) {
     grid-template-columns: auto;
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
@@ -101,6 +147,7 @@ export const Grid_item_heading = styled.div`
   transition: all 0.3s ease;
   color: #757575;
   height: 5vh;
+  line-height:30px;
 `;
 export const Grid_item = styled.div`
   outline: none;
@@ -109,7 +156,7 @@ export const Grid_item = styled.div`
   padding: 10px;
   font-size: 14px;
   text-align: center;
-  color: #000;
+  color: rgb(77, 114, 127);
   border-top: 0.1px solid #d5dbd9;
   border-left: none;
   border-right: none;
