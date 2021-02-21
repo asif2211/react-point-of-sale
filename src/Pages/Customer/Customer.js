@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import * as customer from "./Customer.style";
-import { AddCustomer ,getCustomer} from "../../action/customer";
+import { AddCustomer, getCustomer, UpdateCutomer } from "../../action/customer";
 import { connect } from "react-redux";
 import { generateId } from "../../utils/generateId";
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 import ButtonText from "../../components/ButtonText/ButtonText";
 class Customer extends Component {
   state = {
-    id: "",
+    id: 0,
     fname: "",
     lname: "",
     email: "",
@@ -23,72 +23,111 @@ class Customer extends Component {
     store: "",
     credit: "",
     error: "",
+    data: this.props.customers.filter(
+      (c) => c.id == this.props.match.params.id
+    ),
   };
-  componentDidMount(){
-    this.props.getCustomer()
+  componentDidMount() {
+    this.props.getCustomer();
+  }
+  componentWillMount() {
+    if (this.props.match.params.id) {
+      this.setState({
+        id: this.state.data[0] && this.state.data[0].id,
+        fname: this.state.data[0] && this.state.data[0].fname,
+        lname: this.state.data[0] && this.state.data[0].lname,
+        email: this.state.data[0] && this.state.data[0].email,
+        phone: this.state.data[0] && this.state.data[0].phone,
+        address: this.state.data[0] && this.state.data[0].address,
+        city: this.state.data[0] && this.state.data[0].city,
+        state: this.state.data[0] && this.state.data[0].state,
+        zip: this.state.data[0] && this.state.data[0].zip,
+        country: this.state.data[0] && this.state.data[0].country,
+        company: this.state.data[0] && this.state.data[0].company,
+        comments: this.state.data[0] && this.state.data[0].comments,
+        store: this.state.data[0] && this.state.data[0].store,
+        credit: this.state.data[0] && this.state.data[0].credit,
+      });
+    }
   }
   handleInput = (e) => {
-   
-      this.setState({
-        error:'please enter number'
-      })
-    
+    this.setState({
+      error: "please enter number",
+    });
+
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  createOrder = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    
-    const order = {
-      id: generateId(),
-      fname: this.state.fname,
-      lname: this.state.lname,
-      email: this.state.email,
-      phone: this.state.phone,
-      address: this.state.address,
-      city: this.state.city,
-      state: this.state.state,
-      zip: this.state.zip,
-      country: this.state.country,
-      company: this.state.company,
-      comments: this.state.comments,
-      store:this.state.store,
-      credit:this.state.credit,
-    };
-    if (order) {
-      this.props.AddCustomer(order);
+    if (!this.state.id) {
+      const NewData = {
+        id: generateId(),
+        fname: this.state.fname,
+        lname: this.state.lname,
+        email: this.state.email,
+        phone: this.state.phone,
+        address: this.state.address,
+        city: this.state.city,
+        state: this.state.state,
+        zip: this.state.zip,
+        country: this.state.country,
+        company: this.state.company,
+        comments: this.state.comments,
+        store: this.state.store,
+        credit: this.state.credit,
+      };
+      if (NewData) {
+        this.props.AddCustomer(NewData);
+        this.clearData();
+      }
+    } else {
+      alert(this.state.id);
+      alert(this.state.fname);
+
+      const updatedData = {
+        id: this.state.id,
+        fname: this.state.fname,
+        lname: this.state.lname,
+        email: this.state.email,
+        phone: this.state.phone,
+        address: this.state.address,
+        city: this.state.city,
+        state: this.state.state,
+        zip: this.state.zip,
+        country: this.state.country,
+        company: this.state.company,
+        comments: this.state.comments,
+        store: this.state.store,
+        credit: this.state.credit,
+      };
+      this.props.UpdateCutomer(updatedData);
       this.clearData();
     }
   };
   clearData = () => {
     this.setState({
       id: 0,
-      fname: '',
-      lname: '',
-      email: '',
-      phone: '',
-      address: '',
-      state:'',
-      city: '',
-      zip: '',
-      country: '',
-      company: '',
-      comments: '',
-      store:'',
-      credit:'',
+      fname: "",
+      lname: "",
+      email: "",
+      phone: "",
+      address: "",
+      state: "",
+      city: "",
+      zip: "",
+      country: "",
+      company: "",
+      comments: "",
+      store: "",
+      credit: "",
     });
   };
-  updateData = ()=>{
-    const data = this.props.customers.filter(c=>c.id===this.props.match.params.id)
-    return data;
-  }
+
   render() {
-   console.log(this.props)    
     return (
-      
       <customer.Container>
-       
-    <customer.Title>Customer Information {JSON.stringify(this.updateData)}</customer.Title>
+        <customer.Title>Customer Information</customer.Title>
         <customer.Form>
           <customer.InputContainer>
             <customer.Label>First Name :</customer.Label>
@@ -120,13 +159,12 @@ class Customer extends Component {
             <customer.Label>Phone :</customer.Label>
 
             <customer.Input
-            placeholder="12345678"
-            type="number"
+              placeholder="12345678"
+              type="number"
               name="phone"
               value={this.state.phone}
               onChange={this.handleInput}
             />
- 
           </customer.InputContainer>
           <customer.InputContainer>
             <customer.Label>Address :</customer.Label>
@@ -186,7 +224,7 @@ class Customer extends Component {
             <customer.Label>Store Account Balance :</customer.Label>
 
             <customer.Input
-            type="number"
+              type="number"
               name="store"
               value={this.state.store}
               onChange={this.handleInput}
@@ -197,7 +235,7 @@ class Customer extends Component {
             <customer.Label>Credit Limit :</customer.Label>
 
             <customer.Input
-            type="number"
+              type="number"
               name="credit"
               value={this.state.credit}
               onChange={this.handleInput}
@@ -218,13 +256,12 @@ class Customer extends Component {
             <ButtonText
               disabled={this.state.fname === "" || this.state.lname === ""}
               children="Submit"
-              onClick={this.createOrder}
+              onClick={this.handleSubmit}
             >
               Submit
             </ButtonText>
           </customer.Button>
         </customer.Form>
-      
       </customer.Container>
     );
   }
@@ -235,5 +272,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-
-export default connect(mapStateToProps, { AddCustomer, getCustomer})(Customer);
+export default connect(mapStateToProps, {
+  AddCustomer,
+  getCustomer,
+  UpdateCutomer,
+})(Customer);

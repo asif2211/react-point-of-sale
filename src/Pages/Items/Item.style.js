@@ -1,65 +1,83 @@
-import styled from 'styled-components'
-
+import styled from "styled-components";
 
 export const Container = styled.div`
-width:80%;
-margin:20px auto;
-padding:30px;
-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.8);
-`
+  width: 80%;
+  margin: 20px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-top: 3px solid rgb(59, 141, 188);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  border-radius: 3px;
+  align-content:center;
+`;
 export const Title = styled.div`
-
-    font-size:20px;
-    font-weight:600;
-    margin-bottom:20px;
-    color:#101F58;
-    text-transform:uppercase;
-    text-align:center;
-    font-family:'Pappins', 'san-serif';
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: rgb(59, 141, 188);
+  text-transform: uppercase;
+  text-align: center;
+  
 `;
 export const Form = styled.form`
-    width:80%;
-`
-export const Label = styled.label`
-    width:100px;
-    color:#757575;
-    margin-right:10px;
-    font-size:14px;
-    font-family:'Pappins', 'san-serif';
-    @media (max-width: 400px) {
-    font-size:10px;
-  }
-`
-export const Input = styled.input`
-   width:80%;
-    outline:none;
-    border:1px solid #d5dbd9;
-    font-size:15px;
-    padding:8px 10px;
-    border-radius:3px;
-    transition:all 0.3s ease;
-`
-export const InputContainer = styled.div`
-    display:flex;
-    margin-bottom:15px;
-    align-items:center;
-`
-export const Button = styled.div`
-    display:flex;
-    justify-content:center;
-    align-items:center;
+  width: 80%;
+  align-items:center;
+  align-content:center;
 `;
-// Item List end
-
-// Add Item start
+export const Label = styled.label`
+  width: 200px;
+  color: #757575;
+  margin-right: 10px;
+  font-size: 14px;
+  
+  @media (max-width: 400px) {
+    font-size: 10px;
+  }
+`;
+export const Input = styled.input`
+  width: 80%;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 12px;
+  padding: 8px 10px;
+  
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  color: gray;
+  background-color: transparent;
+`;
+export const comments = styled.textarea`
+  width: 82%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #d5dbd9;
+  font-size: 12px;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: gray;
+`;
+export const InputContainer = styled.div`
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+`;
+export const Button = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+// for item  list 
 
 import styled from "styled-components";
+import {Link as link} from 'react-router-dom'
 export const wrapper = styled.div`
   margin-left: 1px;
   margin-top: 20px;
   border-left:1px solid #d5dbd9;
   border-right:1px solid #d5dbd9;
   padding-right:10px;
+ 
 `;
 export const Searchbar = styled.div`
   
@@ -67,66 +85,118 @@ export const Searchbar = styled.div`
   border-right:1px solid #d5dbd9;
   padding-right:10px;
 `;
+export const AddButtonLink = styled(link)`
+  text-decoration:none;
+`;
 export const Span = styled.span`
   background: #489ee7;
   border-radius: 50%;
-  padding: 3px;
+  padding: 5px;
   color: #fff;
-  font-size: 10px;
-`;
-export const Heading = styled.div`
-  background-color: #f9f9f9;
-  border: 0.1px solid #d5dbd9;;
-  padding: 4px;
-  
   font-size: 14px;
+  margin:10px;
+`;
+export const Total = styled.div`
+  width: 98%;
+  margin:10px;
+  @media (max-width: 800px) {
+   font-size:10px;
+   display:flex;
+   justify-content:center;
+   
+   
+  }
+`;
+export const Heading = styled.h1`
+  background-color: #fff;
+  border-top: 3px solid rgb(59, 141, 188);
+  box-shadow:0 1px 1px rgb(0 0 0 / 10%);
+  border-radius:3px;
+  padding: 10px;
+  font-size: 20px;
   text-align: left;
   outline: none;
-  
+  display:flex;
+  justify-content:start;
+  align-items:center;
   transition: all 0.3s ease;
   color: #757575;
   height: 5vh;
-  margin-top: 0;
+  
+  width: 98%;
 `;
 export const topBar = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  
-  
-  margin-right:10px;
-  flex-direction:row;
+  margin-top:20px;
+  margin-left:10px;
+  margin-right:25px;
+  height:10vh;
+  width: 97%;
   background-color: #fff;
-
-  padding: 4px;
-  font-size: 14px;
-  text-align: left;
-  outline: none;
-  border-left: 0.1px solid #d5dbd9;
-  border-right: 0.1px solid #d5dbd9;
-  border-bottom: 0.1px solid #d5dbd9;
- 
-  
-  transition: all 0.3s ease;
-  color: #757575;
-  height: 10vh;
-  border-radius: 5px;
+  border-top: 3px solid rgb(59, 141, 188);
+  box-shadow:0 1px 1px rgb(0 0 0 / 10%);
+  border-radius:3px;
+  @media (max-width: 800px) {
+   font-size:10px;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   margin-right:10px;
+   
+  }
 `;
 export const Input = styled.input`
   width: 80%;
   outline: none;
-  border: 1px solid #d5dbd9;
+  
   font-size: 15px;
-  padding: 4px 10px;
-  border-radius: 3px;
+  padding: 10px 20px;
+  background: #374850;
+  border: 1px solid transparent;
   transition: all 0.3s ease;
-  background: #f9f9f9;
+  background: rgb(93, 111, 119);
+  color:#fff;
+  border-top-left-radius:2px;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:2px;
+  ::placeholder {
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+`;
+export const Form = styled.form`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  
+`;
+export const SearchIcon = styled.span`
+  
+  margin:0px;
+  width:50px;
+  height:37px;
+  background-color:rgb(93, 111, 119);
+  position:relative;
+  text-align:center;
+  white-space:nowrap;
+  vertical-align:middle;
+  display:table-cell;
+  line-height:42px;
+  border: 1px solid transparent;
+  border-top-right-radius:3px;
+  border-bottom-right-radius:3px;
+  margin-right:10px;
 `;
 export const Container = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto;
-  width: 100%;
-  border-right:1px solid #d5dbd9;
+  width: 98%;
+  margin:10px;
+  border-top: 3px solid rgb(59, 141, 188);
+  border-radius:5px;
   @media (max-width: 800px) {
     grid-template-columns: auto;
     box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
@@ -138,7 +208,7 @@ export const Grid_item_heading = styled.div`
   background-color: rgba(255, 255, 255, 225);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 4px;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   outline: none;
   border-top: 0.1px solid #d5dbd9;
@@ -148,6 +218,7 @@ export const Grid_item_heading = styled.div`
   transition: all 0.3s ease;
   color: #757575;
   height: 5vh;
+  line-height:30px;
 `;
 export const Grid_item = styled.div`
   outline: none;
@@ -156,7 +227,7 @@ export const Grid_item = styled.div`
   padding: 10px;
   font-size: 14px;
   text-align: center;
-  color: #000;
+  color: rgb(77, 114, 127);
   border-top: 0.1px solid #d5dbd9;
   border-left: none;
   border-right: none;

@@ -19,11 +19,14 @@ export const AddButtonLink = styled(link)`
 `;
 export const Span = styled.span`
   background: #489ee7;
-  border-radius: 50%;
+  border-radius: .25em;
   padding: 5px;
   color: #fff;
   font-size: 14px;
   margin:10px;
+  width:20px;
+  display:flex;
+  justify-content:center;
 `;
 export const Total = styled.div`
   width: 98%;
@@ -79,20 +82,19 @@ export const topBar = styled.div`
 export const Input = styled.input`
   width: 80%;
   outline: none;
-  
+  color: #fff;
   font-size: 15px;
   padding: 10px 20px;
-  background: #374850;
+  background: rgb(44, 60, 65);
   border: 1px solid transparent;
   transition: all 0.3s ease;
   background: rgb(93, 111, 119);
-  color:#fff;
   border-top-left-radius:2px;
   border-top-right-radius:0;
   border-bottom-right-radius:0;
   border-bottom-left-radius:2px;
   ::placeholder {
-  color: #fff;
+  color:lightgray;
   opacity: 1; /* Firefox */
 }
 `;

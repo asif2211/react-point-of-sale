@@ -43,7 +43,7 @@ class CustomerList extends Component {
               <customer.Input
                 value={this.state.input}
                 onChange={this.handleInput}
-                placeholder="Search records"
+                placeholder="Search.."
               /><customer.SearchIcon><FaSearch color="white"/></customer.SearchIcon>
             </customer.Form>
 

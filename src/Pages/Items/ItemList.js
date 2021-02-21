@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import * as customer from "../CutomerList/CustomerList.style";
 import ButtonText from "../../../components/ButtonText/ButtonText";
-import { getCustomer } from "../../../action/customer";
+import { getCustomer, DeleteCutomer } from "../../../action/customer";
 import { connect } from "react-redux";
-import { FaPen, FaTrashAlt } from "react-icons/fa";
+import { FaPen, FaTrashAlt,FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import SearchField from "react-search-field";
 class CustomerList extends Component {
   state = {
     input: "",
@@ -18,45 +19,54 @@ class CustomerList extends Component {
       input: e.target.value,
     });
   };
-
+  deleteCustomer = (id) => {
+    this.props.DeleteCutomer(id);
+  };
 
   render() {
-    const { employees, filterIt } = this.props;
+    const { customers, filterIt } = this.props;
     const showingContacts =
-    this.state.input === ""  
-      ? employees
-      : employees.filter((c) =>{
-        return  c.fname.toLowerCase().includes(this.state.input.toLowerCase())||c.lname.toLowerCase().includes(this.state.input.toLowerCase())
-      }
-         
-        );
+      this.state.input === ""
+        ? customers
+        : customers.filter((c) => {
+            return (
+              c.fname.toLowerCase().includes(this.state.input.toLowerCase()) ||
+              c.lname.toLowerCase().includes(this.state.input.toLowerCase())
+            );
+          });
     return (
       <div>
         <div>
           <customer.topBar>
-            <div>
-              <form>
-                <customer.Input
-                  value={this.state.input}
-                  onChange={this.handleInput}
-                />
-              </form>
-            </div>
+            <customer.Form>
+            
+              <customer.Input
+                value={this.state.input}
+                onChange={this.handleInput}
+                placeholder="Search records"
+              /><customer.SearchIcon><FaSearch color="white"/></customer.SearchIcon>
+            </customer.Form>
+
             <customer.Searchbar>
-              <Link to="/create">
-                <ButtonText style={{ height: 30 }}>Add Customer</ButtonText>
-              </Link>
+              <customer.AddButtonLink to="/create/:id">
+                <ButtonText style={{ height: '40px', width: 120 }}>
+                  Add Customer
+                </ButtonText>
+              </customer.AddButtonLink>
             </customer.Searchbar>
           </customer.topBar>
         </div>
+
         <customer.wrapper>
-          <div>
+          <customer.Total>
             <customer.Heading>
-              Customers <customer.Span>{showingContacts.length}</customer.Span>
+              Customers{" "}
+              <customer.Span>
+                {showingContacts && showingContacts.length}
+              </customer.Span>
             </customer.Heading>
-          </div>
+          </customer.Total>
           <customer.Container>
-           
             <customer.Grid_item_heading>First Name</customer.Grid_item_heading>
             <customer.Grid_item_heading>Last Name</customer.Grid_item_heading>
             <customer.Grid_item_heading>Email</customer.Grid_item_heading>
@@ -77,12 +87,15 @@ class CustomerList extends Component {
 
                   <customer.Grid_item>{item.company}</customer.Grid_item>
                   <customer.Grid_item>
-                    <Link to="/customer">
+                    <Link to={`/create/${item.id}`}>
                       <FaPen color="green" />
                     </Link>
                     &nbsp;&nbsp;&nbsp;{" "}
                     <Link to="/customer">
-                      <FaTrashAlt color="red" />
+                      <FaTrashAlt
+                        color="red"
+                        onClick={() => this.deleteCustomer(item.id)}
+                      />
                     </Link>
                   </customer.Grid_item>
                 </>
@@ -96,7 +109,9 @@ class CustomerList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    employees: state.employees,
+    customers: state.employees,
   };
 };
-export default connect(mapStateToProps, { getCustomer })(CustomerList);
+export default connect(mapStateToProps, { getCustomer, DeleteCutomer })(
+  CustomerList
+);
