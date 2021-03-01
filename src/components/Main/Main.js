@@ -1,10 +1,10 @@
-import * as s from './Main.Style';
+import {Wrapper} from './styled';
 import Routes from '../../Routes'
 const Main = () => {
     return ( 
-        <s.Container>
+        <Wrapper>
             <Routes/> 
-        </s.Container>
+        </Wrapper>
      );
 }
  

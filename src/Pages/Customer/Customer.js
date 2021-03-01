@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Wrapper,Title,Form,Label,Input,Comments,InputContainer,Button} from "./styled";
-import allActions  from "../../action";
+import allActions  from "../../redux/action";
 import { connect } from "react-redux";
 import { generateId } from "../../utils/generateId";
 import { useParams } from "react-router-dom";

@@ -1,16 +1,16 @@
-import * as s from "./Header.style";
+import {Wrapper,Link,Logo,Profile} from "./styled";
 import { FaBars, FaWindowClose } from "react-icons/fa";
 import { useState } from "react";
 const Header = ({ logo, handleToogle }) => {
   return (
-    <s.Container>
-      <s.Link>
+    <Wrapper>
+      <Link>
         <FaBars onClick={handleToogle} />
-      </s.Link>
-      <s.Logo>POS</s.Logo>
-      <s.gap></s.gap>
-      <s.Profile>Muhammad Asif</s.Profile>
-    </s.Container>
+      </Link>
+      <Logo>POS</Logo>
+      <gap></gap>
+      <Profile>Muhammad Asif</Profile>
+    </Wrapper>
   );
 };
 

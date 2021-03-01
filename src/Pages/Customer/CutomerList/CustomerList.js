@@ -4,7 +4,7 @@ import {TopBar,Form,Input,SearchIcon,Searchbar,AddButtonLink,Wrapper,Heading,Tot
 
 } from "./styled";
 import ButtonText from "../../../components/ButtonText/ButtonText";
-import allActions from "../../../action/customer";
+import allActions from "../../../redux/action";
 import { FaPen, FaTrashAlt,FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import {useDispatch,useSelector} from 'react-redux'

@@ -7,7 +7,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import { Provider, connect } from 'react-redux';  
 import { createStore, applyMiddleware } from 'redux';  
 import thunk from "redux-thunk";  
-import reducer from './reducer';
+import reducer from './redux/reducer';
 // function saveDataInLocalStorage(state){
 //   try{
 //     let setStateData = JSON.stringify(state);

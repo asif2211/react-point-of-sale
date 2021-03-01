@@ -1,9 +1,9 @@
-import * as button from './Button.Style'
+import {Wrapper} from './styled'
 const ButtonText = ({children,onClick,style,disabled}) => {
     return (  
-        <button.Container disabled={disabled}  onClick={onClick} style={style}>
+        <Wrapper disabled={disabled}  onClick={onClick} style={style}>
             {children}
-        </button.Container>
+        </Wrapper>
     );
 }
  

@@ -1,9 +1,9 @@
-import * as s from './Navbar.style'
+import {Wrapper} from './styled'
 const Navbar = () => {
     return ( 
-        <s.Container>
+        <Wrapper>
             Navbar
-        </s.Container>
+        </Wrapper>
      );
 }
  

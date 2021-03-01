@@ -1,4 +1,4 @@
-import * as s from "./Sidebar_style";
+import * as s from "./styled";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaWindowClose } from "react-icons/fa";

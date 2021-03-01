@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link as link } from "react-router-dom";
-export const Container = styled.div`
+export const Wrapper = styled.div`
   grid-area: header;
   background: rgb(59, 141, 188);
   border-radius: 0px 0px 5px;

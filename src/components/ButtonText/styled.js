@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.button`
+export const Wrapper = styled.button`
 width:100px;
 height:40px;
 background:rgb(22, 47, 127);
