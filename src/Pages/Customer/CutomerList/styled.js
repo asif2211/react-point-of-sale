@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {Link as link} from 'react-router-dom'
-export const wrapper = styled.div`
+export const Wrapper = styled.div`
   margin-left: 1px;
   margin-top: 20px;
   border-left:1px solid #d5dbd9;
@@ -57,7 +57,7 @@ export const Heading = styled.h1`
   
   width: 98%;
 `;
-export const topBar = styled.div`
+export const TopBar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

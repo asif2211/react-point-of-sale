@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   width: 80%;
   margin: 20px auto;
   background: #ffffff;
@@ -46,7 +46,7 @@ export const Input = styled.input`
   color: gray;
   background-color: transparent;
 `;
-export const comments = styled.textarea`
+export const Comments = styled.textarea`
   width: 82%;
   padding: 10px;
   outline: none;

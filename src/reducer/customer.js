@@ -40,8 +40,8 @@ const initialstate = {
 const customer = (state = initialstate, action) => {
   switch (action.type) {
     case GET_CUSTOMER:
-      let newState = { ...state };
-      return newState;
+      return {...state,
+      employees:state.employees};
     case ADD_CUSTOMER:
       return {
         ...state,

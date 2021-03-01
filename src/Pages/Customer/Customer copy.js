@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {Wrapper,Title,Form,Label,Input,Comments,InputContainer,Button} from "./styled";
-import allActions  from "../../action";
+import * as customer from "./Customer.style";
+import { AddCustomer, getCustomer, UpdateCutomer } from "../../action";
 import { connect } from "react-redux";
 import { generateId } from "../../utils/generateId";
 import { useParams } from "react-router-dom";
@@ -28,7 +28,7 @@ class Customer extends Component {
     ),
   };
   componentDidMount() {
-    this.props.allActions.getCustomer();
+    this.props.getCustomer();
   }
   componentWillMount() {
     if (this.props.match.params.id) {
@@ -78,7 +78,7 @@ class Customer extends Component {
         credit: this.state.credit,
       };
       if (NewData) {
-        this.props.allActions.AddCustomer(NewData);
+        this.props.AddCustomer(NewData);
         this.clearData();
       }
     } else {
@@ -101,7 +101,7 @@ class Customer extends Component {
         store: this.state.store,
         credit: this.state.credit,
       };
-      this.props.allActions.UpdateCutomer(updatedData);
+      this.props.UpdateCutomer(updatedData);
       this.clearData();
     }
   };
@@ -126,133 +126,133 @@ class Customer extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Title>Customer Information</Title>
-        <Form>
-          <InputContainer>
-            <Label>First Name :</Label>
-            <Input
+      <customer.Container>
+        <customer.Title>Customer Information</customer.Title>
+        <customer.Form>
+          <customer.InputContainer>
+            <customer.Label>First Name :</customer.Label>
+            <customer.Input
               name="fname"
               value={this.state.fname}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Last Name :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Last Name :</customer.Label>
 
-            <Input
+            <customer.Input
               name="lname"
               value={this.state.lname}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Email :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Email :</customer.Label>
 
-            <Input
+            <customer.Input
               name="email"
               value={this.state.email}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Phone :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Phone :</customer.Label>
 
-            <Input
+            <customer.Input
               placeholder="12345678"
               type="number"
               name="phone"
               value={this.state.phone}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Address :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Address :</customer.Label>
 
-            <Input
+            <customer.Input
               name="address"
               value={this.state.address}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>City :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>City :</customer.Label>
 
-            <Input
+            <customer.Input
               name="city"
               value={this.state.city}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>State :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>State :</customer.Label>
 
-            <Input
+            <customer.Input
               name="state"
               value={this.state.state}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Zip Code :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Zip Code :</customer.Label>
 
-            <Input
+            <customer.Input
               name="zip"
               value={this.state.zip}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Country :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Country :</customer.Label>
 
-            <Input
+            <customer.Input
               name="country"
               value={this.state.country}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Company :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Company :</customer.Label>
 
-            <Input
+            <customer.Input
               name="company"
               value={this.state.company}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Store Account Balance :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Store Account Balance :</customer.Label>
 
-            <Input
+            <customer.Input
               type="number"
               name="store"
               value={this.state.store}
               onChange={this.handleInput}
               placeholder="0.00"
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Credit Limit :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Credit Limit :</customer.Label>
 
-            <Input
+            <customer.Input
               type="number"
               name="credit"
               value={this.state.credit}
               onChange={this.handleInput}
               placeholder="10000.00"
             />
-          </InputContainer>
-          <InputContainer>
-            <Label>Comments :</Label>
+          </customer.InputContainer>
+          <customer.InputContainer>
+            <customer.Label>Comments :</customer.Label>
 
-            <Comments
+            <customer.comments
               rows="5"
               name="comments"
               value={this.state.comments}
               onChange={this.handleInput}
             />
-          </InputContainer>
-          <Button>
+          </customer.InputContainer>
+          <customer.Button>
             <ButtonText
               disabled={this.state.fname === "" || this.state.lname === ""}
               children="Submit"
@@ -260,11 +260,20 @@ class Customer extends Component {
             >
               Submit
             </ButtonText>
-          </Button>
-        </Form>
-      </Wrapper>
+          </customer.Button>
+        </customer.Form>
+      </customer.Container>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    customers: state.employees,
+  };
+};
 
-export default Customer;
+export default connect(mapStateToProps, {
+  AddCustomer,
+  getCustomer,
+  UpdateCutomer,
+})(Customer);

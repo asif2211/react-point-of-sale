@@ -1,92 +1,69 @@
-import React, { Component } from "react";
-import * as customer from "../CutomerList/CustomerList.style";
+import React, { Component, useEffect } from "react";
+import {TopBar,Form,Input,SearchIcon,Searchbar,AddButtonLink,Wrapper,Heading,Total,Span
+  ,Grid_item_heading,Container,Grid_item
+
+} from "./styled";
 import ButtonText from "../../../components/ButtonText/ButtonText";
-import { getCustomer, DeleteCutomer } from "../../../action/customer";
-import { connect } from "react-redux";
+import allActions from "../../../action/customer";
 import { FaPen, FaTrashAlt,FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import SearchField from "react-search-field";
-class CustomerList extends Component {
-  state = {
-    input: "",
-  };
-  componentDidMount() {
-    this.props.getCustomer();
-  }
-
-  handleInput = (e) => {
-    this.setState({
-      input: e.target.value,
-    });
-  };
-  deleteCustomer = (id) => {
-    this.props.DeleteCutomer(id);
-  };
-
-  render() {
-    const { customers, filterIt } = this.props;
-    const showingContacts =
-      this.state.input === ""
-        ? customers
-        : customers.filter((c) => {
-            return (
-              c.fname.toLowerCase().includes(this.state.input.toLowerCase()) ||
-              c.lname.toLowerCase().includes(this.state.input.toLowerCase())
-            );
-          });
+import {useDispatch,useSelector} from 'react-redux'
+const CustomerList = ()=>{
+   const customers = useSelector(state=>state.customer.employees)
     return (
       <div>
         <div>
-          <customer.topBar>
-            <customer.Form>
+          <TopBar>
+            <Form>
             
-              <customer.Input
-                value={this.state.input}
-                onChange={this.handleInput}
-                placeholder="Search.."
-              /><customer.SearchIcon><FaSearch color="white"/></customer.SearchIcon>
-            </customer.Form>
+              <Input
+                // value={this.state.input}
+                // onChange={this.handleInput}
+                // placeholder="Search.."
+              />
+              <SearchIcon><FaSearch color="white"/></SearchIcon>
+            </Form>
 
-            <customer.Searchbar>
-              <customer.AddButtonLink to="/create/:id">
+            <Searchbar>
+              <AddButtonLink to="/create/:id">
                 <ButtonText style={{ height: '40px', width: 120 }}>
                   Add Customer
                 </ButtonText>
-              </customer.AddButtonLink>
-            </customer.Searchbar>
-          </customer.topBar>
+              </AddButtonLink>
+            </Searchbar>
+          </TopBar>
         </div>
 
-        <customer.wrapper>
-          <customer.Total>
-            <customer.Heading>
+        <Wrapper>
+          <Total>
+            <Heading>
               Customers{" "}
-              <customer.Span>
-                {showingContacts && showingContacts.length}
-              </customer.Span>
-            </customer.Heading>
-          </customer.Total>
-          <customer.Container>
-            <customer.Grid_item_heading>First Name</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Last Name</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Email</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Phone</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Address</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Company</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Action</customer.Grid_item_heading>
-            {showingContacts &&
-              showingContacts.map((item, index) => (
+              <Span>
+                {customers && customers.length}
+              </Span>
+            </Heading>
+          </Total>
+          <Container>
+            <Grid_item_heading>First Name</Grid_item_heading>
+            <Grid_item_heading>Last Name</Grid_item_heading>
+            <Grid_item_heading>Email</Grid_item_heading>
+            <Grid_item_heading>Phone</Grid_item_heading>
+            <Grid_item_heading>Address</Grid_item_heading>
+            <Grid_item_heading>Company</Grid_item_heading>
+            <Grid_item_heading>Action</Grid_item_heading>
+            {customers &&
+              customers.map((item, index) => (
                 <>
-                  <customer.Grid_item key={item.id}>
+                  <Grid_item key={item.id}>
                     {item.fname}
-                  </customer.Grid_item>
-                  <customer.Grid_item>{item.lname}</customer.Grid_item>
-                  <customer.Grid_item>{item.email}</customer.Grid_item>
-                  <customer.Grid_item>{item.phone}</customer.Grid_item>
-                  <customer.Grid_item>{item.address}</customer.Grid_item>
+                  </Grid_item>
+                  <Grid_item>{item.lname}</Grid_item>
+                  <Grid_item>{item.email}</Grid_item>
+                  <Grid_item>{item.phone}</Grid_item>
+                  <Grid_item>{item.address}</Grid_item>
 
-                  <customer.Grid_item>{item.company}</customer.Grid_item>
-                  <customer.Grid_item>
+                  <Grid_item>{item.company}</Grid_item>
+                  <Grid_item>
                     <Link to={`/create/${item.id}`}>
                       <FaPen color="green" />
                     </Link>
@@ -97,21 +74,13 @@ class CustomerList extends Component {
                         onClick={() => this.deleteCustomer(item.id)}
                       />
                     </Link>
-                  </customer.Grid_item>
+                  </Grid_item>
                 </>
               ))}
-          </customer.Container>
-        </customer.wrapper>
+          </Container>
+        </Wrapper>
       </div>
     );
   }
-}
 
-const mapStateToProps = (state) => {
-  return {
-    customers: state.employees,
-  };
-};
-export default connect(mapStateToProps, { getCustomer, DeleteCutomer })(
-  CustomerList
-);
+export default CustomerList

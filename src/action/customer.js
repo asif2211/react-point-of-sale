@@ -3,14 +3,10 @@ export const GET_CUSTOMER = "GET_CUSTOMER";
 export const DELETE_CUSTOMER = "DELETE_CUSTOMER";
 export const UPDATE_CUSTOMER = "UPDATE_CUSTOMER";
 
-export function getCustomer() {  
-    return dispatch => {  
-        return dispatch({  
-            type: GET_CUSTOMER  
-        });  
-    }  
-}; 
-export function AddCustomer(customer) {  
+const  getCustomer = () => ({  
+    type:GET_CUSTOMER
+}); 
+const  AddCustomer = (customer) =>{  
     
     return dispatch => {  
         return dispatch({  
@@ -19,7 +15,7 @@ export function AddCustomer(customer) {
         });  
     }  
 }; 
-export function DeleteCutomer(id) {  
+const  DeleteCutomer = (id)=> {  
     
     return dispatch => {  
         return dispatch({  
@@ -28,7 +24,7 @@ export function DeleteCutomer(id) {
         });  
     }  
 }; 
-export function UpdateCutomer(data) {  
+const UpdateCutomer = (data)=> {  
     
     return dispatch => {  
         return dispatch({  
@@ -37,3 +33,10 @@ export function UpdateCutomer(data) {
         });  
     }  
 }; 
+
+export default {
+    getCustomer,
+    AddCustomer,
+    DeleteCutomer,
+    UpdateCutomer
+}
