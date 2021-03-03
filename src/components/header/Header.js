@@ -1,15 +1,15 @@
-import {Wrapper,Link,Logo,Profile} from "./styled";
-import { FaBars, FaWindowClose } from "react-icons/fa";
-import { useState } from "react";
-const Header = ({ logo, handleToogle }) => {
+import {Wrapper,Link,Logo,Profile,Gap} from "./styled";
+import { FaBars } from "react-icons/fa";
+
+const Header = ({ logo, handleToogle ,userName}) => {
   return (
     <Wrapper>
       <Link>
         <FaBars onClick={handleToogle} />
       </Link>
       <Logo>POS</Logo>
-      <gap></gap>
-      <Profile>Muhammad Asif</Profile>
+      <Gap></Gap>
+      <Profile>{userName}</Profile>
     </Wrapper>
   );
 };

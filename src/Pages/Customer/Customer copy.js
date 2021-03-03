@@ -3,7 +3,7 @@ import * as customer from "./Customer.style";
 import { AddCustomer, getCustomer, UpdateCutomer } from "../../action";
 import { connect } from "react-redux";
 import { generateId } from "../../utils/generateId";
-import { useParams } from "react-router-dom";
+
 
 import ButtonText from "../../components/ButtonText/ButtonText";
 class Customer extends Component {

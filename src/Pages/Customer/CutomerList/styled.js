@@ -135,7 +135,7 @@ export const Container = styled.div`
     height: 100vh;
   }
 `;
-export const Grid_item_heading = styled.div`
+export const ItemHeading = styled.div`
   background-color: rgba(255, 255, 255, 225);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 4px;
@@ -151,7 +151,7 @@ export const Grid_item_heading = styled.div`
   height: 5vh;
   line-height:30px;
 `;
-export const Grid_item = styled.div`
+export const ItemData = styled.div`
   outline: none;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.8);

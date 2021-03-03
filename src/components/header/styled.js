@@ -22,9 +22,9 @@ export const Wrapper = styled.div`
   }
 `;
 export const Link = styled(link)`
-  margin-left: 2rem;
+  margin-left: 3rem;
   display: flex;
-  justify-content: start;
+  justify-content:center;
   align-items:center;
   background: none;
   margin:10px;
@@ -48,8 +48,8 @@ export const Logo = styled.h1`
   
  
 `;
-export const gap = styled.div`
-  flex: 2;
+export const Gap = styled.div`
+  flex: 3;
   width: 80%;
   text-align: center;
 `;

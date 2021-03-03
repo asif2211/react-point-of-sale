@@ -1,6 +1,6 @@
 import { SET_USER,LOGOUT } from "../action/users";
-const setUser = (state = [], action) => {
-  alert(action.payload);
+const users = (state = [], action) => {
+  
   switch (action.type) {
     case SET_USER:
       return {
@@ -15,8 +15,8 @@ const setUser = (state = [], action) => {
         loggedIn: false,
       };
     default :
-    return {state}
+    return state
   }
 };
 
-export default setUser;
+export default users;

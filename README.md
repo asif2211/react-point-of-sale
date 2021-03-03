@@ -11,3 +11,5 @@ Pos is the online selling system in which we sale our products online. like we a
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom) :  for handle routes in web apps.
 * [Animation](https://www.npmjs.com/package/animation) :  for managing css transition.
 * [react icons](https://www.npmjs.com/package/react-icons) :  react icons .
+* [eslint]  used for code decoration and beauty like remove extra spacing , declaration but not used etc .
+

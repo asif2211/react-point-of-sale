@@ -1,86 +1,117 @@
-import React, { Component, useEffect } from "react";
-import {TopBar,Form,Input,SearchIcon,Searchbar,AddButtonLink,Wrapper,Heading,Total,Span
-  ,Grid_item_heading,Container,Grid_item
-
+import React, { useState } from "react";
+import {
+  TopBar,
+  Form,
+  Input,
+  SearchIcon,
+  Searchbar,
+  AddButtonLink,
+  Wrapper,
+  Heading,
+  Total,
+  Span,
+  ItemHeading,
+  Container,
+  ItemData,
 } from "./styled";
 import ButtonText from "../../../components/ButtonText/ButtonText";
 import allActions from "../../../redux/action";
-import { FaPen, FaTrashAlt,FaSearch } from "react-icons/fa";
+import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {useDispatch,useSelector} from 'react-redux'
-const CustomerList = ()=>{
-   const customers = useSelector(state=>state.customer.employees)
-    return (
+import { Customers } from "../../../redux/selector";
+import { useSelector, useDispatch } from "react-redux";
+
+const CustomerList = () => {
+  const [search, setSearch] = useState("");
+  // get reducer name by selector
+  const customerList = useSelector(Customers);
+  const dispatch = useDispatch();
+  // pass id by useDispatch hooks
+  const DeleteCustomer = (id) => {
+    dispatch(allActions.customer.DeleteCustomer(id));
+  };
+  // for searching where when condition is true.
+  const showingContacts =
+    search === ""
+      ? customerList.customers
+      : customerList.customers.filter((c) => {
+          return (
+            c.fname.toLowerCase().includes(search.toLowerCase()) ||
+            c.lname.toLowerCase().includes(search.toLowerCase())
+          );
+        });
+  return (
+    <div>
       <div>
-        <div>
-          <TopBar>
-            <Form>
-            
-              <Input
-                // value={this.state.input}
-                // onChange={this.handleInput}
-                // placeholder="Search.."
-              />
-              <SearchIcon><FaSearch color="white"/></SearchIcon>
-            </Form>
+        <TopBar>
+          <Form>
+            <Input
+              type="text"
+              name="firstName"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <SearchIcon>
+              <FaSearch color="white" />
+            </SearchIcon>
+          </Form>
 
-            <Searchbar>
-              <AddButtonLink to="/create/:id">
-                <ButtonText style={{ height: '40px', width: 120 }}>
-                  Add Customer
-                </ButtonText>
-              </AddButtonLink>
-            </Searchbar>
-          </TopBar>
-        </div>
-
-        <Wrapper>
-          <Total>
-            <Heading>
-              Customers{" "}
-              <Span>
-                {customers && customers.length}
-              </Span>
-            </Heading>
-          </Total>
-          <Container>
-            <Grid_item_heading>First Name</Grid_item_heading>
-            <Grid_item_heading>Last Name</Grid_item_heading>
-            <Grid_item_heading>Email</Grid_item_heading>
-            <Grid_item_heading>Phone</Grid_item_heading>
-            <Grid_item_heading>Address</Grid_item_heading>
-            <Grid_item_heading>Company</Grid_item_heading>
-            <Grid_item_heading>Action</Grid_item_heading>
-            {customers &&
-              customers.map((item, index) => (
-                <>
-                  <Grid_item key={item.id}>
-                    {item.fname}
-                  </Grid_item>
-                  <Grid_item>{item.lname}</Grid_item>
-                  <Grid_item>{item.email}</Grid_item>
-                  <Grid_item>{item.phone}</Grid_item>
-                  <Grid_item>{item.address}</Grid_item>
-
-                  <Grid_item>{item.company}</Grid_item>
-                  <Grid_item>
-                    <Link to={`/create/${item.id}`}>
-                      <FaPen color="green" />
-                    </Link>
-                    &nbsp;&nbsp;&nbsp;{" "}
-                    <Link to="/customer">
-                      <FaTrashAlt
-                        color="red"
-                        onClick={() => this.deleteCustomer(item.id)}
-                      />
-                    </Link>
-                  </Grid_item>
-                </>
-              ))}
-          </Container>
-        </Wrapper>
+          <Searchbar>
+            <AddButtonLink to="/create">
+              <ButtonText style={{ height: "40px", width: 120 }}>
+                Add Customer
+              </ButtonText>
+            </AddButtonLink>
+          </Searchbar>
+        </TopBar>
       </div>
-    );
-  }
 
-export default CustomerList
+      <Wrapper>
+        <Total>
+          <Heading>
+            Customers{" "}
+            {showingContacts.length > 0? (
+              <Span>{showingContacts  && showingContacts.length}</Span>
+            ) : (
+              ""
+            )}
+          </Heading>
+        </Total>
+        <Container>
+          <ItemHeading>First Name</ItemHeading>
+          <ItemHeading>Last Name</ItemHeading>
+          <ItemHeading>Email</ItemHeading>
+          <ItemHeading>PHone</ItemHeading>
+          <ItemHeading>Address</ItemHeading>
+          <ItemHeading>Company</ItemHeading>
+          <ItemHeading>Action</ItemHeading>
+          {showingContacts &&
+            showingContacts.map((item, index) => (
+              <>
+                <ItemData key={Math.random()} >{item.fname}</ItemData>
+                <ItemData>{item.lname}</ItemData>
+                <ItemData>{item.email}</ItemData>
+                <ItemData>{item.phone}</ItemData>
+                <ItemData>{item.address}</ItemData>
+
+                <ItemData>{item.company}</ItemData>
+                <ItemData>
+                  <Link to={`/create/${item.id}`}>
+                    <FaPen color="green" />
+                  </Link>
+                  &nbsp;&nbsp;&nbsp;{" "}
+                  <Link to="/customer">
+                    <FaTrashAlt
+                      color="red"
+                      onClick={() => DeleteCustomer(item.id)}
+                    />
+                  </Link>
+                </ItemData>
+              </>
+            ))}
+        </Container>
+      </Wrapper>
+    </div>
+  );
+};
+
+export default CustomerList;
