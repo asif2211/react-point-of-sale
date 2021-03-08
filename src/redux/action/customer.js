@@ -1,19 +1,12 @@
-export const ADD_CUSTOMER = "ADD_CUSTOMER";
-export const GET_CUSTOMER = "GET_CUSTOMER";
-export const DELETE_CUSTOMER = "DELETE_CUSTOMER";
-export const UPDATE_CUSTOMER = "UPDATE_CUSTOMER";
+import {GET_CUSTOMER,ADD_CUSTOMER,DELETE_CUSTOMER,UPDATE_CUSTOMER} from '../constant'
 
 const getCustomer = () => ({
   type: GET_CUSTOMER,
 });
-const AddCustomer = (customer) => {
-  return (dispatch) => {
-    return dispatch({
-      type: ADD_CUSTOMER,
-      payload: customer,
-    });
-  };
-};
+const AddCustomer = (customerObj) => ({
+  type:ADD_CUSTOMER,
+  payload:customerObj
+});
 const DeleteCustomer = (id) => ({
   type: DELETE_CUSTOMER,
   payload: id,

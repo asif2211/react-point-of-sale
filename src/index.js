@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './Global.scss'
 import App from './App';
@@ -31,9 +31,9 @@ function loadLocalStorageData(){
   }
 
 }
-// const presistedLocalStorage = loadLocalStorageData();
-const store = createStore(reducer,applyMiddleware(thunk))
-  // store.subscribe(()=>saveDataInLocalStorage(store.getState()))
+const presistedLocalStorage = loadLocalStorageData();
+const store = createStore(reducer,presistedLocalStorage,applyMiddleware(thunk))
+store.subscribe(()=>saveDataInLocalStorage(store.getState()))
 
 ReactDOM.render(
   <React.StrictMode>

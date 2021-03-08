@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
   TopBar,
-  Form,
-  Input,
+  FormList,
+  InputList,
   SearchIcon,
   Searchbar,
   AddButtonLink,
-  Wrapper,
+  WrapperList,
   Heading,
   Total,
   Span,
@@ -14,11 +14,11 @@ import {
   Container,
   ItemData,
 } from "./styled";
-import ButtonText from "../../../components/ButtonText/ButtonText";
-import allActions from "../../../redux/action";
+import ButtonText from "../../components/ButtonText/ButtonText";
+import allActions from "../../redux/action";
 import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Customers } from "../../../redux/selector";
+import { Customers } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 
 const CustomerList = () => {
@@ -44,8 +44,12 @@ const CustomerList = () => {
     <div>
       <div>
         <TopBar>
-          <Form>
-            <Input
+          <FormList>
+            <InputList
+            
+            label = "Search"
+            size = "small"
+            variant = "filled"
               type="text"
               name="firstName"
               onChange={(e) => setSearch(e.target.value)}
@@ -53,23 +57,21 @@ const CustomerList = () => {
             <SearchIcon>
               <FaSearch color="white" />
             </SearchIcon>
-          </Form>
-
+          </FormList>
           <Searchbar>
-            <AddButtonLink to="/create">
-              <ButtonText style={{ height: "40px", width: 120 }}>
+            <AddButtonLink to="/create/id">
+              <ButtonText style={{ height: "47px", width: 120 }}>
                 Add Customer
               </ButtonText>
             </AddButtonLink>
           </Searchbar>
         </TopBar>
-      </div>
-
-      <Wrapper>
+      </div>  
+      <WrapperList>
         <Total>
           <Heading>
             Customers{" "}
-            {showingContacts.length > 0? (
+            {showingContacts && showingContacts.length? (
               <Span>{showingContacts  && showingContacts.length}</Span>
             ) : (
               ""
@@ -109,7 +111,7 @@ const CustomerList = () => {
               </>
             ))}
         </Container>
-      </Wrapper>
+      </WrapperList>
     </div>
   );
 };

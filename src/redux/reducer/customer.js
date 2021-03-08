@@ -3,12 +3,9 @@ import {
   GET_CUSTOMER,
   DELETE_CUSTOMER,
   UPDATE_CUSTOMER,
-} from "../action/customer";
+} from "../constant";
 const initialstate = {
-  customers:[
-    {id:1,fname:'asif',lname:'adff'},
-    {id:2,fname:'bsit',lname:'hello'}
-  ]
+  customers:[]
 };
 
 const customer = (state = initialstate, action) => {
@@ -20,7 +17,7 @@ const customer = (state = initialstate, action) => {
     case ADD_CUSTOMER:
       return {
         ...state,
-        employees: state.employees.concat(action.payload),
+        customers:[...state.customers, action.payload],
       };
     case DELETE_CUSTOMER:
      

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   grid-template-columns: .8fr 1fr 1fr 1fr;
   grid-template-rows:  .2fr 3fr;
   font-family:'Lato', 'san-serif';
-  margin:0px;
+  margin:-4px;
   padding:0px;
   box-sizing:border-box;
   font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;

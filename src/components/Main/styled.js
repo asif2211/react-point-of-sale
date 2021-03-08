@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     background:#F8F8F8;
     overflow-wrap: break-word;
     width: 100%;
+    
     @media (max-width: 800px) {
     font-size:10px;
     width: 100%;
