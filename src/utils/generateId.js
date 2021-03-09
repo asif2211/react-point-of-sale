@@ -1,12 +1,8 @@
-export const generateId  = ()=>{
+export const generateId  = (start, end)=>{
     return (
       Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
-    );
+        .toString()
+        .substring(start, end))
   };
 
   

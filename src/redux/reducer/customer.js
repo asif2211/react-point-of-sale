@@ -28,7 +28,7 @@ const customer = (state = initialstate, action) => {
     case UPDATE_CUSTOMER:
       return {
         ...state,
-        employees: state.employees.map((content) =>
+        customers: state.customers.map((content) =>
           content.id === action.payload.id
             ? {
                 ...content,

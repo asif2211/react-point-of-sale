@@ -11,14 +11,10 @@ const DeleteCustomer = (id) => ({
   type: DELETE_CUSTOMER,
   payload: id,
 });
-const UpdateCutomer = (data) => {
-  return (dispatch) => {
-    return dispatch({
-      type: UPDATE_CUSTOMER,
-      payload: data,
-    });
-  };
-};
+const UpdateCutomer = (data) => ({
+ type:UPDATE_CUSTOMER,
+ payload:data
+});
 const data = {
   getCustomer,
   AddCustomer,
