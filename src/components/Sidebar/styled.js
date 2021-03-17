@@ -6,7 +6,6 @@ export const Container = styled.div`
   height: 100%;
   background-color: #f8f8f8;
   border-radius: 3px;
-  
 `;
 export const Navbar = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ export const NavMenu = styled.div`
     font-size: 10px;
     width: 100px;
     grid-area: main;
-    
   }
   @media (max-width: 400px) {
     font-size: 10px;
@@ -43,6 +41,7 @@ export const MenuItem = styled.li`
   align-items: center;
   padding: 8px 10px 10px 0px;
   list-style: none;
+  cursor: pointer;
 
   &:hover {
     background-color: ${(p) =>
@@ -78,7 +77,6 @@ export const TooglLink = styled(link)`
   padding-left: 20px;
 `;
 
-export const menuContainer = styled.div``;
 export const iconText = styled.i`
   color: ${(p) => (p.isselected ? "#fff" : " rgb(77, 114, 127)")};
   &:hover {
@@ -88,7 +86,7 @@ export const iconText = styled.i`
 export const Icon = styled.span`
   text-decoration: none;
   color: #fff;
-  width: 23%;
+  width: 19%;
   border-radius: 10px;
   padding: 0 10px;
   @media (max-width: 800px) {

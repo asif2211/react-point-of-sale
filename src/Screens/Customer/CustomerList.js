@@ -89,7 +89,7 @@ const CustomerList = () => {
           {showingContacts &&
             showingContacts.map((item, index) => (
               <>
-                <ItemData key={Math.random()} >{item.fname}</ItemData>
+                <ItemData key={item.name} >{item.fname}</ItemData>
                 <ItemData>{item.lname}</ItemData>
                 <ItemData>{item.email}</ItemData>
                 <ItemData>{item.phone}</ItemData>

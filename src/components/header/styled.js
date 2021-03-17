@@ -61,3 +61,6 @@ export const Profile = styled.div`
   justify-content: start;
   color:white;
 `;
+export const Span = styled.span`
+  cursor: pointer;
+`;

@@ -9,8 +9,6 @@ export const LOGOUT = "LOGOUT";
  const logOut = () => ({  
     type:LOGOUT
 }); 
-
-export default {
-    setUser,
-    logOut
-}
+const obj = {setUser,
+    logOut}
+export default obj
