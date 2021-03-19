@@ -1,9 +1,11 @@
 import users from './users';
 import customer from './customer';
+import category from './category';
 
 const allActions = {
     users,
-    customer
+    customer,
+    category
 }
 
 export default allActions;

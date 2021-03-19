@@ -17,6 +17,7 @@ const Sidebar = ({ handleToogle, sidebar }) => {
     { name: "Deliveries", to: "/", submenu: [], icon: "fa fa-id-card-o" },
     { name: "Expenses", to: "/", submenu: [], icon: "fa fa-dollar" },
     { name: "Appointments", to: "/", submenu: [], icon: "fa fa-id-card-o" },
+    { name: "Category", to: "/category", submenu: [], icon: "fa fa-hdd-o" },
     { name: "Employees", to: "/", submenu: [], icon: "fa fa-id-card-o" },
     
   ];

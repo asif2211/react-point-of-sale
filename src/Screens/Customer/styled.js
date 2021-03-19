@@ -107,7 +107,7 @@ export const SearchIcon = styled.span`
 `;
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto auto auto;
   width: 98%;
   margin: 10px;
   border-top: 3px solid rgb(59, 141, 188);

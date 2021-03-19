@@ -2,3 +2,8 @@ export const ADD_CUSTOMER = "ADD_CUSTOMER";
 export const GET_CUSTOMER = "GET_CUSTOMER";
 export const DELETE_CUSTOMER = "DELETE_CUSTOMER";
 export const UPDATE_CUSTOMER = "UPDATE_CUSTOMER";
+// for category
+export const ADD_CATEGORY = "ADD_CATEGORY";
+export const GET_CATEGORY = "GET_CATEGORY";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";
+export const UPDATE_CATEGORY = "UPDATE_CATEGORY";

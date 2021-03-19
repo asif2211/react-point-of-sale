@@ -13,43 +13,44 @@ import {
   ItemHeading,
   Container,
   ItemData,
+  WrapperCat,
 } from "./styled";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
 import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Customers } from "../../redux/selector";
+import { Categories } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 
-const CustomerList = () => {
+const CategoryList = () => {
   const [search, setSearch] = useState("");
   // get reducer name by selector
-  const customerList = useSelector(Customers);
+  const categoryList = useSelector(Categories);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
-  const DeleteCustomer = (id) => {
-    dispatch(allActions.customer.DeleteCustomer(id));
+  const handleDelete = (id) => {
+    dispatch(allActions.category.DeleteCategory(id));
+    
   };
   // for searching where when condition is true.
   const showingContacts =
     search === ""
-      ? customerList.customers
-      : customerList.customers.filter((c) => {
+      ? categoryList.category
+      : categoryList.category.filter((c) => {
           return (
-            c.fname.toLowerCase().includes(search.toLowerCase()) ||
-            c.lname.toLowerCase().includes(search.toLowerCase())
+            c.name.toLowerCase().includes(search.toLowerCase()) ||
+            c.name.toLowerCase().includes(search.toLowerCase())
           );
         });
   return (
-    <div>
+    <WrapperCat>
       <div>
         <TopBar>
           <FormList>
             <InputList
-            
-            label = "Search"
-            size = "small"
-            variant = "filled"
+              label="Search"
+              size="small"
+              variant="filled"
               type="text"
               name="firstName"
               onChange={(e) => setSearch(e.target.value)}
@@ -59,20 +60,20 @@ const CustomerList = () => {
             </SearchIcon>
           </FormList>
           <Searchbar>
-            <AddButtonLink to="/create/id">
+            <AddButtonLink to="/addcategory/id">
               <ButtonText style={{ height: "47px", width: 120 }}>
-                Add Customer
+                Add Category
               </ButtonText>
             </AddButtonLink>
           </Searchbar>
         </TopBar>
-      </div>  
+      </div>
       <WrapperList>
         <Total>
           <Heading>
-            Customers{" "}
-            {showingContacts && showingContacts.length? (
-              <Span>{showingContacts  && showingContacts.length}</Span>
+            Category{" "}
+            {showingContacts && showingContacts.length ? (
+              <Span>{showingContacts && showingContacts.length}</Span>
             ) : (
               ""
             )}
@@ -80,42 +81,44 @@ const CustomerList = () => {
         </Total>
         <Container>
         <ItemHeading>Sr No</ItemHeading>
-          <ItemHeading>First Name</ItemHeading>
-          <ItemHeading>Last Name</ItemHeading>
-          <ItemHeading>Email</ItemHeading>
-          <ItemHeading>PHone</ItemHeading>
-          <ItemHeading>Address</ItemHeading>
-          <ItemHeading>Company</ItemHeading>
+          <ItemHeading></ItemHeading>
+          <ItemHeading></ItemHeading>
+          <ItemHeading>Name</ItemHeading>
+          <ItemHeading></ItemHeading>
+          <ItemHeading></ItemHeading>
+          <ItemHeading></ItemHeading>
           <ItemHeading>Action</ItemHeading>
+
           {showingContacts &&
             showingContacts.map((item, index) => (
               <>
-              <ItemData key={item.id} >{index+1}</ItemData>
-                <ItemData key={item.name} >{item.fname}</ItemData>
-                <ItemData>{item.lname}</ItemData>
-                <ItemData>{item.email}</ItemData>
-                <ItemData>{item.phone}</ItemData>
-                <ItemData>{item.address}</ItemData>
-
-                <ItemData>{item.company}</ItemData>
+                <ItemData key={item.name}>{index + 1}</ItemData>
+                <ItemData></ItemData>
+                <ItemData></ItemData>
+                <ItemData>{item.name}</ItemData>
+                <ItemData></ItemData>
+                <ItemData></ItemData>
+                <ItemData></ItemData>
                 <ItemData>
                   <Link to={`/create/${item.id}`}>
                     <FaPen color="green" />
                   </Link>
                   &nbsp;&nbsp;&nbsp;{" "}
-                  <Link to="/customer">
+                  <Link to="/category">
                     <FaTrashAlt
                       color="red"
-                      onClick={() => DeleteCustomer(item.id)}
+                      onClick={() => handleDelete(item.id)}
                     />
                   </Link>
                 </ItemData>
-             </>
+                
+              </>
             ))}
+            
         </Container>
       </WrapperList>
-    </div>
+    </WrapperCat>
   );
 };
 
-export default CustomerList;
+export default CategoryList;

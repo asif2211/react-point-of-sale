@@ -13,3 +13,7 @@ export const InputData = [
     { type: "number",name: "store", label: "Store", to: "/", submenu: [], icon: "fa fa-power-off" },
     { type: "number",name: "credit", label: "Credit", to: "/", submenu: [], icon: "fa fa-power-off" },
   ];
+export const categoryData = [
+    { type: "text", name: "categoryName", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
+   
+  ];
