@@ -7,3 +7,8 @@ export const ADD_CATEGORY = "ADD_CATEGORY";
 export const GET_CATEGORY = "GET_CATEGORY";
 export const DELETE_CATEGORY = "DELETE_CATEGORY";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+// for supplier
+export const ADD_SUPPLIER = "ADD_SUPPLIER";
+export const GET_SUPPLIER = "GET_SUPPLIER";
+export const DELETE_SUPPLIER = "DELETE_SUPPLIER";
+export const UPDATE_SUPPLIER = "UPDATE_SUPPLIER";
