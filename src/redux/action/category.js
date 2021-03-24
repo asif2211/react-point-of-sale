@@ -1,18 +1,18 @@
-import {GET_CATEGORY,ADD_CATEGORY,DELETE_CATEGORY,UPDATE_CATEGORY} from '../constant'
+import * as constant from '../constant'
 
 const getCategory = () => ({
-  type: GET_CATEGORY,
+  type: constant.GET_CATEGORY,
 });
 const AddCategory = (categoryObj) => ({
-  type:ADD_CATEGORY,
+  type:constant.ADD_CATEGORY,
   payload:categoryObj
 });
 const DeleteCategory = (id) => ({
-  type: DELETE_CATEGORY,
+  type: constant.DELETE_CATEGORY,
   payload: id,
 });
 const UpdateCategory = (data) => ({
- type:UPDATE_CATEGORY,
+ type:constant.UPDATE_CATEGORY,
  payload:data
 });
 const data = {

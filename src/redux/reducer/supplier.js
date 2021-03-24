@@ -1,31 +1,26 @@
-import {
-    ADD_SUPPLIER,
-    GET_SUPPLIER,
-    DELETE_SUPPLIER,
-    UPDATE_SUPPLIER,
-  } from "../constant";
+import * as constant from "../constant";
   const initialstate = {
     supplier:[]
   };
   
   const supplier = (state = initialstate, action) => {
     switch (action.type) {
-      case GET_SUPPLIER:
+      case constant.GET_SUPPLIER:
         return {...state,
           supplier:state.supplier
         };
-      case ADD_SUPPLIER:
+      case constant.ADD_SUPPLIER:
         return {
           ...state,
           supplier:[...state.supplier, action.payload],
         };
-      case DELETE_SUPPLIER:
+      case constant.DELETE_SUPPLIER:
        
         return {
           ...state,
           supplier:state.supplier.filter((item) => item.id !== action.payload),
         };
-      case UPDATE_SUPPLIER:
+      case constant.UPDATE_SUPPLIER:
         let supplier = [...state.supplier]
         let supplier_update = supplier.find(cat => cat.id === action.payload.id);
         let supplier_index = supplier.indexOf(supplier_update)

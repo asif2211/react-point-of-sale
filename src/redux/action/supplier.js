@@ -1,18 +1,18 @@
-import {GET_SUPPLIER,ADD_SUPPLIER,DELETE_SUPPLIER,UPDATE_SUPPLIER} from '../constant'
+import * as constant from '../constant'
 
 const getSupplier = () => ({
-  type: GET_SUPPLIER,
+  type: constant.GET_SUPPLIER,
 });
 const AddSupplier = (supplierObj) => ({
-  type:ADD_SUPPLIER,
+  type:constant.ADD_SUPPLIER,
   payload:supplierObj
 });
 const DeleteSupplier = (id) => ({
-  type: DELETE_SUPPLIER,
+  type: constant.DELETE_SUPPLIER,
   payload: id,
 });
 const UpdateSupplier = (data) => ({
- type:UPDATE_SUPPLIER,
+ type:constant.UPDATE_SUPPLIER,
  payload:data
 });
 const data = {
