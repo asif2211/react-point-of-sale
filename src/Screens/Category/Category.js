@@ -28,7 +28,7 @@ const Category = (props) => {
   useEffect(() => {
     setInputList({
       id: getDataById[0] && getDataById[0].id,
-      name: getDataById[0] && getDataById[0].name,
+      categoryName: getDataById[0] && getDataById[0].name,
     });
   }, []);
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const Category = (props) => {
         id: inputList.id,
         name: inputList.categoryName,
       };
-      dispatch(dispatch(allActions.customer.UpdateCutomer(updatedData)));
+      dispatch(dispatch(allActions.category.UpdateCategory(updatedData)));
       setToogle(true);
     }
   };
@@ -61,7 +61,7 @@ const Category = (props) => {
   return (
     <div>
       <Wrapper>
-        <Title>Category</Title>
+  <Title>Category{props.match.params.id}</Title>
         <Form>
           {categoryData.map((x, i) => {
             if (i === 0) {

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Wrapper, Title, Form, InputContainer, Button } from "./styled";
 import allActions from "../../redux/action";
-import { categoryData } from "../../utils/helper";
+import { supplier_Data } from "../../utils/helper";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
-import { Categories } from "../../redux/selector";
+import { Suppliers } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
 const Supplier = (props) => {
   const [toogle, setToogle] = useState(false);
   const [inputList, setInputList] = useState({
     id: 0,
-    categoryName: "",
+    supplier: "",
   });
   const hanleChange = ({ key, value }) => {
     setInputList({
@@ -21,14 +21,14 @@ const Supplier = (props) => {
     });
   };
   //data from selector
-  const selector = useSelector(Categories);
-  const getDataById = selector.category.filter(
+  const selector = useSelector(Suppliers);
+  const getDataById = selector.supplier.filter(
     (c) => c.id === props.match.params.id
   );
   useEffect(() => {
     setInputList({
       id: getDataById[0] && getDataById[0].id,
-      name: getDataById[0] && getDataById[0].name,
+      supplier: getDataById[0] && getDataById[0].name,
     });
   }, []);
   const dispatch = useDispatch();
@@ -37,18 +37,18 @@ const Supplier = (props) => {
     if (!inputList.id) {
       const NewData = {
         id: generateId(2, 15),
-        name: inputList.categoryName,
+        name: inputList.supplier,
       };
       if (NewData) {
-        dispatch(allActions.category.AddCategory(NewData));
+        dispatch(allActions.supplier.AddSupplier(NewData));
         setToogle(true);
       }
     } else {
       const updatedData = {
         id: inputList.id,
-        name: inputList.categoryName,
+        name: inputList.supplier,
       };
-      dispatch(dispatch(allActions.customer.UpdateCutomer(updatedData)));
+      dispatch(dispatch(allActions.supplier.UpdateSupplier(updatedData)));
       setToogle(true);
     }
   };
@@ -56,20 +56,18 @@ const Supplier = (props) => {
   if (toogle === true) {
     return <Redirect to="/supplier" />;
   }
-  console.log(inputList.categoryName);
-  console.log(props.match.params.id);
-  return (
+   return (
     <div>
       <Wrapper>
-        <Title>Supplier</Title>
+  <Title>Supplier{props.match.params.id}</Title>
         <Form>
-          {categoryData.map((x, i) => {
+          {supplier_Data.map((x, i) => {
             if (i === 0) {
               return (
                 <InputContainer key={x.name}>
                   <TextField
                     style={{ width: 500, justifyContent: "center" }}
-                    label={"Category Name"}
+                    label={"Supplier Name"}
                     required
                     size="small"
                     variant="filled"

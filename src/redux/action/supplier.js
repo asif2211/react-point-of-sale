@@ -3,9 +3,9 @@ import {GET_SUPPLIER,ADD_SUPPLIER,DELETE_SUPPLIER,UPDATE_SUPPLIER} from '../cons
 const getSupplier = () => ({
   type: GET_SUPPLIER,
 });
-const AddSupplier = (SupplierObj) => ({
+const AddSupplier = (supplierObj) => ({
   type:ADD_SUPPLIER,
-  payload:SupplierObj
+  payload:supplierObj
 });
 const DeleteSupplier = (id) => ({
   type: DELETE_SUPPLIER,

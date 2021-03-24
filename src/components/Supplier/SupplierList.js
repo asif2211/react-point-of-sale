@@ -19,24 +19,24 @@ import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
 import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Categories } from "../../redux/selector";
+import { Suppliers } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 
 const SupplierList = () => {
   const [search, setSearch] = useState("");
   // get reducer name by selector
-  const categoryList = useSelector(Categories);
+  const supplier_list = useSelector(Suppliers);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const handleDelete = (id) => {
-    dispatch(allActions.category.DeleteCategory(id));
+    dispatch(allActions.supplier.DeleteSupplier(id));
     
   };
   // for searching where when condition is true.
   const showingContacts =
     search === ""
-      ? categoryList.category
-      : categoryList.category.filter((c) => {
+      ? supplier_list.supplier
+      : supplier_list.supplier.filter((c) => {
           return (
             c.name.toLowerCase().includes(search.toLowerCase()) ||
             c.name.toLowerCase().includes(search.toLowerCase())
@@ -100,11 +100,11 @@ const SupplierList = () => {
                 <ItemData></ItemData>
                 <ItemData></ItemData>
                 <ItemData>
-                  <Link to={`/create/${item.id}`}>
+                  <Link to={`/addsupplier/${item.id}`}>
                     <FaPen color="green" />
                   </Link>
                   &nbsp;&nbsp;&nbsp;{" "}
-                  <Link to="/category">
+                  <Link to="/supplier">
                     <FaTrashAlt
                       color="red"
                       onClick={() => handleDelete(item.id)}

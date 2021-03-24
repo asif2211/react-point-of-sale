@@ -26,16 +26,14 @@ const category = (state = initialstate, action) => {
         category:state.category.filter((item) => item.id !== action.payload),
       };
     case UPDATE_CATEGORY:
+      let categorys = [...state.category]
+      let category = categorys.find(cat => cat.id === action.payload.id);
+      let categoryIndex = categorys.indexOf(category)
+      categorys[categoryIndex] = action.payload // It will update whole object
+  
       return {
         ...state,
-        customers: state.category.map((content) =>
-          content.id === action.payload.id
-            ? {
-                ...content,
-                fname: action.payload.fname,
-              }
-            : content
-        ),
+        category:categorys
       };
     default:
       return state;

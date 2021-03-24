@@ -17,3 +17,7 @@ export const categoryData = [
     { type: "text", name: "categoryName", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
    
   ];
+export const supplier_Data = [
+    { type: "text", name: "supplier", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
+   
+  ];

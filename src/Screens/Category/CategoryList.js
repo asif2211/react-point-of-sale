@@ -100,7 +100,7 @@ const CategoryList = () => {
                 <ItemData></ItemData>
                 <ItemData></ItemData>
                 <ItemData>
-                  <Link to={`/create/${item.id}`}>
+                  <Link to={`/addcategory/${item.id}`}>
                     <FaPen color="green" />
                   </Link>
                   &nbsp;&nbsp;&nbsp;{" "}
