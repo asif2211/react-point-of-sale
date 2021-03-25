@@ -39,23 +39,28 @@ const Customer = (props) => {
     (c) => c.id === props.match.params.id
   );
   useEffect(() => {
-    setInputList({
-      id: getDataById[0] && getDataById[0].id,
-      fname: getDataById[0] && getDataById[0].fname,
-      lname: getDataById[0] && getDataById[0].lname,
-      email: getDataById[0] && getDataById[0].email,
-      phone: getDataById[0] && getDataById[0].phone,
-      address: getDataById[0] && getDataById[0].address,
-      city: getDataById[0] && getDataById[0].city,
-      state: getDataById[0] && getDataById[0].state,
-      zip: getDataById[0] && getDataById[0].zip,
-      country: getDataById[0] && getDataById[0].country,
-      company: getDataById[0] && getDataById[0].company,
-      comments: getDataById[0] && getDataById[0].comments,
-      store: getDataById[0] && getDataById[0].store,
-      credit: getDataById[0] && getDataById[0].credit,
-    });
-  }, []);
+    function fetchData()
+    {
+      setInputList({
+        id: getDataById[0] && getDataById[0].id,
+        fname: getDataById[0] && getDataById[0].fname,
+        lname: getDataById[0] && getDataById[0].lname,
+        email: getDataById[0] && getDataById[0].email,
+        phone: getDataById[0] && getDataById[0].phone,
+        address: getDataById[0] && getDataById[0].address,
+        city: getDataById[0] && getDataById[0].city,
+        state: getDataById[0] && getDataById[0].state,
+        zip: getDataById[0] && getDataById[0].zip,
+        country: getDataById[0] && getDataById[0].country,
+        company: getDataById[0] && getDataById[0].company,
+        comments: getDataById[0] && getDataById[0].comments,
+        store: getDataById[0] && getDataById[0].store,
+        credit: getDataById[0] && getDataById[0].credit,
+      });
+    }
+    fetchData();
+  }, [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const AddData = () => {

@@ -1,117 +1,121 @@
-import React, { Component } from "react";
-import * as customer from "../CutomerList/CustomerList.style";
-import ButtonText from "../../../components/ButtonText/ButtonText";
-import { getCustomer, DeleteCutomer } from "../../../action/customer";
-import { connect } from "react-redux";
-import { FaPen, FaTrashAlt,FaSearch } from "react-icons/fa";
+import React, { useState } from "react";
+import {
+  TopBar,
+  FormList,
+  InputList,
+  SearchIcon,
+  Searchbar,
+  AddButtonLink,
+  WrapperList,
+  Heading,
+  Total,
+  Span,
+  ItemHeading,
+  Container,
+  ItemData,
+} from "./styled";
+import ButtonText from "../../components/ButtonText/ButtonText";
+import allActions from "../../redux/action";
+import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import SearchField from "react-search-field";
-class CustomerList extends Component {
-  state = {
-    input: "",
-  };
-  componentDidMount() {
-    this.props.getCustomer();
-  }
+import { Customers } from "../../redux/selector";
+import { useSelector, useDispatch } from "react-redux";
 
-  handleInput = (e) => {
-    this.setState({
-      input: e.target.value,
-    });
+const ItemList = () => {
+  const [search, setSearch] = useState("");
+  // get reducer name by selector
+  const customerList = useSelector(Customers);
+  const dispatch = useDispatch();
+  // pass id by useDispatch hooks
+  const DeleteCustomer = (id) => {
+    dispatch(allActions.customer.DeleteCustomer(id));
   };
-  deleteCustomer = (id) => {
-    this.props.DeleteCutomer(id);
-  };
-
-  render() {
-    const { customers, filterIt } = this.props;
-    const showingContacts =
-      this.state.input === ""
-        ? customers
-        : customers.filter((c) => {
-            return (
-              c.fname.toLowerCase().includes(this.state.input.toLowerCase()) ||
-              c.lname.toLowerCase().includes(this.state.input.toLowerCase())
-            );
-          });
-    return (
+  // for searching where when condition is true.
+  const showingContacts =
+    search === ""
+      ? customerList.customers
+      : customerList.customers.filter((c) => {
+          return (
+            c.fname.toLowerCase().includes(search.toLowerCase()) ||
+            c.lname.toLowerCase().includes(search.toLowerCase())
+          );
+        });
+  return (
+    <div>
       <div>
-        <div>
-          <customer.topBar>
-            <customer.Form>
+        <TopBar>
+          <FormList>
+            <InputList
             
-              <customer.Input
-                value={this.state.input}
-                onChange={this.handleInput}
-                placeholder="Search records"
-              /><customer.SearchIcon><FaSearch color="white"/></customer.SearchIcon>
-            </customer.Form>
+            label = "Search"
+            size = "small"
+            variant = "filled"
+              type="text"
+              name="firstName"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <SearchIcon>
+              <FaSearch color="white" />
+            </SearchIcon>
+          </FormList>
+          <Searchbar>
+            <AddButtonLink to="/additem/id">
+              <ButtonText style={{ height: "47px", width: 120 }}>
+                Add Item
+              </ButtonText>
+            </AddButtonLink>
+          </Searchbar>
+        </TopBar>
+      </div>  
+      <WrapperList>
+        <Total>
+          <Heading>
+            Items {" "}
+            {showingContacts && showingContacts.length? (
+              <Span>{showingContacts  && showingContacts.length}</Span>
+            ) : (
+              ""
+            )}
+          </Heading>
+        </Total>
+        <Container>
+        <ItemHeading>Sr No</ItemHeading>
+          <ItemHeading>First Name</ItemHeading>
+          <ItemHeading>Last Name</ItemHeading>
+          <ItemHeading>Email</ItemHeading>
+          <ItemHeading>PHone</ItemHeading>
+          <ItemHeading>Address</ItemHeading>
+          <ItemHeading>Company</ItemHeading>
+          <ItemHeading>Action</ItemHeading>
+          {showingContacts &&
+            showingContacts.map((item, index) => (
+              <>
+              <ItemData key={item.id} >{index+1}</ItemData>
+                <ItemData key={item.name} >{item.fname}</ItemData>
+                <ItemData>{item.lname}</ItemData>
+                <ItemData>{item.email}</ItemData>
+                <ItemData>{item.phone}</ItemData>
+                <ItemData>{item.address}</ItemData>
 
-            <customer.Searchbar>
-              <customer.AddButtonLink to="/create/:id">
-                <ButtonText style={{ height: '40px', width: 120 }}>
-                  Add Customer
-                </ButtonText>
-              </customer.AddButtonLink>
-            </customer.Searchbar>
-          </customer.topBar>
-        </div>
-
-        <customer.wrapper>
-          <customer.Total>
-            <customer.Heading>
-              Customers{" "}
-              <customer.Span>
-                {showingContacts && showingContacts.length}
-              </customer.Span>
-            </customer.Heading>
-          </customer.Total>
-          <customer.Container>
-            <customer.Grid_item_heading>First Name</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Last Name</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Email</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Phone</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Address</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Company</customer.Grid_item_heading>
-            <customer.Grid_item_heading>Action</customer.Grid_item_heading>
-            {showingContacts &&
-              showingContacts.map((item, index) => (
-                <>
-                  <customer.Grid_item key={item.id}>
-                    {item.fname}
-                  </customer.Grid_item>
-                  <customer.Grid_item>{item.lname}</customer.Grid_item>
-                  <customer.Grid_item>{item.email}</customer.Grid_item>
-                  <customer.Grid_item>{item.phone}</customer.Grid_item>
-                  <customer.Grid_item>{item.address}</customer.Grid_item>
-
-                  <customer.Grid_item>{item.company}</customer.Grid_item>
-                  <customer.Grid_item>
-                    <Link to={`/create/${item.id}`}>
-                      <FaPen color="green" />
-                    </Link>
-                    &nbsp;&nbsp;&nbsp;{" "}
-                    <Link to="/customer">
-                      <FaTrashAlt
-                        color="red"
-                        onClick={() => this.deleteCustomer(item.id)}
-                      />
-                    </Link>
-                  </customer.Grid_item>
-                </>
-              ))}
-          </customer.Container>
-        </customer.wrapper>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    customers: state.employees,
-  };
+                <ItemData>{item.company}</ItemData>
+                <ItemData>
+                  <Link to={`/create/${item.id}`}>
+                    <FaPen color="green" />
+                  </Link>
+                  &nbsp;&nbsp;&nbsp;{" "}
+                  <Link to="/customer">
+                    <FaTrashAlt
+                      color="red"
+                      onClick={() => DeleteCustomer(item.id)}
+                    />
+                  </Link>
+                </ItemData>
+             </>
+            ))}
+        </Container>
+      </WrapperList>
+    </div>
+  );
 };
-export default connect(mapStateToProps, { getCustomer, DeleteCutomer })(
-  CustomerList
-);
+
+export default ItemList;

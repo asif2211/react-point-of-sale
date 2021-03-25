@@ -5,7 +5,9 @@ import CustomerList from "../src/Screens/Customer/CustomerList";
 import CategoryList from "./Screens/Category/CategoryList";
 import Category from "./Screens/Category/Category";
 import SupplierList from "./components/Supplier/SupplierList";
+import ItemList from "./Screens/Items/ItemList";
 import Supplier from "./components/Supplier/Supplier";
+import AddItem from "./Screens/Items/AddItem";
 const Routes = () => {
     return ( 
         <Switch>    
@@ -15,8 +17,10 @@ const Routes = () => {
             <Route path="/create/:id" component={Customer}/>
             <Route path="/category" component={CategoryList}/>
             <Route path="/supplier" component={SupplierList}/>
+            <Route path="/item" component={ItemList}/>
             <Route path="/addcategory/:id" component={Category}/>
             <Route path="/addsupplier/:id" component={Supplier}/>
+            <Route path="/additem/:id" component={AddItem}/>
         </Switch>
      );
 }

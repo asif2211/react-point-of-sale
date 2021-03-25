@@ -2,7 +2,6 @@ import * as constant from "../constant";
 const initialstate = {
   customers: [],
 };
-
 const customer = (state = initialstate, action) => {
   switch (action.type) {
     case constant.GET_CUSTOMER:

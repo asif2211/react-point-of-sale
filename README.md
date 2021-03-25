@@ -11,7 +11,7 @@ Pos is the online selling system in which we sale our products online. like we a
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom) :  for handle routes in web apps.
 * [Animation](https://www.npmjs.com/package/animation) :  for managing css transition.
 * [react icons](https://www.npmjs.com/package/react-icons) :  react icons .
-* [eslint]  used for code decoration and beauty like remove extra spacing , declaration but not used etc .
+* [eslint]  eslinter is use a tool that work on patterns of js and make your code bugs free and consistent.
 * [material-ui]  is framework that work with react and provide component base design. easy to implement in react , quality desinging, buildin component.
 * [id-generator](https://www.npmjs.com/package/react-id-generator) Provide a unique id .
 

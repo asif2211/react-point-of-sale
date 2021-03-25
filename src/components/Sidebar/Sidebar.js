@@ -10,7 +10,7 @@ const Sidebar = ({ handleToogle, sidebar }) => {
   const sidebarMenu = [
     { name: "Dashboard", to: "/", submenu: [], icon: "fa fa-tachometer" },
     { name: "Customer", to: "/customer", submenu: [], icon: "fa fa-user" },
-    { name: "Items", to: "/", submenu: [], icon: "icon fa-list-alt" },
+    { name: "Items", to: "/item", submenu: [], icon: "icon fa-list-alt" },
     { name: "Supplier", to: "/supplier", submenu: [], icon: "fa fa-arrow-circle-down" },
     { name: "Reports", to: "/", submenu: [], icon: "fa fa-bar-chart" },
     { name: "Sales", to: "/", submenu: [], icon: "fa fa-shopping-cart" },
