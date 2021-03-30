@@ -1,12 +1,18 @@
 import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+export const WrapperCat = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
 export const WrapperList = styled.div`
   margin-left: 1px;
   margin-top: 20px;
-  border-left: 1px solid #d5dbd9;
-  border-right: 1px solid #d5dbd9;
   padding-right: 10px;
+  width: 70%;
 `;
 export const Searchbar = styled.div`
   border-left: 1px solid #d5dbd9;
@@ -34,8 +40,7 @@ export const Total = styled.div`
     font-size: 10px;
     display: flex;
     justify-content: center;
-  }
-`;
+  }`;
 export const Heading = styled.h1`
   background-color: #fff;
   border-top: 3px solid rgb(59, 141, 188);
@@ -53,7 +58,6 @@ export const Heading = styled.h1`
   height: 5vh;
   width: 98%;
 `;
-
 export const TopBar = styled.div`
   display: flex;
   justify-content: center;
@@ -62,10 +66,6 @@ export const TopBar = styled.div`
   margin-left: 10px;
   margin-right: 25px;
   height: 10vh;
-  width: 97%;
-  background-color: #fff;
-  border-top: 3px solid rgb(59, 141, 188);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   border-radius: 3px;
   @media (max-width: 800px) {
     font-size: 10px;
@@ -76,31 +76,28 @@ export const TopBar = styled.div`
   }
 `;
 export const InputList = styled(TextField)`
-
-@media (max-width: 400px) {
-    width:75px;
-    height:46px;
-
+  @media (max-width: 400px) {
+    width: 75px;
+    height: 46px;
   }
-  
 `;
 export const FormList = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 export const SearchIcon = styled.span`
   margin: 0px;
   width: 50px;
-  height:47px;
-  background:rgb(22, 47, 127);
+  height: 48px;
+  background: rgb(22, 47, 127);
   position: relative;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   display: table-cell;
   line-height: 50px;
-  border: 1px solid transparent;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   margin-right: 10px;
@@ -134,6 +131,7 @@ export const ItemHeading = styled.div`
   color: #757575;
   height: 5vh;
   line-height: 30px;
+  width: 100%;
 `;
 export const ItemData = styled.div`
   outline: none;
@@ -147,8 +145,10 @@ export const ItemData = styled.div`
   border-left: none;
   border-right: none;
   border-bottom: 0.1px solid #d5dbd9;
+  width: 91%;
 `;
-// Customer Styled
+
+// add Supplier styled
 export const Wrapper = styled.div`
 
 margin:20px;
@@ -207,7 +207,7 @@ export const Comments = styled.textarea`
 `;
 export const InputContainer = styled.div`
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   align-items: center;
   justify-content: center;
 `;

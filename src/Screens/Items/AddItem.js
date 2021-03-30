@@ -6,20 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import { Select } from "@material-ui/core";
-import { Customers, Categories,Suppliers } from "../../redux/selector";
+import { Customers, Categories, Suppliers,Manufacturer } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
+import { Link } from "react-router-dom";
+import { LinkButton } from "../../components/LinkButton/styled";
 const AddItem = (props) => {
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-      
     },
     paddingLabel: {
-        paddingLeft:10,
+      paddingLeft: 10,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -49,27 +50,30 @@ const AddItem = (props) => {
   const selector = useSelector(Customers);
   const category = useSelector(Categories);
   const supplier = useSelector(Suppliers);
+  const Manufacturers = useSelector(Manufacturer);
   const getDataById = selector.customers.filter(
     (c) => c.id === props.match.params.id
   );
-  useEffect(() => {
-    setInputList({
-      id: getDataById[0] && getDataById[0].id,
-      fname: getDataById[0] && getDataById[0].fname,
-      lname: getDataById[0] && getDataById[0].lname,
-      email: getDataById[0] && getDataById[0].email,
-      phone: getDataById[0] && getDataById[0].phone,
-      address: getDataById[0] && getDataById[0].address,
-      city: getDataById[0] && getDataById[0].city,
-      state: getDataById[0] && getDataById[0].state,
-      zip: getDataById[0] && getDataById[0].zip,
-      country: getDataById[0] && getDataById[0].country,
-      company: getDataById[0] && getDataById[0].company,
-      comments: getDataById[0] && getDataById[0].comments,
-      store: getDataById[0] && getDataById[0].store,
-      credit: getDataById[0] && getDataById[0].credit,
-    });
-  },[] // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(
+    () => {
+      setInputList({
+        id: getDataById[0] && getDataById[0].id,
+        fname: getDataById[0] && getDataById[0].fname,
+        lname: getDataById[0] && getDataById[0].lname,
+        email: getDataById[0] && getDataById[0].email,
+        phone: getDataById[0] && getDataById[0].phone,
+        address: getDataById[0] && getDataById[0].address,
+        city: getDataById[0] && getDataById[0].city,
+        state: getDataById[0] && getDataById[0].state,
+        zip: getDataById[0] && getDataById[0].zip,
+        country: getDataById[0] && getDataById[0].country,
+        company: getDataById[0] && getDataById[0].company,
+        comments: getDataById[0] && getDataById[0].comments,
+        store: getDataById[0] && getDataById[0].store,
+        credit: getDataById[0] && getDataById[0].credit,
+      });
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
   );
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
@@ -165,7 +169,6 @@ const AddItem = (props) => {
           </InputContainer>
           <InputContainer>
             <TextField
-            
               style={{ width: 500, justifyContent: "center" }}
               label="Barcode Name"
               required
@@ -177,10 +180,12 @@ const AddItem = (props) => {
           {/* category dropdown */}
           <InputContainer>
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="grouped-select" style={{ paddingLeft:10 }}>Select Category</InputLabel>
+              <InputLabel htmlFor="grouped-select" style={{ paddingLeft: 10 }}>
+                Select Category
+              </InputLabel>
               <Select
-              root
-              style={{ width: 500, justifyContent: "center" }}
+                root
+                style={{ width: 500, justifyContent: "center" }}
                 native
                 label="Select Category"
                 value={state.age}
@@ -194,20 +199,28 @@ const AddItem = (props) => {
               >
                 <option aria-label="None" value="" />
                 {category.category.map((cat) => (
-                  <option value={cat.id} key={cat.id}>{cat.name}</option>
+                  <option value={cat.id} key={cat.id}>
+                    {cat.name}
+                  </option>
                 ))}
               </Select>
             </FormControl>
+            
+            
+          </InputContainer>
+          <InputContainer>
+            <LinkButton to="/addcategory/id" style={{height:20}}>Add Category</LinkButton>
           </InputContainer>
           {/* supplier dropdown */}
           <InputContainer>
             <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="grouped-select" style={{ paddingLeft:10 }}>Select Category</InputLabel>
+              <InputLabel htmlFor="grouped-select" style={{ paddingLeft: 10 }}>
+                Select Supplier
+              </InputLabel>
               <Select
-              root
-              style={{ width: 500, justifyContent: "center" }}
+                root
+                style={{ width: 500, justifyContent: "center" }}
                 native
-                label="Select Category"
                 value={supplierstate.age}
                 onChange={handleChangeSupplier}
                 inputProps={{
@@ -219,15 +232,51 @@ const AddItem = (props) => {
               >
                 <option aria-label="None" value="" />
                 {supplier.supplier.map((cat) => (
-                  <option value={cat.id} key={cat.id}>{cat.name}</option>
+                  <option value={cat.id} key={cat.id}>
+                    {cat.name}
+                  </option>
                 ))}
               </Select>
             </FormControl>
           </InputContainer>
           <InputContainer>
+            <LinkButton to="/addsupplier/id" style={{height:20}}>Add Supplier</LinkButton>
+          </InputContainer>
+          {/* Manufacturer dropdown */}
+          <InputContainer>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="grouped-select" style={{ paddingLeft: 10 }}>
+                Manufacturer List
+              </InputLabel>
+              <Select
+                root
+                style={{ width: 500, justifyContent: "center" }}
+                native
+                value={supplierstate.age}
+                onChange={handleChangeSupplier}
+                inputProps={{
+                  name: "age",
+                  id: "age-native-simple",
+                }}
+                variant="filled"
+                size="small"
+              >
+                <option aria-label="None" value="" />
+                {Manufacturers.manu.map((cat) => (
+                  <option value={cat.id} key={cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
+              </Select>
+            </FormControl>
+          </InputContainer>
+          <InputContainer>
+            <LinkButton to="/manu/id" style={{height:20,width:120}}>Add Manufacturer</LinkButton>
+          </InputContainer>
+          <InputContainer>
             <TextField
               style={{ width: 500, justifyContent: "center" }}
-              label="Item Name"
+              label="UPC/EAN/ISBN"
               required
               size="small"
               variant="filled"
@@ -237,7 +286,7 @@ const AddItem = (props) => {
           <InputContainer>
             <TextField
               style={{ width: 500, justifyContent: "center" }}
-              label="Item Name"
+              label="Product ID"
               required
               size="small"
               variant="filled"

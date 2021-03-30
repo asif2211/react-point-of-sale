@@ -12,3 +12,8 @@ export const ADD_SUPPLIER = "ADD_SUPPLIER";
 export const GET_SUPPLIER = "GET_SUPPLIER";
 export const DELETE_SUPPLIER = "DELETE_SUPPLIER";
 export const UPDATE_SUPPLIER = "UPDATE_SUPPLIER";
+// for manufacturer
+export const ADD_MANU = "ADD_MANU";
+export const GET_MANU = "GET_MANU";
+export const DELETE_MANU = "DELETE_MANU";
+export const UPDATE_MANU = "UPDATE_MANU";

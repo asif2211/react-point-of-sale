@@ -8,6 +8,8 @@ import { Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import { Categories } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
+import { Link } from "react-router-dom";
+import { LinkButton } from "../../components/LinkButton/styled";
 const Category = (props) => {
   const [toogle, setToogle] = useState(false);
   const [inputList, setInputList] = useState({
@@ -54,7 +56,7 @@ const Category = (props) => {
   };
   console.log(toogle);
   if (toogle === true) {
-    return <Redirect to="/category" />;
+    return <Redirect to="/additem/id" />;
   }
   console.log(inputList.categoryName);
   console.log(props.match.params.id);
@@ -87,6 +89,13 @@ const Category = (props) => {
           })}
         </Form>
         <Button>
+          <LinkButton
+          to = "/category"
+          style = {{width:120, backgroundColor:'#3B8DBC'}}
+          >
+            View Category
+          </LinkButton>
+          &nbsp;
           <ButtonText
             disabled={inputList.name === ""}
             children="Submit"

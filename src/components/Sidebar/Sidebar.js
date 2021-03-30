@@ -10,14 +10,15 @@ const Sidebar = ({ handleToogle, sidebar }) => {
   const sidebarMenu = [
     { name: "Dashboard", to: "/", submenu: [], icon: "fa fa-tachometer" },
     { name: "Customer", to: "/customer", submenu: [], icon: "fa fa-user" },
-    { name: "Items", to: "/item", submenu: [], icon: "icon fa-list-alt" },
     { name: "Supplier", to: "/supplier", submenu: [], icon: "fa fa-arrow-circle-down" },
+    { name: "Items", to: "/item", submenu: [], icon: "icon fa-list-alt" },
+    { name: "Manufacturer", to: "/Manufacturer", submenu: [], icon: "fa fa-arrow-circle-down" },
     { name: "Reports", to: "/", submenu: [], icon: "fa fa-bar-chart" },
     { name: "Sales", to: "/", submenu: [], icon: "fa fa-shopping-cart" },
     { name: "Deliveries", to: "/", submenu: [], icon: "fa fa-id-card-o" },
     { name: "Expenses", to: "/", submenu: [], icon: "fa fa-dollar" },
     { name: "Appointments", to: "/", submenu: [], icon: "fa fa-id-card-o" },
-    { name: "Category", to: "/category", submenu: [], icon: "fa fa-hdd-o" },
+    { name: "Manufacturer", to: "/manu", submenu: [], icon: "fa fa-hdd-o" },
     { name: "Employees", to: "/", submenu: [], icon: "fa fa-id-card-o" },
     
   ];
