@@ -3,23 +3,14 @@ import * as constant from '../constant'
 const getManu = () => ({
   type: constant.GET_MANU,
 });
-const AddManu = (manuObj) => ({
+const AddManu = (data) => ({
   type:constant.ADD_MANU,
-  payload:manuObj
+  payload:data
 });
-const DeleteManu = (id) => ({
-  type: constant.DELETE_MANU,
-  payload: id,
-});
-const UpdateManu = (data) => ({
- type:constant.UPDATE_MANU,
- payload:data
-});
+
 const data = {
   getManu,
-  AddManu,
-  DeleteManu,
-  UpdateManu,
+  AddManu
 };
 
 export default data

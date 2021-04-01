@@ -1,32 +1,20 @@
 import * as constant from "../constant";
 const initialstate = {
-  manufacturer: [],
+  manufacturers:[]
 };
-const manufacturer = (state = initialstate, action) => {
+
+const manufacturer = (state = {data : []}, action) => {
   switch (action.type) {
     case constant.GET_MANU:
-      return { ...state, manufacturer: state.manu };
+      return {...state,
+        data:state.data
+      };
     case constant.ADD_MANU:
       return {
         ...state,
-        manufacturer: [...state.manufacturer, action.payload],
+        data:[...state.data, action.payload],
       };
-    case constant.DELETE_MANU:
-      return {
-        ...state,
-        manufacturer: state.manufacturer.filter((item) => item.id !== action.payload),
-      };
-    case constant.UPDATE_MANU:
-      let manus = [...state.manufacturer];
-      let category = manus.find((cat) => cat.id === action.payload.id);
-      let categoryIndex = manus.indexOf(category);
-      manus[categoryIndex] = action.payload; // It will update whole object
-
-      return {
-        ...state,
-        manus: manus,
-      };
-    default:
+        default:
       return state;
   }
 };

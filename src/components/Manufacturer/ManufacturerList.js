@@ -22,21 +22,21 @@ import { Link } from "react-router-dom";
 import { Manufacturer } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 
-const SupplierList = () => {
+const ManufacturerList = () => {
   const [search, setSearch] = useState("");
   // get reducer name by selector
   const Manu_list = useSelector(Manufacturer);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const handleDelete = (id) => {
-    dispatch(allActions.manufacturer.DeleteManu(id));
+    dispatch(allActions.manufacturers.DeleteManu(id));
     
   };
   // for searching where when condition is true.
   const FilteredData =
     search === ""
-      ? Manu_list.manu
-      : Manu_list.manu.filter((c) => {
+      ? Manu_list.data
+      : Manu_list.data.filter((c) => {
           return (
             c.name.toLowerCase().includes(search.toLowerCase()) ||
             c.name.toLowerCase().includes(search.toLowerCase())
@@ -60,7 +60,7 @@ const SupplierList = () => {
             </SearchIcon>
           </FormList>
           <Searchbar>
-            <AddButtonLink to="/addsupplier/id">
+            <AddButtonLink to="/addmanu/id">
               <ButtonText style={{ height: "47px", width: 130 }}>
                 Add Manufacturer
               </ButtonText>
@@ -121,4 +121,4 @@ const SupplierList = () => {
   );
 };
 
-export default SupplierList;
+export default ManufacturerList;

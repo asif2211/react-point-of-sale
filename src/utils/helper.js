@@ -36,3 +36,7 @@ export const supplier_Data = [
     { type: "text", name: "supplier", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
    
   ];
+export const manufacturer_Data = [
+    { type: "text", name: "manuName", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
+   
+  ];

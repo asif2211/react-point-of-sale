@@ -262,7 +262,7 @@ const AddItem = (props) => {
                 size="small"
               >
                 <option aria-label="None" value="" />
-                {Manufacturers.manu.map((cat) => (
+                {Manufacturers.manufacturer &&Manufacturers.manufacturer.map((cat) => (
                   <option value={cat.id} key={cat.id}>
                     {cat.name}
                   </option>
@@ -271,7 +271,7 @@ const AddItem = (props) => {
             </FormControl>
           </InputContainer>
           <InputContainer>
-            <LinkButton to="/manu/id" style={{height:20,width:120}}>Add Manufacturer</LinkButton>
+            <LinkButton to="/addmanu/id" style={{height:20,width:120}}>Add Manufacturer</LinkButton>
           </InputContainer>
           <InputContainer>
             <TextField
