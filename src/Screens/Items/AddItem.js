@@ -122,27 +122,33 @@ const AddItem = (props) => {
   };
   console.log(toogle);
   const classes = useStyles();
-  const [state, setState] = React.useState({
-    age: "",
-    name: "hai",
-  });
+  const [state, setState] = React.useState();
   const [supplierstate, setSupplierstate] = React.useState({
-    age: "",
+    name: "hai",
+  });
+  const [manufacturerstate, setManufacturerState] = React.useState({
     name: "hai",
   });
 
-  const handleChangeCategory = (event) => {
-    const name = event.target.name;
-
+  const handleChange = (event) => {
+    var name = event.target.name;
     setState({
-      ...state,
+      
       [name]: event.target.value,
     });
   };
   const handleChangeSupplier = (event) => {
     const name = event.target.name;
-
+    
     setSupplierstate({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
+  const handleManufacturere = (event) => {
+    const name = event.target.name;
+
+    setManufacturerState({
       ...state,
       [name]: event.target.value,
     });
@@ -155,26 +161,29 @@ const AddItem = (props) => {
   return (
     <div>
       <Wrapper>
-        <Title>Item Information</Title>
+  <Title>Item Information{state.item} {" "} {state.codeName}</Title>
         <Form>
           <InputContainer>
-            <TextField
-              style={{ width: 500, justifyContent: "center" }}
-              label="Item Name"
-              required
-              size="small"
-              variant="filled"
-              value={inputList.lname}
-            />
+          <TextField
+                    style={{ width: 500, justifyContent: "center" }}
+                    label={"Item Name"}
+                    required
+                    size="small"
+                    variant="filled"
+                    value={state.item}
+                    onChange={(e) => setState(e.target.value)}
+                  />
           </InputContainer>
           <InputContainer>
             <TextField
-              style={{ width: 500, justifyContent: "center" }}
+              style={{ width: 500, justifyContent: "center"}}
               label="Barcode Name"
               required
               size="small"
               variant="filled"
-              value={inputList.lname}
+              name = "codeName"
+              value={state.codeName}
+              onChange = {handleChange}
             />
           </InputContainer>
           {/* category dropdown */}
@@ -188,12 +197,8 @@ const AddItem = (props) => {
                 style={{ width: 500, justifyContent: "center" }}
                 native
                 label="Select Category"
-                value={state.age}
-                onChange={handleChangeCategory}
-                inputProps={{
-                  name: "age",
-                  id: "age-native-simple",
-                }}
+                value={state.name}
+                onChange={handleChange}
                 variant="filled"
                 size="small"
               >
@@ -223,10 +228,7 @@ const AddItem = (props) => {
                 native
                 value={supplierstate.age}
                 onChange={handleChangeSupplier}
-                inputProps={{
-                  name: "age",
-                  id: "age-native-simple",
-                }}
+                name = "supplier"
                 variant="filled"
                 size="small"
               >
@@ -252,8 +254,8 @@ const AddItem = (props) => {
                 root
                 style={{ width: 500, justifyContent: "center" }}
                 native
-                value={supplierstate.age}
-                onChange={handleChangeSupplier}
+                value={manufacturerstate.age}
+                onChange={handleManufacturere}
                 inputProps={{
                   name: "age",
                   id: "age-native-simple",

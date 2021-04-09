@@ -22,17 +22,17 @@ const Manufacturers = (props) => {
       [key]: value,
     });
   };
-  //data from selector
-  // const selector = useSelector(Manufacturer);
-  // const getDataById = selector.manufacturer.filter(
-  //   (c) => c.id === props.match.params.id
-  // );
-  // useEffect(() => {
-  //   setInputList({
-  //     id: getDataById[0] && getDataById[0].id,
-  //     categoryName: getDataById[0] && getDataById[0].name,
-  //   });
-  // }, []);
+  // data from selector
+  const selector = useSelector(Manufacturer);
+  const getDataById = selector.manufacturer.filter(
+    (c) => c.id === props.match.params.id
+  );
+  useEffect(() => {
+    setInputList({
+      id: getDataById[0] && getDataById[0].id,
+      categoryName: getDataById[0] && getDataById[0].name,
+    });
+  }, []);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const AddData = () => {

@@ -1,18 +1,26 @@
 import * as constant from "../constant";
 const initialstate = {
-  manufacturers:[]
+  manufacturer:[
+    {id:1,name:'asif'}
+    
+]
 };
 
-const manufacturer = (state = {data : []}, action) => {
+const manufacturer = (state = initialstate, action) => {
   switch (action.type) {
     case constant.GET_MANU:
       return {...state,
-        data:state.data
+        manufacturer:state.manufacturer
       };
     case constant.ADD_MANU:
       return {
         ...state,
-        data:[...state.data, action.payload],
+        manufacturer:[...state.manufacturer, action.payload],
+      };
+    case constant.DELETE_MANU:
+      return {
+        ...state,
+        manufacturer:state.manufacturer.filter((item) => item.id !== action.payload),
       };
         default:
       return state;

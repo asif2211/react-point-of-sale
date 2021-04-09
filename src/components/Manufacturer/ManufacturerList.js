@@ -29,14 +29,15 @@ const ManufacturerList = () => {
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const handleDelete = (id) => {
-    dispatch(allActions.manufacturers.DeleteManu(id));
+    alert(id)
+    dispatch(allActions.manufacturer.DeleteManu(id));
     
   };
   // for searching where when condition is true.
   const FilteredData =
     search === ""
-      ? Manu_list.data
-      : Manu_list.data.filter((c) => {
+      ? Manu_list.manufacturer
+      : Manu_list.manufacturer.filter((c) => {
           return (
             c.name.toLowerCase().includes(search.toLowerCase()) ||
             c.name.toLowerCase().includes(search.toLowerCase())
@@ -100,11 +101,11 @@ const ManufacturerList = () => {
                 <ItemData></ItemData>
                 <ItemData></ItemData>
                 <ItemData>
-                  <Link to={`/addsupplier/${item.id}`}>
+                  <Link to={`/manulist/${item.id}`}>
                     <FaPen color="green" />
                   </Link>
                   &nbsp;&nbsp;&nbsp;{" "}
-                  <Link to="/supplier">
+                  <Link>
                     <FaTrashAlt
                       color="red"
                       onClick={() => handleDelete(item.id)}
