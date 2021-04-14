@@ -80,30 +80,39 @@ const CustomerList = () => {
           </Heading>
         </Total>
         <Container>
-        <table id="customers">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-  </tr>
- 
-</table>
+        <ItemHeading>Sr No</ItemHeading>
+          <ItemHeading>First Name</ItemHeading>
+          <ItemHeading>Last Name</ItemHeading>
+          <ItemHeading>Email</ItemHeading>
+          <ItemHeading>PHone</ItemHeading>
+          <ItemHeading>Address</ItemHeading>
+          <ItemHeading>Company</ItemHeading>
+          <ItemHeading>Action</ItemHeading>
+          {showingContacts &&
+            showingContacts.map((item, index) => (
+              <>
+              <ItemData key={item.id} >{index+1}</ItemData>
+                <ItemData key={item.name} >{item.fname}</ItemData>
+                <ItemData>{item.lname}</ItemData>
+                <ItemData>{item.email}</ItemData>
+                <ItemData>{item.phone}</ItemData>
+                <ItemData>{item.address}</ItemData>
 
+                <ItemData>{item.company}</ItemData>
+                <ItemData>
+                  <Link to={`/create/${item.id}`}>
+                    <FaPen color="green" />
+                  </Link>
+                  &nbsp;&nbsp;&nbsp;{" "}
+                  <Link to="/customer">
+                    <FaTrashAlt
+                      color="red"
+                      onClick={() => DeleteCustomer(item.id)}
+                    />
+                  </Link>
+                </ItemData>
+             </>
+            ))}
         </Container>
       </WrapperList>
     </Customer_Wrapper>

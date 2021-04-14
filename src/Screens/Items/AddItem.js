@@ -6,7 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import { Select } from "@material-ui/core";
-import { Customers, Categories, Suppliers,Manufacturer } from "../../redux/selector";
+import {
+  Customers,
+  Categories,
+  Suppliers,
+  Manufacturer,
+} from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -123,6 +128,10 @@ const AddItem = (props) => {
   console.log(toogle);
   const classes = useStyles();
   const [state, setState] = React.useState();
+  const [codename, setCodeName] = React.useState();
+  const [item, setItem] = React.useState();
+  const [product_id, setProduct_id] = React.useState();
+  const [itemName, setItemName] = React.useState();
   const [supplierstate, setSupplierstate] = React.useState({
     name: "hai",
   });
@@ -133,13 +142,12 @@ const AddItem = (props) => {
   const handleChange = (event) => {
     var name = event.target.name;
     setState({
-      
       [name]: event.target.value,
     });
   };
   const handleChangeSupplier = (event) => {
     const name = event.target.name;
-    
+
     setSupplierstate({
       ...state,
       [name]: event.target.value,
@@ -161,29 +169,29 @@ const AddItem = (props) => {
   return (
     <div>
       <Wrapper>
-  <Title>Item Information{state.item} {" "} {state.codeName}</Title>
+        <Title>Item Information</Title>
         <Form>
           <InputContainer>
-          <TextField
-                    style={{ width: 500, justifyContent: "center" }}
-                    label={"Item Name"}
-                    required
-                    size="small"
-                    variant="filled"
-                    value={state.item}
-                    onChange={(e) => setState(e.target.value)}
-                  />
+            <TextField
+              style={{ width: 500, justifyContent: "center" }}
+              label={"Item Name"}
+              required
+              size="small"
+              variant="filled"
+              value={item}
+              onChange={(e) => setState(e.target.value)}
+            />
           </InputContainer>
           <InputContainer>
             <TextField
-              style={{ width: 500, justifyContent: "center"}}
+              style={{ width: 500, justifyContent: "center" }}
               label="Barcode Name"
               required
               size="small"
               variant="filled"
-              name = "codeName"
-              value={state.codeName}
-              onChange = {handleChange}
+              name="codeName"
+              value={codename}
+              onChange={handleChange}
             />
           </InputContainer>
           {/* category dropdown */}
@@ -197,8 +205,8 @@ const AddItem = (props) => {
                 style={{ width: 500, justifyContent: "center" }}
                 native
                 label="Select Category"
-                value={state.name}
-                onChange={handleChange}
+                // value={state.name}
+                // onChange={handleChange}
                 variant="filled"
                 size="small"
               >
@@ -210,11 +218,11 @@ const AddItem = (props) => {
                 ))}
               </Select>
             </FormControl>
-            
-            
           </InputContainer>
           <InputContainer>
-            <LinkButton to="/addcategory/id" style={{height:20}}>Add Category</LinkButton>
+            <LinkButton to="/addcategory/id" style={{ height: 20 }}>
+              Add Category
+            </LinkButton>
           </InputContainer>
           {/* supplier dropdown */}
           <InputContainer>
@@ -226,9 +234,9 @@ const AddItem = (props) => {
                 root
                 style={{ width: 500, justifyContent: "center" }}
                 native
-                value={supplierstate.age}
-                onChange={handleChangeSupplier}
-                name = "supplier"
+                // value={supplierstate.age}
+                // onChange={handleChangeSupplier}
+                name="supplier"
                 variant="filled"
                 size="small"
               >
@@ -242,7 +250,9 @@ const AddItem = (props) => {
             </FormControl>
           </InputContainer>
           <InputContainer>
-            <LinkButton to="/addsupplier/id" style={{height:20}}>Add Supplier</LinkButton>
+            <LinkButton to="/addsupplier/id" style={{ height: 20 }}>
+              Add Supplier
+            </LinkButton>
           </InputContainer>
           {/* Manufacturer dropdown */}
           <InputContainer>
@@ -264,16 +274,19 @@ const AddItem = (props) => {
                 size="small"
               >
                 <option aria-label="None" value="" />
-                {Manufacturers.manufacturer &&Manufacturers.manufacturer.map((cat) => (
-                  <option value={cat.id} key={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
+                {Manufacturers.manufacturer &&
+                  Manufacturers.manufacturer.map((cat) => (
+                    <option value={cat.id} key={cat.id}>
+                      {cat.name}
+                    </option>
+                  ))}
               </Select>
             </FormControl>
           </InputContainer>
           <InputContainer>
-            <LinkButton to="/addmanu/id" style={{height:20,width:120}}>Add Manufacturer</LinkButton>
+            <LinkButton to="/addmanu/id" style={{ height: 20, width: 120 }}>
+              Add Manufacturer
+            </LinkButton>
           </InputContainer>
           <InputContainer>
             <TextField
@@ -282,7 +295,7 @@ const AddItem = (props) => {
               required
               size="small"
               variant="filled"
-              value={inputList.lname}
+              // value={inputList.lname}
             />
           </InputContainer>
           <InputContainer>
@@ -292,7 +305,7 @@ const AddItem = (props) => {
               required
               size="small"
               variant="filled"
-              value={inputList.lname}
+              value={product_id}
             />
           </InputContainer>
           <InputContainer>
@@ -302,7 +315,7 @@ const AddItem = (props) => {
               required
               size="small"
               variant="filled"
-              value={inputList.lname}
+              value={itemName}
             />
           </InputContainer>
           <InputContainer>
@@ -312,7 +325,7 @@ const AddItem = (props) => {
               required
               size="small"
               variant="filled"
-              value={inputList.lname}
+              // value={inputList.lname}
             />
           </InputContainer>
         </Form>

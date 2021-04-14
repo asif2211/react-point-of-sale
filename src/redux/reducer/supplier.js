@@ -1,6 +1,6 @@
 import * as constant from "../constant";
   const initialstate = {
-    supplier:[]
+    supplier:[{name:'asif'}]
   };
   
   const supplier = (state = initialstate, action) => {

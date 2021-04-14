@@ -82,6 +82,14 @@ export const iconText = styled.i`
   &:hover {
     color: #fff;
   }
+  
+`;
+export const iconSubmenu = styled.i`
+  color: ${(p) => (p.isselected ? "#fff" : " rgb(77, 114, 127)")};
+  &:hover {
+    color: #fff;
+  }
+  margin-left:2rem;
 `;
 export const Icon = styled.span`
   text-decoration: none;

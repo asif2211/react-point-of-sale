@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 export const Wrapper = styled.div`
+
   grid-area: header;
   background: rgb(59, 141, 188);
   border-radius: 0px 0px 5px;
@@ -13,7 +14,7 @@ export const Wrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index:10;
 
   @media (max-width: 800px) {
     flex-direction: row;
@@ -45,7 +46,7 @@ export const Logo = styled.h1`
   color:white;
   font-size:50px;
   letter-spacing:4px;
-  
+  z-index:-1;
  
 `;
 export const Gap = styled.div`

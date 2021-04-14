@@ -1,6 +1,6 @@
 import * as constant from "../constant";
 const initialstate = {
-  category:[]
+  category:[{categoryName:'asif'}]
 };
 
 const category = (state = initialstate, action) => {

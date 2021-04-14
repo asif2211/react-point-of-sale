@@ -1,73 +1,73 @@
-import * as s from "./styled";
-import { useState } from "react";
-import { useDispatch} from "react-redux";
-import { IconContext } from "react-icons";
-// import Zoom from "react-reveal/Zoom";
-// import Fade from "react-reveal/Fade";
-import allActions from "../../redux/action";
-const Sidebar = ({ handleToogle, sidebar }) => {
-  const dispatch = useDispatch();
-  const sidebarMenu = [
-    { name: "Dashboard", to: "/", submenu: [], icon: "fa fa-tachometer" },
-    { name: "Customer", to: "/customer", submenu: [], icon: "fa fa-user" },
-    { name: "Supplier", to: "/supplier", submenu: [], icon: "fa fa-arrow-circle-down" },
-    { name: "Items", to: "/item", submenu: [], icon: "icon fa-list-alt" },
-    { name: "Manufacturer", to: "/manulist", submenu: [], icon: "fa fa-arrow-circle-down" },
-    { name: "Reports", to: "/", submenu: [], icon: "fa fa-bar-chart" },
-    { name: "Sales", to: "/", submenu: [], icon: "fa fa-shopping-cart" },
-    { name: "Deliveries", to: "/", submenu: [], icon: "fa fa-id-card-o" },
-    { name: "Expenses", to: "/", submenu: [], icon: "fa fa-dollar" },
-    { name: "Appointments", to: "/", submenu: [], icon: "fa fa-id-card-o" },
-    { name: "Employees", to: "/", submenu: [], icon: "fa fa-id-card-o" },
-    
-  ];
-  const [selected, setSelected] = useState(sidebarMenu[0].name);
-  const handleMenuSelected = (name)=>{
-    setSelected(name)
-  }
-  const handleSidebarMenu = sidebarMenu.map((item, index) => {
-    const isSelected = selected === item.name;
-    console.log(`${item.name} selected ? ${isSelected}`);
-    return (
-      
-      <s.MenuLink to={item.to} key={index}>
-        <s.MenuItem key={index} onClick={()=>handleMenuSelected(item.name)} selected={isSelected}>
-          <s.Icon>
-            <s.iconText
-              className={item.icon}
-              isselected={isSelected}
-            ></s.iconText>
-          </s.Icon>
-          <s.Text isselected={isSelected}>{item.name}</s.Text>
-        </s.MenuItem>
-      </s.MenuLink>
-     
-    );
-  });
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { SidebarData } from './SidebarData';
+import SubMenu from './SubMenu';
+import { IconContext } from 'react-icons/lib';
+import Header from '../header/Header'
+const Nav = styled.div`
+  background: #15171c;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const NavIcon = styled(Link)`
+  margin-left: 2rem;
+  font-size: 1rem;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color:rgb(55, 57, 66);
+`;
+
+const SidebarNav = styled.nav`
+  background-color:rgb(25, 29, 43);
+  width: 250px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  margin-top:3.7rem;
+  left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
+  transition: 350ms;
+  z-index:-1;
+  top:0;
+`;
+
+const SidebarWrap = styled.div`
+  width: 100%;
+`;
+
+const Sidebar = () => {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+
   return (
-    
-    <IconContext.Provider value={{ color: "#fff" }}>
-      <s.Container>
-        <s.NavMenu sidebar={sidebar}>
-          <s.NavMenuItem>
-            {handleSidebarMenu}
-            <s.MenuItem onClick = {() => dispatch(allActions.users.logOut())}>
-            <s.Icon>
-            <s.iconText
-              className="fa fa-power-off"
-              
-            ></s.iconText>
-          </s.Icon>
-          <s.Text>Logout</s.Text>
-          </s.MenuItem>
-          </s.NavMenuItem>
-        </s.NavMenu>
-
-
-        {/* <s.menuContainer>{handleSidebarMenu}</s.menuContainer> */}
-      </s.Container>
-    </IconContext.Provider>
-    
+    <>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        
+          <Header handleToogle={showSidebar}/>
+        <SidebarNav sidebar={sidebar}>
+          <SidebarWrap>
+            {/* <NavIcon to='#'>
+              <AiIcons.AiOutlineClose onClick={showSidebar} style={{backgroundColor:'#3B8DBC'}}/>
+            </NavIcon> */}
+            <div>
+            {SidebarData.map((item, index) => {
+              return <SubMenu item={item} key={index} />;
+            })}
+            </div>
+           
+          </SidebarWrap>
+        </SidebarNav>
+      </IconContext.Provider>
+    </>
   );
 };
 

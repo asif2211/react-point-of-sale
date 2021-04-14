@@ -55,7 +55,7 @@ const Supplier = (props) => {
   };
   console.log(toogle);
   if (toogle === true) {
-    return <Redirect to="/additem/id" />;
+    return <Redirect to="/supplier" />;
   }
    return (
     <div>

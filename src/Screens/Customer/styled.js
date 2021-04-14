@@ -1,11 +1,17 @@
 import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+export const Customer_Wrapper = styled.div`
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  z-index:-10;
+`;
 export const WrapperList = styled.div`
   margin-left: 1px;
   margin-top: 20px;
-  border-left: 1px solid #d5dbd9;
-  border-right: 1px solid #d5dbd9;
   padding-right: 10px;
 `;
 export const Searchbar = styled.div`
@@ -76,13 +82,10 @@ export const TopBar = styled.div`
   }
 `;
 export const InputList = styled(TextField)`
-
-@media (max-width: 400px) {
-    width:75px;
-    height:46px;
-
+  @media (max-width: 400px) {
+    width: 75px;
+    height: 46px;
   }
-  
 `;
 export const FormList = styled.form`
   display: flex;
@@ -92,8 +95,8 @@ export const FormList = styled.form`
 export const SearchIcon = styled.span`
   margin: 0px;
   width: 50px;
-  height:47px;
-  background:rgb(22, 47, 127);
+  height: 47px;
+  background: rgb(22, 47, 127);
   position: relative;
   text-align: center;
   white-space: nowrap;
@@ -106,18 +109,10 @@ export const SearchIcon = styled.span`
   margin-right: 10px;
 `;
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto;
+  
   width: 98%;
   margin: 10px;
-  border-top: 3px solid rgb(59, 141, 188);
-  border-radius: 5px;
-  @media (max-width: 800px) {
-    grid-template-columns: auto;
-    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.1);
-    height: 100vh;
-  }
+ 
 `;
 export const ItemHeading = styled.div`
   background-color: rgba(255, 255, 255, 225);
@@ -150,8 +145,7 @@ export const ItemData = styled.div`
 `;
 // Customer Styled
 export const Wrapper = styled.div`
-
-margin:20px;
+  margin: 20px;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
@@ -215,7 +209,7 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 `;
 export const Error = styled.div`
   display: flex;

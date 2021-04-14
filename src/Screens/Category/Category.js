@@ -56,7 +56,7 @@ const Category = (props) => {
   };
   console.log(toogle);
   if (toogle === true) {
-    return <Redirect to="/additem/id" />;
+    return <Redirect to="/category" />;
   }
   console.log(inputList.categoryName);
   console.log(props.match.params.id);
