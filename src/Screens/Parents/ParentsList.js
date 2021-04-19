@@ -10,38 +10,38 @@ import {
   Heading,
   Total,
   Span,
+  ItemHeading,
   Container,
-  WrapperCat,
+  ItemData,
+  CustomerWrapper,
 } from "./styled";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
 import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Searching } from "../../utils/helper";
-import { Categories, ParentsSelector } from "../../redux/selector";
+import { ParentsSelector } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 
-const CategoryList = () => {
+const ParentsList = () => {
   const [search, setSearch] = useState("");
+
   // get reducer name by selector
-  const categoryList = useSelector(Categories);
-  const parentdata = useSelector(ParentsSelector);
+  const parentList = useSelector(ParentsSelector);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
-  const handleDelete = (id) => {
-    dispatch(allActions.category.DeleteCategory(id));
+  const DeleteCustomer = (id) => {
+    dispatch(allActions.parent.DeleteParents(id));
   };
   // for searching where when condition is true.
-  const showingContacts = 
-  search === ""
-    ? categoryList.category
-    : categoryList.category.filter((c) => {
-        return (
-          c.categoryName.toLowerCase().includes(search.toLowerCase())
-        );
-      });
+  const showingContacts =
+    search === ""
+      ? parentList.parent
+      : parentList.parent.filter((c) => {
+          return c.parentName.toLowerCase().includes(search.toLowerCase());
+        });
+
   return (
-    <WrapperCat>
+    <CustomerWrapper>
       <div>
         <TopBar>
           <FormList>
@@ -58,9 +58,9 @@ const CategoryList = () => {
             </SearchIcon>
           </FormList>
           <Searchbar>
-            <AddButtonLink to="/addcategory/id">
+            <AddButtonLink to="/parents/id">
               <ButtonText style={{ height: "47px", width: 120 }}>
-                Add Category
+                Add Parents
               </ButtonText>
             </AddButtonLink>
           </Searchbar>
@@ -69,7 +69,7 @@ const CategoryList = () => {
       <WrapperList>
         <Total>
           <Heading>
-            Category{" "}
+            Parents{" "}
             {showingContacts && showingContacts.length ? (
               <Span>{showingContacts && showingContacts.length}</Span>
             ) : (
@@ -78,40 +78,40 @@ const CategoryList = () => {
           </Heading>
         </Total>
         <Container>
-          <table id="customers" width="100%">
+          <table id="customers">
             <tr>
               <th>Sr No</th>
-              <th>Category Name</th>
-              <th>Parent</th>
+              <th>Parents Name</th>
 
               <th>Action</th>
             </tr>
             {showingContacts &&
-              showingContacts.map((item, index) => (
-                <tr>
-                  <td key={item.id}>{index + 1}</td>
-                  <td>{item.categoryName}</td>
-                  <td>{item.parent}</td>
-
-                  <td>
-                    <Link to="/customer">
-                      <FaTrashAlt
-                        color="red"
-                        onClick={() => handleDelete(item.id)}
-                      />
-                    </Link>{" "}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <Link to={`/addcategory/${item.id}`}>
-                      <FaPen color="green" />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+              showingContacts.map((item, index) => {
+                if (index <= 9)
+                  return (
+                    <tr>
+                      <td key={item.id}>{index + 1}</td>
+                      <td>{item.parentName}</td>
+                      <td>
+                        <Link to="/customer">
+                          <FaTrashAlt
+                            color="red"
+                            onClick={() => DeleteCustomer(item.id)}
+                          />
+                        </Link>{" "}
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link to={`/create/${item.id}`}>
+                          <FaPen color="green" />
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+              })}
           </table>
-                  </Container>
+        </Container>
       </WrapperList>
-    </WrapperCat>
+    </CustomerWrapper>
   );
 };
 
-export default CategoryList;
+export default ParentsList;

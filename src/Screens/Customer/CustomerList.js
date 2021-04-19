@@ -13,7 +13,7 @@ import {
   ItemHeading,
   Container,
   ItemData,
-  Customer_Wrapper
+  Customer_Wrapper,
 } from "./styled";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
@@ -47,10 +47,9 @@ const CustomerList = () => {
         <TopBar>
           <FormList>
             <InputList
-            
-            label = "Search"
-            size = "small"
-            variant = "filled"
+              label="Search"
+              size="small"
+              variant="filled"
               type="text"
               name="firstName"
               onChange={(e) => setSearch(e.target.value)}
@@ -67,43 +66,56 @@ const CustomerList = () => {
             </AddButtonLink>
           </Searchbar>
         </TopBar>
-      </div>  
+      </div>
       <WrapperList>
         <Total>
           <Heading>
             Customers{" "}
-            {showingContacts && showingContacts.length? (
-              <Span>{showingContacts  && showingContacts.length}</Span>
+            {showingContacts && showingContacts.length ? (
+              <Span>{showingContacts && showingContacts.length}</Span>
             ) : (
               ""
             )}
           </Heading>
         </Total>
         <Container>
-        <table id="customers">
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-    <td>Germany</td>
-  </tr>
- 
-</table>
-
+          <table id="customers">
+            <tr>
+              <th>Sr No</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Company</th>
+              <th>Action</th>
+            </tr>
+            {showingContacts &&
+              showingContacts.map((item, index) => (
+                <tr>
+                  <td key={item.id}>{index+1}</td>
+                  <td>{item.fname}</td>
+                  <td>{item.lname}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
+                  <td>{item.address}</td>
+                  <td>{item.company}</td>
+                  <td>
+                  <Link to="/customer">
+                    <FaTrashAlt
+                      color="red"
+                      onClick={() => DeleteCustomer(item.id)}
+                    />
+                  </Link>
+                  /{"  "}
+                  <Link to={`/create/${item.id}`}>
+                    <FaPen color="green" />
+                  </Link>
+                  
+                  </td>
+                </tr>
+              ))}
+          </table>
         </Container>
       </WrapperList>
     </Customer_Wrapper>

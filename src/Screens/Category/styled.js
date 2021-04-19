@@ -3,10 +3,15 @@ import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 export const WrapperCat = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
   width: 100%;
+  align-items:center;
+  margin-top:5%;
+  position: absolute;
+  z-index:-10;
+  height:100%;
+  
+  
 `;
 export const WrapperList = styled.div`
   margin-left: 1px;
@@ -40,7 +45,8 @@ export const Total = styled.div`
     font-size: 10px;
     display: flex;
     justify-content: center;
-  }`;
+  }
+`;
 export const Heading = styled.h1`
   background-color: #fff;
   border-top: 3px solid rgb(59, 141, 188);
@@ -103,18 +109,8 @@ export const SearchIcon = styled.span`
   margin-right: 10px;
 `;
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto;
   width: 98%;
   margin: 10px;
-  border-top: 3px solid rgb(59, 141, 188);
-  border-radius: 5px;
-  @media (max-width: 800px) {
-    grid-template-columns: auto;
-    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.1);
-    height: 100vh;
-  }
 `;
 export const ItemHeading = styled.div`
   background-color: rgba(255, 255, 255, 225);
@@ -147,17 +143,22 @@ export const ItemData = styled.div`
   border-bottom: 0.1px solid #d5dbd9;
   width: 91%;
 `;
-// add category styled
+
 
 // Customer Styled
 export const Wrapper = styled.div`
-
-margin:20px;
+  margin: 20px;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   border-radius: 3px;
   align-content: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  z-index: -10;
 `;
 export const Title = styled.div`
   font-size: 20px;
@@ -216,7 +217,7 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 `;
 export const Error = styled.div`
   display: flex;

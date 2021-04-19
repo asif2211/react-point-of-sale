@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Wrapper, Title, Form, InputContainer, Button } from "./styled";
 import allActions from "../../redux/action";
-import { supplier_Data } from "../../utils/helper";
+import { parent_Data } from "../../utils/helper";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
-import { Suppliers } from "../../redux/selector";
+import { ParentsSelector } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
+import { Link } from "react-router-dom";
 import { LinkButton } from "../../components/LinkButton/styled";
-const Supplier = (props) => {
+const Parents = (props) => {
   const [toogle, setToogle] = useState(false);
   const [inputList, setInputList] = useState({
     id: 0,
-    supplier: "",
+    parentName: "",
   });
   const hanleChange = ({ key, value }) => {
     setInputList({
@@ -22,53 +23,57 @@ const Supplier = (props) => {
     });
   };
   //data from selector
-  const selector = useSelector(Suppliers);
-  const getDataById = selector.supplier.filter(
+  const selector = useSelector(ParentsSelector);
+  const getDataById = selector.parent.filter(
     (c) => c.id === props.match.params.id
   );
   useEffect(() => {
     setInputList({
       id: getDataById[0] && getDataById[0].id,
-      supplier: getDataById[0] && getDataById[0].name,
+      parentName: getDataById[0] && getDataById[0].name,
     });
   }, []);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const AddData = () => {
     if (!inputList.id) {
+      alert(inputList.parentName)
       const NewData = {
         id: generateId(2, 15),
-        name: inputList.supplier,
+        parentName: inputList.parentName,
       };
+     
       if (NewData) {
-        dispatch(allActions.supplier.AddSupplier(NewData));
+        
+        dispatch(allActions.parent.AddParents(NewData));
         setToogle(true);
       }
     } else {
       const updatedData = {
         id: inputList.id,
-        name: inputList.supplier,
+        name: inputList.parentName,
       };
-      dispatch(dispatch(allActions.supplier.UpdateSupplier(updatedData)));
+      dispatch(dispatch(allActions.parent.UpdateParents(updatedData)));
       setToogle(true);
     }
   };
   console.log(toogle);
   if (toogle === true) {
-    return <Redirect to="/supplier" />;
+    return <Redirect to="/parentlist" />;
   }
+  
   return (
     <div>
       <Wrapper>
-        <Title>Supplier{props.match.params.id}</Title>
+  <Title>Parents</Title>
         <Form>
-          {supplier_Data.map((x, i) => {
+          {parent_Data.map((x, i) => {
             if (i === 0) {
               return (
                 <InputContainer key={x.name}>
                   <TextField
                     style={{ width: 500, justifyContent: "center" }}
-                    label={"Supplier Name"}
+                    label={"Parents Name"}
                     required
                     size="small"
                     variant="filled"
@@ -87,14 +92,14 @@ const Supplier = (props) => {
         </Form>
         <Button>
           <LinkButton
-            to="/supplier"
-            style={{ width: 120, backgroundColor: "#3B8DBC" }}
+          to = "/parentlist"
+          style = {{width:120, backgroundColor:'#3B8DBC'}}
           >
-            View Category
+            View Parents
           </LinkButton>
           &nbsp;
           <ButtonText
-            disabled={inputList.name === ""}
+            disabled={inputList.parentName === ""}
             children="Submit"
             onClick={AddData}
           >
@@ -106,4 +111,4 @@ const Supplier = (props) => {
   );
 };
 
-export default Supplier;
+export default Parents;

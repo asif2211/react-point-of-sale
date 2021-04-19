@@ -40,7 +40,8 @@ export const Total = styled.div`
     font-size: 10px;
     display: flex;
     justify-content: center;
-  }`;
+  }
+`;
 export const Heading = styled.h1`
   background-color: #fff;
   border-top: 3px solid rgb(59, 141, 188);
@@ -150,13 +151,18 @@ export const ItemData = styled.div`
 
 // add Supplier styled
 export const Wrapper = styled.div`
-
-margin:20px;
+  margin: 20px;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   border-radius: 3px;
   align-content: center;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  z-index:-10;
 `;
 export const Title = styled.div`
   font-size: 20px;
@@ -215,7 +221,7 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 `;
 export const Error = styled.div`
   display: flex;

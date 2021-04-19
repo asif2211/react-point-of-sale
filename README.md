@@ -14,4 +14,6 @@ Pos is the online selling system in which we sale our products online. like we a
 * [eslint]  eslinter is use a tool that work on patterns of js and make your code bugs free and consistent.
 * [material-ui]  is framework that work with react and provide component base design. easy to implement in react , quality desinging, buildin component.
 * [id-generator](https://www.npmjs.com/package/react-id-generator) Provide a unique id .
+* [express-server ](https://medium.com/@minatibiswal/how-to-upload-files-in-react-with-nodejs-express-3a3dafc1b285) using node js backend express server with nodemon for react .
+* [axios](https://medium.com/@minatibiswal/how-to-upload-files-in-react-with-nodejs-express-3a3dafc1b285) axios library for ajax request
 

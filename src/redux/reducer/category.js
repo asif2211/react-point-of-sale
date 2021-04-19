@@ -1,6 +1,6 @@
 import * as constant from "../constant";
 const initialstate = {
-  category:[{categoryName:'asif'}]
+  category:[{categoryName:'asif',parent:'electronic'}]
 };
 
 const category = (state = initialstate, action) => {

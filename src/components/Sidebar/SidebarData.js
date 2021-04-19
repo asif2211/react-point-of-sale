@@ -7,7 +7,7 @@ import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
   {
     title: 'Product',
-    path: '/overview',
+    
     icon: <FaIcons.FaCartPlus />,
     // icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -16,7 +16,12 @@ export const SidebarData = [
     subNav: [
       {
         title: 'Category',
-        path: '/overview/users',
+        path: '/category',
+        icon: <IoIcons.IoIosPaper />
+      },
+      {
+        title: 'Parents',
+        path: '/parentlist',
         icon: <IoIcons.IoIosPaper />
       },
       {

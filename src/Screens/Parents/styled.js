@@ -1,18 +1,22 @@
 import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
-export const Customer_Wrapper = styled.div`
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  z-index:-10;
+export const CustomerWrapper = styled.div`
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  width: 100%;
+  align-items:center;
+  margin-top:10rem;
+  position: absolute;
+  z-index:-4;
+  height:100vh;
 `;
 export const WrapperList = styled.div`
   margin-left: 1px;
   margin-top: 20px;
   padding-right: 10px;
+  width:60%;
 `;
 export const Searchbar = styled.div`
   border-left: 1px solid #d5dbd9;
@@ -143,16 +147,19 @@ export const ItemData = styled.div`
   border-right: none;
   border-bottom: 0.1px solid #d5dbd9;
 `;
+// add category styled
+
 // Customer Styled
 export const Wrapper = styled.div`
-  margin: 20px;
+
+margin:20px;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
   box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   border-radius: 3px;
   align-content: center;
-  position: absolute;
-  top: 80%;
+  position: fixed;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
@@ -215,7 +222,7 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom:20px;
 `;
 export const Error = styled.div`
   display: flex;

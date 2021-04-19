@@ -40,3 +40,29 @@ export const manufacturer_Data = [
     { type: "text", name: "manuName", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
    
   ];
+export const parent_Data = [
+    { type: "text", name: "parentName", label: "First Name", to: "/", submenu: [], icon: "fa fa-tachometer" },
+   
+  ];
+// search for category
+  export const Searching = (selectors,search)=>{
+    
+    if(search === '')
+    {
+      return selectors.category
+    }
+    else {
+        return  selectors.category.filter((c) => (
+          
+            c.categoryName.toLowerCase().indexOf(search) > -1  || 
+            c.parent.toLowerCase().indexOf(search.toLowerCase()) > -1 
+         
+        ))
+        
+      
+    }
+    
+
+    
+
+  }
