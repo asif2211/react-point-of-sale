@@ -4,6 +4,7 @@ import category from './category';
 import supplier from './supplier';
 import manufacturer from './manufacturer';
 import parent from './parent';
+import product from './product';
 
 const allActions = {
     users,
@@ -11,7 +12,8 @@ const allActions = {
     category,
     supplier,
     manufacturer,
-    parent
+    parent,
+    product
 }
 
 export default allActions;

@@ -8,7 +8,7 @@ export const SidebarData = [
   {
     title: 'Product',
     
-    icon: <FaIcons.FaCartPlus />,
+    icon: <FaIcons.FaBars />,
     // icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
@@ -26,12 +26,12 @@ export const SidebarData = [
       },
       {
         title: 'Product List',
-        path: '/overview/revenue',
+        path: '/product',
         icon: <IoIcons.IoIosPaper />
       },
       {
         title: 'Add Product',
-        path: '/overview/revenue',
+        path: '/addproduct/id',
         icon: <IoIcons.IoIosPaper />
       },
       {
@@ -59,7 +59,7 @@ export const SidebarData = [
   {
     title: 'Purchase',
     path: '/reports',
-    icon: <IoIcons.IoIosPaper />,
+    icon: <AiIcons.AiFillCreditCard/>,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 
@@ -86,7 +86,7 @@ export const SidebarData = [
   {
     title: 'Sales',
     path: '/reports',
-    icon: <IoIcons.IoIosPaper />,
+    icon: <FaIcons.FaCartPlus />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
 

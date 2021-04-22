@@ -1,12 +1,121 @@
 import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
+export const WrapperCat = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 5%;
+  position: absolute;
+  z-index: -10;
+  height: 100%;
+`;
+
 export const WrapperList = styled.div`
   margin-left: 1px;
   margin-top: 20px;
-  border-left: 1px solid #d5dbd9;
-  border-right: 1px solid #d5dbd9;
   padding-right: 10px;
+  width: 70%;
+`;
+export const InputField = styled.input`
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+`;
+export const TextArea = styled.textarea`
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  height:100px;
+`;
+export const Select = styled.select`
+   width: 60%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  height:40px;
+  border:1px solid #BFBFBF;
+  background-color:#fff;
+  box-sizing: border-box;
+`;
+export const ProductDetail = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  width: 100%;
+  
+`;
+export const ProductImage = styled.div`
+  width: 50%;
+  height: 100vh;
+  position: fixed;
+  flex:0 1 20rem;
+  width:40rem;
+  
+`;
+export const Img = styled.img`
+  width: 400px;
+  height: 50vh;
+  position: fixed;
+`;
+export const DetailSection = styled.div`
+  width: 60%;
+  margin-left: 30%;
+  min-height: 100vh;
+  background-image: url("../images/dots.svg");
+  display: grid;
+  position: relative;
+  margin-top:.5rem;
+  flex:2;
+  width:40rem;
+`;
+export const Details = styled.div`
+  display: flex;
+  
+`;
+export const Cross = styled.div`
+  margin-top:20px;
+  
+`;
+export const ProductInfo = styled.div`
+  margin-left:2rem;
+  display:flex;
+  flex-direction:row;
+
+`;
+export const ProductHeadingSection = styled.div`
+  margin-right:4rem;
+  flex:1;
+  width:5rem;
+  
+`;
+export const ProductValueSection = styled.div`
+  margin-left:4rem;
+  flex:2;
+  width:30rem;
+`;
+export const PragraphHeading = styled.div`
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:1rem;
+  color:#757575;
+  width:150px;
+`;
+export const PragraphValue = styled.div`
+  font-size:14px;
+  margin-bottom:1rem;
+  color:#757575;
+  width:100%;
+`;
+export const ProductContent = styled.div`
+  margin-left:2rem;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+
 `;
 export const Searchbar = styled.div`
   border-left: 1px solid #d5dbd9;
@@ -53,7 +162,6 @@ export const Heading = styled.h1`
   height: 5vh;
   width: 98%;
 `;
-
 export const TopBar = styled.div`
   display: flex;
   justify-content: center;
@@ -62,10 +170,6 @@ export const TopBar = styled.div`
   margin-left: 10px;
   margin-right: 25px;
   height: 10vh;
-  width: 97%;
-  background-color: #fff;
-  border-top: 3px solid rgb(59, 141, 188);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
   border-radius: 3px;
   @media (max-width: 800px) {
     font-size: 10px;
@@ -76,48 +180,35 @@ export const TopBar = styled.div`
   }
 `;
 export const InputList = styled(TextField)`
-
-@media (max-width: 400px) {
-    width:75px;
-    height:46px;
-
+  @media (max-width: 400px) {
+    width: 75px;
+    height: 46px;
   }
-  
 `;
 export const FormList = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 export const SearchIcon = styled.span`
   margin: 0px;
   width: 50px;
-  height:47px;
-  background:rgb(22, 47, 127);
+  height: 48px;
+  background: rgb(22, 47, 127);
   position: relative;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
   display: table-cell;
   line-height: 50px;
-  border: 1px solid transparent;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   margin-right: 10px;
 `;
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto;
   width: 98%;
   margin: 10px;
-  border-top: 3px solid rgb(59, 141, 188);
-  border-radius: 5px;
-  @media (max-width: 800px) {
-    grid-template-columns: auto;
-    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
-      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.1);
-    height: 100vh;
-  }
 `;
 export const ItemHeading = styled.div`
   background-color: rgba(255, 255, 255, 225);
@@ -134,6 +225,7 @@ export const ItemHeading = styled.div`
   color: #757575;
   height: 5vh;
   line-height: 30px;
+  width: 100%;
 `;
 export const ItemData = styled.div`
   outline: none;
@@ -147,16 +239,25 @@ export const ItemData = styled.div`
   border-left: none;
   border-right: none;
   border-bottom: 0.1px solid #d5dbd9;
+  width: 91%;
 `;
+
 // Customer Styled
 export const Wrapper = styled.div`
-
-margin:20px;
+  margin-top:18rem;
+  height:151vh;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
   border-radius: 3px;
   align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  z-index:-4;
+  
 `;
 export const Title = styled.div`
   font-size: 20px;
@@ -207,15 +308,16 @@ export const Comments = styled.textarea`
 `;
 export const InputContainer = styled.div`
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   align-items: center;
   justify-content: center;
+  width:100%;
 `;
 export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 `;
 export const Error = styled.div`
   display: flex;

@@ -2,15 +2,14 @@ import styled from "styled-components";
 import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 export const CustomerWrapper = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  align-items:center;
-  margin-top:10rem;
+  align-items: center;
+  margin-top: 5%;
   position: absolute;
-  z-index:-4;
-  height:100vh;
+  z-index: -10;
+  height: 100%;
 `;
 export const WrapperList = styled.div`
   margin-left: 1px;
@@ -155,7 +154,7 @@ export const Wrapper = styled.div`
 margin:20px;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
   border-radius: 3px;
   align-content: center;
   position: fixed;

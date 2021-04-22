@@ -16,4 +16,5 @@ Pos is the online selling system in which we sale our products online. like we a
 * [id-generator](https://www.npmjs.com/package/react-id-generator) Provide a unique id .
 * [express-server ](https://medium.com/@minatibiswal/how-to-upload-files-in-react-with-nodejs-express-3a3dafc1b285) using node js backend express server with nodemon for react .
 * [axios](https://medium.com/@minatibiswal/how-to-upload-files-in-react-with-nodejs-express-3a3dafc1b285) axios library for ajax request
+* [react-modal](https://www.npmjs.com/package/react-modal) Used modal for zooming display item details
 

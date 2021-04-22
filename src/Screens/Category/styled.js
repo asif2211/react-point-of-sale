@@ -150,7 +150,7 @@ export const Wrapper = styled.div`
   margin: 20px;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
   border-radius: 3px;
   align-content: center;
   position: absolute;

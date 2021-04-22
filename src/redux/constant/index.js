@@ -18,7 +18,12 @@ export const GET_MANU = "GET_MANU";
 export const DELETE_MANU = "DELETE_MANU";
 export const UPDATE_MANU = "UPDATE_MANU";
 // for parents
-export const ADD_PARENTS = "ADD_MANU";
+export const ADD_PARENTS = "ADD_PARENTS";
 export const GET_PARENTS = "GET_PARENTS";
 export const DELETE_PARENTS = "DELETE_PARENTS";
 export const UPDATE_PARENTS = "UPDATE_PARENTS";
+// for product
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
