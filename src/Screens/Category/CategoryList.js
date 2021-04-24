@@ -17,15 +17,13 @@ import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
 import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Searching } from "../../utils/helper";
-import { Categories, ParentsSelector } from "../../redux/selector";
+import { Categories } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 
 const CategoryList = () => {
   const [search, setSearch] = useState("");
   // get reducer name by selector
   const categoryList = useSelector(Categories);
-  const parentdata = useSelector(ParentsSelector);
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const handleDelete = (id) => {

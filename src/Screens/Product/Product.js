@@ -10,32 +10,17 @@ import {
   TextArea,
 } from "./styled";
 import allActions from "../../redux/action";
-import FormControl from "@material-ui/core/FormControl";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { Categories, ParentsSelector } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
-import { makeStyles } from "@material-ui/core/styles";
 import { LinkButton } from "../../components/LinkButton/styled";
 const Product = (props) => {
-  const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      maxWidth: "90%",
-    },
-    paddingLabel: {
-      paddingLeft: 10,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  const classes = useStyles();
   const [toogle, setToogle] = useState(false);
   const [inputList, setInputList] = useState({
     id: 0,
-    pro_type:'',
+    pro_type: "",
     pro_name: "",
     code: "",
     brand: "",
@@ -50,19 +35,25 @@ const Product = (props) => {
     tax_method: "",
     details: "",
   });
- 
+
   //data from selector
   const selector = useSelector(Categories);
   const parentsData = useSelector(ParentsSelector);
   const getDataById = selector.category.filter(
     (c) => c.id === props.match.params.id
   );
-  useEffect(() => {
-    setInputList({
-      id: getDataById[0] && getDataById[0].id,
-      categoryName: getDataById[0] && getDataById[0].name,
-    });
-  }, []);
+  useEffect(
+    () => {
+      function fetchData() {
+        setInputList({
+          id: getDataById[0] && getDataById[0].id,
+          categoryName: getDataById[0] && getDataById[0].name,
+        });
+      }
+      fetchData();
+    },
+    [] // eslint-disable-line react-hooks/exhaustive-deps
+  );
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const AddData = () => {
@@ -122,13 +113,14 @@ const Product = (props) => {
       [name]: value,
     });
   };
+
   console.log(inputList.pro_name);
   return (
     <div>
       <Wrapper>
         <Title>Product{props.match.params.id}</Title>
         <Form>
-        <InputContainer>
+          <InputContainer>
             <Select
               root
               native
@@ -147,12 +139,11 @@ const Product = (props) => {
                 Standard
               </option>
               <option aria-label="None" value="Combo">
-              Combo
+                Combo
               </option>
               <option aria-label="None" value="Digital">
-              Digital
+                Digital
               </option>
-              
             </Select>
           </InputContainer>
           <InputContainer>
@@ -170,12 +161,13 @@ const Product = (props) => {
             <InputField
               placeholder="Product Code"
               required
+              id="code"
               size="small"
               name="code"
               variant="filled"
-              value={inputList.code}
-              onChange={handleInputchange}
+              value={generateId(2, 15)}
             />
+            
           </InputContainer>
           <InputContainer>
             <Select
@@ -262,7 +254,6 @@ const Product = (props) => {
               <option aria-label="None" value="">
                 Select Sale Unit
               </option>
-              
             </Select>
           </InputContainer>
           <InputContainer>
@@ -341,10 +332,10 @@ const Product = (props) => {
                 vat@10
               </option>
               <option aria-label="None" value="vat@15">
-              vat@15
+                vat@15
               </option>
               <option aria-label="None" value="vat 20">
-              vat 20
+                vat 20
               </option>
             </Select>
           </InputContainer>
@@ -368,9 +359,8 @@ const Product = (props) => {
                 Exclusive
               </option>
               <option aria-label="None" value="Inclusive">
-              Inclusive
+                Inclusive
               </option>
-              
             </Select>
           </InputContainer>
           <InputContainer>

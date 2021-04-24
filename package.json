@@ -26,6 +26,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "react-search-field": "^1.2.0",
+    "react-select-search": "^3.0.5",
+    "react-to-print": "^2.12.4",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.32.7",

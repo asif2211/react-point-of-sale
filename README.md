@@ -17,4 +17,6 @@ Pos is the online selling system in which we sale our products online. like we a
 * [express-server ](https://medium.com/@minatibiswal/how-to-upload-files-in-react-with-nodejs-express-3a3dafc1b285) using node js backend express server with nodemon for react .
 * [axios](https://medium.com/@minatibiswal/how-to-upload-files-in-react-with-nodejs-express-3a3dafc1b285) axios library for ajax request
 * [react-modal](https://www.npmjs.com/package/react-modal) Used modal for zooming display item details
+* [react-print](https://www.npmjs.com/package/react-to-print) Used react print library for print products
+* [react-select-search](https://www.npmjs.com/package/react-select-search) Used react search  library for product search
 

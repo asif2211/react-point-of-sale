@@ -36,7 +36,7 @@ export const SidebarData = [
       },
       {
         title: 'Print Bar Code',
-        path: '/overview/revenue',
+        path: '/print_barcode',
         icon: <IoIcons.IoIosPaper />
       },
       {
