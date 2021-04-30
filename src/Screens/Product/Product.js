@@ -8,6 +8,7 @@ import {
   InputField,
   Select,
   TextArea,
+  RefreshButton
 } from "./styled";
 import allActions from "../../redux/action";
 import ButtonText from "../../components/ButtonText/ButtonText";
@@ -16,8 +17,10 @@ import { Redirect } from "react-router-dom";
 import { Categories, ParentsSelector } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
 import { LinkButton } from "../../components/LinkButton/styled";
+import {BiRefresh } from "react-icons/bi";
 const Product = (props) => {
   const [toogle, setToogle] = useState(false);
+  const [codechange, setCodeChange] = useState();
   const [inputList, setInputList] = useState({
     id: 0,
     pro_type: "",
@@ -57,7 +60,7 @@ const Product = (props) => {
   const dispatch = useDispatch();
   // pass id by useDispatch hooks
   const AddData = () => {
-    alert(inputList.product_unit);
+    alert(codechange);
     alert(inputList.sale_unit);
     alert(inputList.purchase_unit);
     alert(inputList.pro_tax);
@@ -70,7 +73,7 @@ const Product = (props) => {
         id: generateId(2, 15),
         pro_type: inputList.pro_type,
         pro_name: inputList.pro_name,
-        code: inputList.code,
+        code: codechange,
         brand: inputList.brand,
         category: inputList.category,
         quantity: inputList.quantity,
@@ -113,7 +116,10 @@ const Product = (props) => {
       [name]: value,
     });
   };
-
+const idGenerate = () => {
+  setCodeChange(generateId(2, 15)
+  )
+}
   console.log(inputList.pro_name);
   return (
     <div>
@@ -159,15 +165,17 @@ const Product = (props) => {
           </InputContainer>
           <InputContainer>
             <InputField
+            style={{width:'50%'}}
               placeholder="Product Code"
               required
               id="code"
               size="small"
               name="code"
               variant="filled"
-              value={generateId(2, 15)}
+              value={codechange}
             />
-            
+            <RefreshButton onClick={idGenerate}><BiRefresh size={30} backgroundColor="red"/>
+            </RefreshButton>
           </InputContainer>
           <InputContainer>
             <Select

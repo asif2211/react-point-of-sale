@@ -27,3 +27,8 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const GET_PRODUCT = "GET_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+// for adjustment
+export const ADD_ADJUSTMENT = "ADD_ADJUSTMENT";
+export const GET_ADJUSTMENT = "GET_ADJUSTMENT";
+export const DELETE_ADJUSTMENT = "DELETE_ADJUSTMENT";
+export const UPDATE_ADJUSTMENT = "UPDATE_ADJUSTMENT";

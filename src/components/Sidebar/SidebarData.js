@@ -41,7 +41,7 @@ export const SidebarData = [
       },
       {
         title: 'Adjustment List',
-        path: '/overview/revenue',
+        path: '/adjustment',
         icon: <IoIcons.IoIosPaper />
       },
       {

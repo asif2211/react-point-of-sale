@@ -6,6 +6,7 @@ import supplier from './supplier';
 import manufacturer from './manufacturer';
 import parent from './parent';
 import product from './product';
+import adjustment from './adjustment';
 
 const rootReducer = combineReducers({
 users,
@@ -14,6 +15,7 @@ category,
 supplier,
 manufacturer,
 parent,
-product
+product,
+adjustment
 })
 export default rootReducer

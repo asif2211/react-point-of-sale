@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Link as link } from "react-router-dom";
 import Modal from "react-modal";
+import { Link as link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 export const WrapperCat = styled.div`
   display: flex;
@@ -12,51 +12,6 @@ export const WrapperCat = styled.div`
   z-index: -10;
   height: 100%;
 `;
-export const Buttons = styled.div`
-  display:flex;
-  justify-content:center;
-  flex-direction:row;
- 
-`;
-export const RefreshButton = styled.div`
-  width:10%;
-  height:41px;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
-  box-sizing: border-box;
-  margin-left:.2rem;
-  text-align:center;
-  line-height:3.5rem;
-  border-radius:.2rem .2rem;
-  &:hover{
-    background-color:#f5f5f5;
-  }
- 
-`;
-export const Printbutton = styled.div`
- flex:1;
- justify-content:center;
- margin:1rem;
-`;
-export const Cross = styled.div`
-  flex:2;
-  justify-content:center;
- margin:1rem;
-`;
-
-export const ModalPopup = styled(Modal)`
-  width: 90%;
-  border-radius: 5px;
-  min-width: 500px;
-  margin-top:6rem;
-  margin-left:6rem;
-  margin-bottom:10rem;
-  margin-right:6rem;
-  height:560px;
-  background-color:#f5f5f5;
- border:1px solid #757575;
- outline: none;
-`;
 
 export const WrapperList = styled.div`
   margin-left: 1px;
@@ -64,23 +19,46 @@ export const WrapperList = styled.div`
   padding-right: 10px;
   width: 70%;
 `;
+
+export const Buttons = styled.div`
+  display:flex;
+  justify-content:center;
+  flex-direction:row;
+ 
+`;
+export const Printbutton = styled.div`
+ flex:1;
+ justify-content:center;
+ margin:1rem;
+`;
+export const CrossButton = styled.div`
+  
+  justify-content:center;
+`;
+export const ModalPopup = styled(Modal)`
+  width: 200px;
+  background: #fff;
+  border-radius: 5px;
+  min-width: 500px;
+  position: relative;
+  top:10%;
+  left:20%;
+  bottom:10%;
+  height:300px;
+  background-color:#f5f5f5;
+  outline: none;
+`;
 export const InputField = styled.input`
   width: 60%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
-  border-radius:.2rem .2rem;
 `;
 export const TextArea = styled.textarea`
   width: 60%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
-  border-radius:.2rem .2rem;
   height:100px;
 `;
 export const Select = styled.select`
@@ -88,7 +66,7 @@ export const Select = styled.select`
   padding: 16px 20px;
   border: none;
   border-radius: 4px;
-  height:50px;
+  height:40px;
   border:1px solid #BFBFBF;
   background-color:#fff;
   box-sizing: border-box;
@@ -96,40 +74,47 @@ export const Select = styled.select`
 export const ProductDetail = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content:center;
+  align-items:center;
   font-size: 12px;
-  width: 100%;
   
+
 `;
 export const ProductImage = styled.div`
   width: 50%;
   height: 100vh;
   position: fixed;
   flex:0 1 20rem;
-  width:60rem;
-  margin-top:2rem;
-  margin-left:2rem;
+  width:40rem;
   
 `;
 export const Img = styled.img`
-  width: 400px;
-  height: 50vh;
-  position: fixed;
+  width: 100px;
+  height: 10vh;
+  
+  
+
 `;
 export const DetailSection = styled.div`
   width: 60%;
-  margin-left: 40%;
+  margin-left: 30%;
   min-height: 100vh;
+  background-image: url("../images/dots.svg");
   display: grid;
   position: relative;
-  margin-top:4rem;
+  margin-top:.5rem;
   flex:2;
-  width:50rem;
+  width:40rem;
 `;
 export const Details = styled.div`
   display: flex;
-  
+  justify-content:center;
 `;
-
+export const Cross = styled.div`
+  flex:2;
+  justify-content:center;
+ margin:1rem;
+`;
 export const ProductInfo = styled.div`
   margin-left:2rem;
   display:flex;
@@ -289,87 +274,4 @@ export const ItemData = styled.div`
   border-right: none;
   border-bottom: 0.1px solid #d5dbd9;
   width: 91%;
-`;
-
-// Product Styled
-export const Wrapper = styled.div`
-  margin-top:23rem;
-  height:177vh;
-  background: #ffffff;
-  border-top: 3px solid rgb(59, 141, 188);
-  box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
-  border-radius: 3px;
-  align-content: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  z-index:-4;
-  
-`;
-export const Title = styled.div`
-  font-size: 20px;
-  font-weight: 400;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  color: rgb(59, 141, 188);
-  text-transform: uppercase;
-  text-align: center;
-`;
-export const Form = styled.form`
-  width: 100%;
-  align-items: center;
-  align-content: center;
-`;
-export const Label = styled.label`
-  width: 200px;
-  color: #757575;
-  margin-right: 10px;
-  font-size: 14px;
-
-  @media (max-width: 400px) {
-    font-size: 10px;
-  }
-`;
-export const Input = styled.input`
-  width: 80%;
-  outline: none;
-  border: 1px solid #d5dbd9;
-  font-size: 12px;
-  padding: 8px 10px;
-
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  color: gray;
-  background-color: transparent;
-`;
-export const Comments = styled.textarea`
-  width: 82%;
-  padding: 10px;
-  outline: none;
-  border: 1px solid #d5dbd9;
-  font-size: 12px;
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  background-color: transparent;
-  color: gray;
-`;
-export const InputContainer = styled.div`
-  display: flex;
-  margin-bottom: 15px;
-  align-items: center;
-  justify-content: center;
-  width:100%;
-`;
-export const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 20px;
-`;
-export const Error = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;

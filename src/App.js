@@ -11,6 +11,7 @@ import Category from './Screens/Category/Category';
 import ProductList from './Screens/Product/ProductList';
 import Product from './Screens/Product/Product';
 import PrintBarCode from './Screens/Barcode/PrintBarCode';
+import AdjustmentList from './Screens/Ajdustment/AdjustmentList';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/category" component={CategoryList}/>
         <Route path="/addcategory/:id" component={Category}/>
         <Route path="/print_barcode" component={PrintBarCode}/>
-        <Route path="/customer" exact component={CustomerList}/>
+        <Route path="/adjustment" exact component={AdjustmentList}/>
         <Route path='/parents/:id' exact component={Parents} />
         <Route path='/parentlist' exact component={ParentsList} />
         <Route path="/create/:id" component={Customer}/>

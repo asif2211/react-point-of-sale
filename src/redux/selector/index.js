@@ -5,3 +5,4 @@ export const Suppliers = (state) => state.supplier
 export const Manufacturer = (state) => state.manufacturer;
 export const ParentsSelector = (state) => state.parent;
 export const Product = (state) => state.product;
+export const Adjustment = (state) => state.adjustment;

@@ -1,11 +1,10 @@
-import React, { useState ,useRef} from "react";
+import React, { useState, useRef } from "react";
 import {
   TopBar,
   FormList,
   InputList,
   SearchIcon,
   Searchbar,
-  AddButtonLink,
   WrapperList,
   Heading,
   Total,
@@ -13,32 +12,31 @@ import {
   Container,
   WrapperCat,
   ProductDetail,
-  ProductImage,
   Img,
   Details,
   DetailSection,
   ProductInfo,
   ProductContent,
-  ProductHeadingSection,
   ProductValueSection,
-  PragraphHeading,
   PragraphValue,
   Cross,
   ModalPopup,
   Buttons,
   Printbutton,
+  
 } from "./styled";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
-import { FaPen, FaTrashAlt, FaSearch, } from "react-icons/fa";
+import { FaPen, FaTrashAlt, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Product } from "../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 import avatar from "../../images/toys.jpg";
 import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
-import ReactToPrint from 'react-to-print';
-const ProductList = () => {
+
+import ReactToPrint from "react-to-print";
+const Adjustment = () => {
   const componentRef = useRef();
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState(null);
@@ -58,18 +56,24 @@ const ProductList = () => {
   };
   // for searching where when condition is true.
   const showingContacts =
+    // search === ""
+    //   ? Productlist.product
+    //   : Productlist.product.filter((c) => {
+    //       return c.pro_name.toLowerCase().includes(search.toLowerCase());
+    //     });
     search === ""
-      ? Productlist.product
+      ? ""
       : Productlist.product.filter((c) => {
-          return c.pro_name.toLowerCase().includes(search.toLowerCase());
+          return c.code.toLowerCase().includes(search.toLowerCase());
         });
+
   return (
     <WrapperCat>
       <div>
         <TopBar>
           <FormList>
             <InputList
-              label="Search"
+              label="enter product code "
               size="small"
               variant="filled"
               type="text"
@@ -81,21 +85,10 @@ const ProductList = () => {
             </SearchIcon>
           </FormList>
           <Searchbar>
-            <AddButtonLink to="/addproduct/id">
-              <ButtonText style={{ height: "47px", width: 120 }}>
-                Add Product
-              </ButtonText>
-            </AddButtonLink>
             
           </Searchbar>
-          {"   "}
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <ReactToPrint
-                trigger={() =><ButtonText style={{ height: "47px", width: 200 ,backgroundColor: 'rgb(34, 150, 243)'}}>Print this out!</ButtonText>}
-                content={() => componentRef.current}
-              /> 
+          
         </TopBar>
-        
       </div>
       <WrapperList>
         <Total>
@@ -107,39 +100,41 @@ const ProductList = () => {
               ""
             )}
           </Heading>
-         
         </Total>
         <Container>
-          <table id="customers" width="100%" ref={componentRef} >
+          <table id="customers" width="100%" ref={componentRef}>
             <tr>
               <th width="10%">Sr No</th>
-              <th width="10%">Image</th>
               <th width="10%">Product Name</th>
+              <th width="10%"></th>
               <th width="10%">Product Code</th>
-              <th width="10%">Brand</th>
-              <th width="10%">Category</th>
-              <th width="10%">Alert Quantity</th>
-              <th width="10%">Unit</th>
-              <th width="10%">Price</th>
+              <th width="10%"></th>
+              <th width="10%">Quantity</th>
               <th width="10%">Action</th>
             </tr>
             {showingContacts &&
               showingContacts.map((product, index) => (
                 <Fade bottom cascade>
                   <tr>
-                    <td key={product.id} width="10%" onClick={() => OpenModal(product)}>
+                    <td
+                      key={product.id}
+                      width="10%"
+                      onClick={() => OpenModal(product)}
+                    >
                       {index + 1}
                     </td>
+
                     <td width="10%" onClick={() => OpenModal(product)}>
-                      <img src={avatar} alt="" />
+                      {product.pro_name}
                     </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.pro_name}</td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.code}</td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.brand}</td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.category}</td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.quantity}</td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.product_unit}</td>
-                    <td width="10%" onClick={() => OpenModal(product)}>{product.price}</td>
+                    <td width="10%" onClick={() => OpenModal(product)}></td>
+                    <td width="10%" onClick={() => OpenModal(product)}>
+                      {product.code}
+                    </td>
+                    <td width="10%" onClick={() => OpenModal(product)}></td>
+                    <td width="10%" onClick={() => OpenModal(product)}>
+                      {product.quantity}
+                    </td>
                     <td>
                       <Link>
                         <FaTrashAlt
@@ -155,17 +150,18 @@ const ProductList = () => {
                   </tr>
                 </Fade>
               ))}
-              
           </table>
-
           {product && (
             <ModalPopup
               isOpen={true}
               onRequestClose={closeModal}
-              style={{border:'none'}}
+              transparent={true}
+              centered
+              initWidth={800}
+              initHeight={300}
             >
               <Zoom>
-              <Buttons>
+                <Buttons>
                 <Cross>
                       <button onClick={closeModal}>X</button>
                     </Cross>
@@ -186,40 +182,23 @@ const ProductList = () => {
                     />
                   </Printbutton>
                 </Buttons>
-                <ProductDetail  ref={componentRef}>
-                  <ProductImage>
-                    <Img src={avatar} alt="" />
-                  </ProductImage>
-
+                <ProductDetail>
                   <DetailSection>
                     <Details>
                       <ProductInfo>
-                        <ProductContent >
-                          <ProductHeadingSection className="left-text">
-                            <PragraphHeading>Product Name : </PragraphHeading>
-                            <PragraphHeading>Product Code : </PragraphHeading>
-                            <PragraphHeading>Brand :</PragraphHeading>
-                            <PragraphHeading>Category : </PragraphHeading>
-                            <PragraphHeading>Unit : </PragraphHeading>
-                            <PragraphHeading>Price : </PragraphHeading>
-                            <PragraphHeading>Cost : </PragraphHeading>
-                            <PragraphHeading>Product Tax : </PragraphHeading>
-                            <PragraphHeading>Tax Method : </PragraphHeading>
-                            <PragraphHeading>Alert Quantity : </PragraphHeading>
-                            <PragraphHeading> Product Details :</PragraphHeading>
-                          </ProductHeadingSection>
-                          <ProductValueSection className="right-text">
+                        <ProductContent>
+                          <ProductValueSection
+                            className="right-text"
+                            ref={componentRef}
+                          >
                             <PragraphValue> {product.pro_name}</PragraphValue>
-                            <PragraphValue> {product.code}</PragraphValue>
-                            <PragraphValue> {product.brand}</PragraphValue>
-                            <PragraphValue> {product.quantity}</PragraphValue>
-                            <PragraphValue> {product.product_unit? product.product_unit : ''}</PragraphValue>
-                            <PragraphValue> {product.price ? product.price :''}</PragraphValue>
-                            <PragraphValue> {product.cost}</PragraphValue>
-                            <PragraphValue> {product.tax_method}</PragraphValue>
-                            <PragraphValue> {product.pro_tax}</PragraphValue>
-                            <PragraphValue> {product.quantity}</PragraphValue>
-                            <PragraphValue> {product.details}</PragraphValue>
+                            <PragraphValue>
+                              {" "}
+                              <Img src={avatar} alt="" />
+                            </PragraphValue>
+                            <PragraphValue>
+                              Price : {product.price}
+                            </PragraphValue>
                           </ProductValueSection>
                         </ProductContent>
                       </ProductInfo>
@@ -231,9 +210,8 @@ const ProductList = () => {
           )}
         </Container>
       </WrapperList>
-      
     </WrapperCat>
   );
 };
 
-export default ProductList;
+export default Adjustment;
