@@ -8,7 +8,7 @@ import {
   InputField,
   Select,
   TextArea,
-  RefreshButton
+  RefreshButton,
 } from "./styled";
 import allActions from "../../redux/action";
 import ButtonText from "../../components/ButtonText/ButtonText";
@@ -17,7 +17,7 @@ import { Redirect } from "react-router-dom";
 import { Categories, ParentsSelector } from "../../redux/selector";
 import { generateId } from "../../utils/generateId";
 import { LinkButton } from "../../components/LinkButton/styled";
-import {BiRefresh } from "react-icons/bi";
+import { BiRefresh } from "react-icons/bi";
 const Product = (props) => {
   const [toogle, setToogle] = useState(false);
   const [codechange, setCodeChange] = useState();
@@ -116,10 +116,9 @@ const Product = (props) => {
       [name]: value,
     });
   };
-const idGenerate = () => {
-  setCodeChange(generateId(2, 15)
-  )
-}
+  const idGenerate = () => {
+    setCodeChange(generateId(2, 15));
+  };
   console.log(inputList.pro_name);
   return (
     <div>
@@ -165,7 +164,7 @@ const idGenerate = () => {
           </InputContainer>
           <InputContainer>
             <InputField
-            style={{width:'50%'}}
+              style={{ width: "50%" }}
               placeholder="Product Code"
               required
               id="code"
@@ -174,7 +173,8 @@ const idGenerate = () => {
               variant="filled"
               value={codechange}
             />
-            <RefreshButton onClick={idGenerate}><BiRefresh size={30} backgroundColor="red"/>
+            <RefreshButton onClick={idGenerate}>
+              <BiRefresh size={30} backgroundColor="red" />
             </RefreshButton>
           </InputContainer>
           <InputContainer>
