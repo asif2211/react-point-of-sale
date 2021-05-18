@@ -19,7 +19,10 @@ export const NavMenu = styled.div`
   height: 900px;
   display: flex;
   justify-content: center;
-  position: relative;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 20;
   left: ${(p) => (p.sidebar ? "-100%" : "")};
   transition: 850ms;
   border-radius: 0px 5px;
@@ -82,14 +85,13 @@ export const iconText = styled.i`
   &:hover {
     color: #fff;
   }
-  
 `;
 export const iconSubmenu = styled.i`
   color: ${(p) => (p.isselected ? "#fff" : " rgb(77, 114, 127)")};
   &:hover {
     color: #fff;
   }
-  margin-left:2rem;
+  margin-left: 2rem;
 `;
 export const Icon = styled.span`
   text-decoration: none;

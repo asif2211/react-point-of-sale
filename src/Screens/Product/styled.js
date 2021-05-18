@@ -13,49 +13,47 @@ export const WrapperCat = styled.div`
   height: 100%;
 `;
 export const Buttons = styled.div`
-  display:flex;
-  justify-content:center;
-  flex-direction:row;
- 
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 `;
 export const RefreshButton = styled.div`
-  width:10%;
-  height:41px;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
+  width: 10%;
+  height: 41px;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
   box-sizing: border-box;
-  margin-left:.2rem;
-  text-align:center;
-  line-height:3.5rem;
-  border-radius:.2rem .2rem;
-  &:hover{
-    background-color:#f5f5f5;
+  margin-left: 0.2rem;
+  text-align: center;
+  line-height: 3.5rem;
+  border-radius: 0.2rem 0.2rem;
+  &:hover {
+    background-color: #f5f5f5;
   }
- 
 `;
 export const Printbutton = styled.div`
- flex:1;
- justify-content:center;
- margin:1rem;
+  flex: 1;
+  justify-content: center;
+  margin: 1rem;
 `;
 export const Cross = styled.div`
-  flex:2;
-  justify-content:center;
- margin:1rem;
+  flex: 1;
+  justify-content: center;
+  margin: 1rem;
 `;
 
 export const ModalPopup = styled(Modal)`
   width: 90%;
   border-radius: 5px;
   min-width: 500px;
-  margin-top:6rem;
-  margin-left:6rem;
-  margin-bottom:10rem;
-  margin-right:6rem;
-  height:560px;
-  background-color:#f5f5f5;
- border:1px solid #757575;
- outline: none;
+  margin-top: 6rem;
+  margin-left: 6rem;
+  margin-bottom: 10rem;
+  margin-right: 6rem;
+  height: 560px;
+  background-color: #f5f5f5;
+  border: 1px solid #757575;
+  outline: none;
 `;
 
 export const WrapperList = styled.div`
@@ -69,28 +67,28 @@ export const InputField = styled.input`
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
-  border-radius:.2rem .2rem;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
+  border-radius: 0.2rem 0.2rem;
 `;
 export const TextArea = styled.textarea`
   width: 60%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
-  border-radius:.2rem .2rem;
-  height:100px;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
+  border-radius: 0.2rem 0.2rem;
+  height: 100px;
 `;
 export const Select = styled.select`
-   width: 60%;
+  width: 60%;
   padding: 16px 20px;
   border: none;
   border-radius: 4px;
-  height:50px;
-  border:1px solid #BFBFBF;
-  background-color:#fff;
+  height: 50px;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
   box-sizing: border-box;
 `;
 export const ProductDetail = styled.div`
@@ -98,78 +96,58 @@ export const ProductDetail = styled.div`
   flex-direction: row;
   font-size: 12px;
   width: 100%;
-  
 `;
 export const ProductImage = styled.div`
-  width: 50%;
-  height: 100vh;
-  position: fixed;
-  flex:0 1 20rem;
-  width:60rem;
-  margin-top:2rem;
-  margin-left:2rem;
-  
+  width: 30%;
+  margin-top: 1rem;
 `;
 export const Img = styled.img`
-  width: 400px;
-  height: 50vh;
-  position: fixed;
+  float: left;
+  width: 200px;
+  height: 200px;
 `;
 export const DetailSection = styled.div`
-  width: 60%;
-  margin-left: 40%;
-  min-height: 100vh;
-  display: grid;
-  position: relative;
-  margin-top:4rem;
-  flex:2;
-  width:50rem;
+  width: 80%;
 `;
 export const Details = styled.div`
   display: flex;
-  
 `;
 
 export const ProductInfo = styled.div`
-  margin-left:2rem;
-  display:flex;
-  flex-direction:row;
-
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: row;
 `;
 export const ProductHeadingSection = styled.div`
-  margin-right:4rem;
-  flex:1;
-  width:5rem;
-  
+  margin-right: 4rem;
+  width: 5rem;
 `;
 export const ProductValueSection = styled.div`
-  margin-left:4rem;
-  flex:2;
-  width:30rem;
+  margin-left: 4rem;
+  width: 10rem;
 `;
 export const PragraphHeading = styled.div`
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:1rem;
-  color:#757575;
-  width:150px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #757575;
+  width: 150px;
 `;
 export const PragraphValue = styled.div`
-  font-size:14px;
-  margin-bottom:1rem;
-  color:#757575;
-  width:100%;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  color: #757575;
+  width: 100%;
 `;
 export const ProductContent = styled.div`
-  margin-left:2rem;
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
-
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 60%;
+  margin-top: 1rem;
 `;
-export const Searchbar = styled.div`
-  
-`;
+export const Searchbar = styled.div``;
 export const AddButtonLink = styled(link)`
   text-decoration: none;
 `;
@@ -185,7 +163,6 @@ export const Span = styled.span`
   justify-content: center;
 `;
 export const Total = styled.div`
-  
   width: 98%;
   margin: 10px;
   @media (max-width: 800px) {
@@ -293,8 +270,8 @@ export const ItemData = styled.div`
 
 // Product Styled
 export const Wrapper = styled.div`
-  margin-top:23rem;
-  height:177vh;
+  margin-top: 23rem;
+  height: 177vh;
   background: #ffffff;
   border-top: 3px solid rgb(59, 141, 188);
   box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
@@ -305,8 +282,7 @@ export const Wrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
-  z-index:-4;
-  
+  z-index: -4;
 `;
 export const Title = styled.div`
   font-size: 20px;
@@ -360,7 +336,7 @@ export const InputContainer = styled.div`
   margin-bottom: 15px;
   align-items: center;
   justify-content: center;
-  width:100%;
+  width: 100%;
 `;
 export const Button = styled.div`
   display: flex;

@@ -39,7 +39,6 @@ import Zoom from "react-reveal/Zoom";
 import Fade from "react-reveal/Fade";
 import ReactToPrint from "react-to-print";
 import { jsPDF } from "jspdf";
-import autoTable from "jspdf-autotable";
 const ProductList = () => {
   const componentRef = useRef();
   const [search, setSearch] = useState("");
@@ -66,10 +65,27 @@ const ProductList = () => {
           return c.pro_name.toLowerCase().includes(search.toLowerCase());
         });
   // Default export is a4 paper, portrait, using millimeters for units
-  const generatePdf = () => {
-    const doc = new jsPDF();
-    autoTable(doc, { html: "#customers" });
-    doc.save("productlist.pdf");
+  const generatePdfProductList = () => {
+    const doc = new jsPDF("p", "pt", "a4");
+    // autoTable(doc, { html: "#customers" });
+    // doc.save("productlist.pdf");
+    doc.html(document.querySelector("#customers"), {
+      callback: function (pdf) {
+        // const pageCount = doc.internal.getNumberOfPages();
+        // pdf.deletePage(pageCount);
+        pdf.save("productlist.pdf");
+      },
+    });
+  };
+  const generatePdfProduct = () => {
+    const doc = new jsPDF("p", "pt", "a4");
+    doc.html(document.querySelector("#product"), {
+      callback: function (pdf) {
+        // const pageCount = doc.internal.getNumberOfPages();
+        // pdf.deletePage(pageCount);
+        pdf.save("productlist.pdf");
+      },
+    });
   };
   return (
     <WrapperCat>
@@ -118,7 +134,7 @@ const ProductList = () => {
               marginLeft: 10,
               backgroundColor: "rgb(178, 32, 32)",
             }}
-            onClick={generatePdf}
+            onClick={generatePdfProductList}
           >
             PDF!
           </ButtonText>
@@ -137,66 +153,70 @@ const ProductList = () => {
         </Total>
         <Container>
           <table id="customers" width="100%" ref={componentRef}>
-            <tr>
-              <th width="10%">Sr No</th>
-              <th width="10%">Image</th>
-              <th width="10%">Product Name</th>
-              <th width="10%">Product Code</th>
-              <th width="10%">Brand</th>
-              <th width="10%">Category</th>
-              <th width="10%">Alert Quantity</th>
-              <th width="10%">Unit</th>
-              <th width="10%">Price</th>
-              <th width="10%">Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th width="10%">Sr No</th>
+                <th width="10%">Image</th>
+                <th width="10%">Product Name</th>
+                <th width="10%">Product Code</th>
+                <th width="10%">Brand</th>
+                <th width="10%">Category</th>
+                <th width="10%">Alert Quantity</th>
+                <th width="10%">Unit</th>
+                <th width="10%">Price</th>
+                <th width="10%">Action</th>
+              </tr>
+            </thead>
             {showingContacts &&
               showingContacts.map((product, index) => (
                 <Fade bottom cascade>
-                  <tr>
-                    <td
-                      key={product.id}
-                      width="10%"
-                      onClick={() => OpenModal(product)}
-                    >
-                      {index + 1}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      <img src={avatar} alt="" />
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.pro_name}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.code}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.brand}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.category}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.quantity}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.product_unit}
-                    </td>
-                    <td width="10%" onClick={() => OpenModal(product)}>
-                      {product.price}
-                    </td>
-                    <td>
-                      <Link>
-                        <FaTrashAlt
-                          color="red"
-                          onClick={() => handleDelete(product.id)}
-                        />
-                      </Link>{" "}
-                      &nbsp;&nbsp;&nbsp;&nbsp;
-                      <Link to={`/addcategory/${product.id}`}>
-                        <FaPen color="green" />
-                      </Link>
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td
+                        key={product.id}
+                        width="10%"
+                        onClick={() => OpenModal(product)}
+                      >
+                        {index + 1}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        <img src={avatar} alt="" />
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.pro_name}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.code}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.brand}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.category}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.quantity}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.product_unit}
+                      </td>
+                      <td width="10%" onClick={() => OpenModal(product)}>
+                        {product.price}
+                      </td>
+                      <td>
+                        <Link>
+                          <FaTrashAlt
+                            color="red"
+                            onClick={() => handleDelete(product.id)}
+                          />
+                        </Link>{" "}
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <Link to={`/addcategory/${product.id}`}>
+                          <FaPen color="green" />
+                        </Link>
+                      </td>
+                    </tr>
+                  </tbody>
                 </Fade>
               ))}
           </table>
@@ -227,14 +247,27 @@ const ProductList = () => {
                       content={() => componentRef.current}
                     />
                   </Printbutton>
+                  <Cross>
+                    <ButtonText
+                      style={{
+                        height: "40px",
+                        width: 120,
+                        marginLeft: 10,
+                        backgroundColor: "rgb(178, 32, 32)",
+                      }}
+                      onClick={generatePdfProduct}
+                    >
+                      PDF!
+                    </ButtonText>
+                  </Cross>
                 </Buttons>
-                <ProductDetail ref={componentRef} id="#product">
-                  <ProductImage>
-                    <Img src={avatar} alt="" />
-                  </ProductImage>
+                <ProductDetail ref={componentRef} id="product">
                   <DetailSection>
-                    <Details>
+                    <Details id="product">
                       <ProductInfo>
+                        <ProductImage>
+                          <Img src={avatar} alt="" />
+                        </ProductImage>
                         <ProductContent>
                           <ProductHeadingSection className="left-text">
                             <PragraphHeading>Product Name : </PragraphHeading>
