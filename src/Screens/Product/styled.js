@@ -114,30 +114,31 @@ export const Details = styled.div`
 `;
 
 export const ProductInfo = styled.div`
-  margin-left: 2rem;
+  margin-left: 1rem;
   display: flex;
   flex-direction: row;
 `;
 export const ProductHeadingSection = styled.div`
-  margin-right: 4rem;
+  margin-right: 1rem;
   width: 5rem;
 `;
 export const ProductValueSection = styled.div`
-  margin-left: 4rem;
-  width: 10rem;
+  margin-left: 1rem;
+  width: 30rem;
 `;
 export const PragraphHeading = styled.div`
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #757575;
-  width: 150px;
+  width: 400px;
+  margin-top: 0.3rem;
 `;
 export const PragraphValue = styled.div`
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 1rem;
   color: #757575;
-  width: 100%;
+  width: 45%;
 `;
 export const ProductContent = styled.div`
   margin-left: 2rem;
@@ -348,4 +349,25 @@ export const Error = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+export const Description = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 13px;
+  width: 100%;
+  color: #757575;
+`;
+export const LeftText = styled.div`
+  width: 10%;
+  margin: 1rem;
+  padding: 1rem;
+  float: left;
+`;
+export const RightText = styled.div`
+  width: 90%;
+  margin: 1rem;
+  padding: 1rem;
 `;

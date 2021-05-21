@@ -1,4 +1,4 @@
-import { Wrapper, Link, Logo, Profile, Gap, Span } from "./styled";
+import { Wrapper, Link, Logo, Profile, Gap, Span, MenuIcon } from "./styled";
 import { FaBars } from "react-icons/fa";
 import allActions from "../../redux/action";
 import { useDispatch } from "react-redux";
@@ -6,9 +6,9 @@ const Header = ({ logo, handleToogle, userName }) => {
   const dispatch = useDispatch();
   return (
     <Wrapper>
-      <Link to="#">
+      <MenuIcon>
         <FaBars onClick={handleToogle} />
-      </Link>
+      </MenuIcon>
       <Link to="/posdata">
         <Logo>POS</Logo>
       </Link>

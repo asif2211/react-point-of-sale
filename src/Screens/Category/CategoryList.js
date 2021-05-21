@@ -30,14 +30,12 @@ const CategoryList = () => {
     dispatch(allActions.category.DeleteCategory(id));
   };
   // for searching where when condition is true.
-  const showingContacts = 
-  search === ""
-    ? categoryList.category
-    : categoryList.category.filter((c) => {
-        return (
-          c.categoryName.toLowerCase().includes(search.toLowerCase())
-        );
-      });
+  const showingContacts =
+    search === ""
+      ? categoryList.category
+      : categoryList.category.filter((c) => {
+          return c.categoryName.toLowerCase().includes(search.toLowerCase());
+        });
   return (
     <WrapperCat>
       <div>
@@ -77,36 +75,40 @@ const CategoryList = () => {
         </Total>
         <Container>
           <table id="customers" width="100%">
-            <tr>
-              <th>Sr No</th>
-              <th>Category Name</th>
-              <th>Parent</th>
+            <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Category Name</th>
+                <th>Parent</th>
 
-              <th>Action</th>
-            </tr>
+                <th>Action</th>
+              </tr>
+            </thead>
             {showingContacts &&
               showingContacts.map((item, index) => (
-                <tr>
-                  <td key={item.id}>{index + 1}</td>
-                  <td>{item.categoryName}</td>
-                  <td>{item.parent}</td>
+                <tbody key={index}>
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{item.categoryName}</td>
+                    <td>{item.parent}</td>
 
-                  <td>
-                    <Link to="/customer">
-                      <FaTrashAlt
-                        color="red"
-                        onClick={() => handleDelete(item.id)}
-                      />
-                    </Link>{" "}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <Link to={`/addcategory/${item.id}`}>
-                      <FaPen color="green" />
-                    </Link>
-                  </td>
-                </tr>
+                    <td>
+                      <Link to="/customer">
+                        <FaTrashAlt
+                          color="red"
+                          onClick={() => handleDelete(item.id)}
+                        />
+                      </Link>{" "}
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <Link to={`/addcategory/${item.id}`}>
+                        <FaPen color="green" />
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
               ))}
           </table>
-                  </Container>
+        </Container>
       </WrapperList>
     </WrapperCat>
   );

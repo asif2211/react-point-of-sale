@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const SidebarLink = styled(Link)`
+const SidebarLink = styled.div`
   display: flex;
   color: #e1e9fc;
   justify-content: space-between;
@@ -33,7 +33,7 @@ const DropdownLink = styled(Link)`
   text-decoration: none;
   color: #f5f5f5;
   font-size: 14px;
-  
+
   &:hover {
     background-color: rgb(59, 141, 188);
 

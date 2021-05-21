@@ -27,6 +27,9 @@ import {
   ModalPopup,
   Buttons,
   Printbutton,
+  Description,
+  LeftText,
+  RightText,
 } from "./styled";
 import ButtonText from "../../components/ButtonText/ButtonText";
 import allActions from "../../redux/action";
@@ -79,6 +82,7 @@ const ProductList = () => {
   };
   const generatePdfProduct = () => {
     const doc = new jsPDF("p", "pt", "a4");
+    doc.setFont("Lato-Regular", "small");
     doc.html(document.querySelector("#product"), {
       callback: function (pdf) {
         // const pageCount = doc.internal.getNumberOfPages();
@@ -158,11 +162,7 @@ const ProductList = () => {
                 <th width="10%">Sr No</th>
                 <th width="10%">Image</th>
                 <th width="10%">Product Name</th>
-                <th width="10%">Product Code</th>
-                <th width="10%">Brand</th>
                 <th width="10%">Category</th>
-                <th width="10%">Alert Quantity</th>
-                <th width="10%">Unit</th>
                 <th width="10%">Price</th>
                 <th width="10%">Action</th>
               </tr>
@@ -180,26 +180,20 @@ const ProductList = () => {
                         {index + 1}
                       </td>
                       <td width="10%" onClick={() => OpenModal(product)}>
-                        <img src={avatar} alt="" />
+                        <img
+                          src={product.image}
+                          alt=""
+                          style={{ width: 100, height: 100 }}
+                        />
                       </td>
                       <td width="10%" onClick={() => OpenModal(product)}>
-                        {product.pro_name}
+                        {product.title}
                       </td>
-                      <td width="10%" onClick={() => OpenModal(product)}>
-                        {product.code}
-                      </td>
-                      <td width="10%" onClick={() => OpenModal(product)}>
-                        {product.brand}
-                      </td>
+
                       <td width="10%" onClick={() => OpenModal(product)}>
                         {product.category}
                       </td>
-                      <td width="10%" onClick={() => OpenModal(product)}>
-                        {product.quantity}
-                      </td>
-                      <td width="10%" onClick={() => OpenModal(product)}>
-                        {product.product_unit}
-                      </td>
+
                       <td width="10%" onClick={() => OpenModal(product)}>
                         {product.price}
                       </td>
@@ -266,43 +260,26 @@ const ProductList = () => {
                     <Details id="product">
                       <ProductInfo>
                         <ProductImage>
-                          <Img src={avatar} alt="" />
+                          <Img src={product.image} alt="" />
                         </ProductImage>
                         <ProductContent>
                           <ProductHeadingSection className="left-text">
                             <PragraphHeading>Product Name : </PragraphHeading>
-                            <PragraphHeading>Product Code : </PragraphHeading>
-                            <PragraphHeading>Brand :</PragraphHeading>
                             <PragraphHeading>Category : </PragraphHeading>
-                            <PragraphHeading>Unit : </PragraphHeading>
                             <PragraphHeading>Price : </PragraphHeading>
-                            <PragraphHeading>Cost : </PragraphHeading>
-                            <PragraphHeading>Product Tax : </PragraphHeading>
-                            <PragraphHeading>Tax Method : </PragraphHeading>
-                            <PragraphHeading>Alert Quantity : </PragraphHeading>
-                            <PragraphHeading>
-                              {" "}
-                              Product Details :
-                            </PragraphHeading>
+                            <PragraphHeading>Description : </PragraphHeading>
                           </ProductHeadingSection>
                           <ProductValueSection className="right-text">
-                            <PragraphValue> {product.pro_name}</PragraphValue>
-                            <PragraphValue> {product.code}</PragraphValue>
-                            <PragraphValue> {product.brand}</PragraphValue>
-                            <PragraphValue> {product.quantity}</PragraphValue>
-                            <PragraphValue>
-                              {" "}
-                              {product.product_unit ? product.product_unit : ""}
-                            </PragraphValue>
+                            <PragraphValue> {product.title}</PragraphValue>
+                            <PragraphValue> {product.category}</PragraphValue>
                             <PragraphValue>
                               {" "}
                               {product.price ? product.price : ""}
                             </PragraphValue>
-                            <PragraphValue> {product.cost}</PragraphValue>
-                            <PragraphValue> {product.tax_method}</PragraphValue>
-                            <PragraphValue> {product.pro_tax}</PragraphValue>
-                            <PragraphValue> {product.quantity}</PragraphValue>
-                            <PragraphValue> {product.details}</PragraphValue>
+                            <PragraphValue>
+                              {" "}
+                              {product.price ? product.description : ""}
+                            </PragraphValue>
                           </ProductValueSection>
                         </ProductContent>
                       </ProductInfo>
