@@ -65,7 +65,7 @@ const ProductList = () => {
     search === ""
       ? Productlist.product
       : Productlist.product.filter((c) => {
-          return c.pro_name.toLowerCase().includes(search.toLowerCase());
+          return c.title.toLowerCase().includes(search.toLowerCase());
         });
   // Default export is a4 paper, portrait, using millimeters for units
   const generatePdfProductList = () => {

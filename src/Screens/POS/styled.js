@@ -96,12 +96,11 @@ export const Ul = styled.ul`
   list-style-type: none;
 `;
 export const Li = styled.li`
-  margin-top: 80px;
+  margin-top: 10px;
   background-color: #fff;
   flex: 0 1 20rem;
-  height: 34rem;
-  padding: 1rem;
-  border-bottom: 0.1rem solid #c0c0c0;
+  height: 40rem;
+  padding: 2rem;
 `;
 export const ProductBox = styled.div`
   display: flex;
@@ -113,15 +112,13 @@ export const Images = styled.img`
   max-height: 24rem;
   width: 24rem;
   max-width: 24rem;
-  height: 24rem;
+  height: 28rem;
 `;
 export const Productinfo = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  height: 100%;
-  border: 0.1rem dashed #ccc;
-  gap: 0.1rem;
+  height: 360px;
 `;
 
 export const PriceMain = styled.div`
@@ -136,6 +133,21 @@ export const Price = styled.div`
   flex: 1;
   font-size: 1.2rem;
   color: #54565a;
+`;
+export const CounterSection = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
+export const CartLength = styled.div`
+  position: relative;
+  left: 50%;
+  top: 20%;
+  width: 30px;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  background-color: red;
+  font-size: 18px;
 `;
 export const ProductName = styled(Link)`
   text-align: center;

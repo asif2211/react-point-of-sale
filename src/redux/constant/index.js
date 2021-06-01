@@ -32,3 +32,6 @@ export const ADD_ADJUSTMENT = "ADD_ADJUSTMENT";
 export const GET_ADJUSTMENT = "GET_ADJUSTMENT";
 export const DELETE_ADJUSTMENT = "DELETE_ADJUSTMENT";
 export const UPDATE_ADJUSTMENT = "UPDATE_ADJUSTMENT";
+// for counter
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";

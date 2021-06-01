@@ -1,6 +1,7 @@
 import * as constant from "../constant";
 const initialstate = {
   product: [],
+  counter: 0,
 };
 
 const product = (state = initialstate, action) => {

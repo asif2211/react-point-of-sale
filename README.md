@@ -20,3 +20,4 @@ Pos is the online selling system in which we sale our products online. like we a
 - [react-print](https://www.npmjs.com/package/react-to-print) Used react print library for print products
 - [react-select-search](https://www.npmjs.com/package/react-select-search) Used react search library for product search
 - [jspdf-autotable](https://www.npmjs.com/package/jspdf-autotable) library for generate pdf in the form of table
+- [react-custom-scrollbars-](https://www.npmjs.com/package/react-custom-scrollbars-2) create a scroll bar in anywhere
